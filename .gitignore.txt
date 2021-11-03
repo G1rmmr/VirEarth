@@ -54,6 +54,9 @@ SourceArt/**/*.tga
 Binaries/*
 Plugins/*/Binaries/*
 
+# Android Files
+Android_ASTC/*
+
 # Builds
 Build/*
 
