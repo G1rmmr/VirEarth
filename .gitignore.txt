@@ -94,4 +94,21 @@ Build/Android/res/*
 Build/Android/res/*/*
 !Build/Android/res/*/*.png
 
+/Content/Collections/
+/Content/Developers/
+
+/Plugins/MediaPipe/Binaries/
+/Plugins/MediaPipe/Intermediate/
+
+.vs/
+*.sln
+*.suo
+*.sdf
+*.opensdf
+*.db
+*.opendb
+*.pdb
+*.pch
+*.exe
+
 # End of https://www.toptal.com/developers/gitignore/api/unrealengine

@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\VirEarthAR.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{E6CCCEA5-1C0E-479A-A30F-DA23967A1DE9}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\VirEarthAR.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\VirEarthAREditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\.gitignore.txt" />
+    <None Include="..\..\_precompile.cmd" />
+    <Filter Include="Config">
+      <UniqueIdentifier>{78C9D5B3-25CA-415C-B7CC-3D6AE643B286}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultDeviceProfiles.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Config\Android">
+      <UniqueIdentifier>{C91A66F1-47EE-4794-A44F-173918F9E7EE}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\Android\AndroidGame.ini">
+      <Filter>Config\Android</Filter>
+    </None>
+    <Filter Include="Plugins">
+      <UniqueIdentifier>{AEB82A3A-6834-43D8-9F4F-D8F2C3AF740E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\MediaPipe">
+      <UniqueIdentifier>{5EBBE1E9-0647-4895-94E0-C44E28B0A9CF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\MediaPipe\Source">
+      <UniqueIdentifier>{D85474DC-F777-4997-9467-DECE95F55BAC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\MediaPipe\Source\MediaPipe">
+      <UniqueIdentifier>{5A5AAFC8-4486-4824-9D03-1D0943E9DC64}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\MediaPipe\Source\MediaPipe\MediaPipe.Build.cs">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe</Filter>
+    </None>
+    <Filter Include="Plugins\MediaPipe\Source\MediaPipe\Private">
+      <UniqueIdentifier>{A89DEE8B-470C-48B3-922B-7C53C2204E05}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\MediaPipeFaceMeshObserverComponent.cpp">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\MediaPipeLandmarkObserverComponent.cpp">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\MediaPipeModule.cpp">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\MediaPipeModule.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\MediaPipeObserverComponent.cpp">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\MediaPipePipelineComponent.cpp">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\MediaPipePresenceObserverComponent.cpp">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\MediaPipeShared.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\ump_api.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private</Filter>
+    </ClInclude>
+    <Filter Include="Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe">
+      <UniqueIdentifier>{1E5E4424-F69C-44A6-B93B-07950ED0FB73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework">
+      <UniqueIdentifier>{D9CB2079-4367-4D55-8244-61DBEC90F998}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats">
+      <UniqueIdentifier>{672495CF-CC9B-42A5-955B-3571F290DD6A}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\classification.pb.cc">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats</Filter>
+    </None>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\classification.pb.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats</Filter>
+    </ClInclude>
+    <None Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\detection.pb.cc">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats</Filter>
+    </None>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\detection.pb.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats</Filter>
+    </ClInclude>
+    <None Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\image_file_properties.pb.cc">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats</Filter>
+    </None>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\image_file_properties.pb.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats</Filter>
+    </ClInclude>
+    <None Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\image_format.pb.cc">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats</Filter>
+    </None>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\image_format.pb.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats</Filter>
+    </ClInclude>
+    <None Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\landmark.pb.cc">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats</Filter>
+    </None>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\landmark.pb.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats</Filter>
+    </ClInclude>
+    <None Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\location_data.pb.cc">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats</Filter>
+    </None>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\location_data.pb.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats</Filter>
+    </ClInclude>
+    <None Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\matrix_data.pb.cc">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats</Filter>
+    </None>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\matrix_data.pb.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats</Filter>
+    </ClInclude>
+    <None Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\rect.pb.cc">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats</Filter>
+    </None>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\rect.pb.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats</Filter>
+    </ClInclude>
+    <None Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\time_series_header.pb.cc">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats</Filter>
+    </None>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\time_series_header.pb.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats</Filter>
+    </ClInclude>
+    <Filter Include="Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\annotation">
+      <UniqueIdentifier>{41BDD3FE-DB13-4F86-A401-87F820B59B22}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\annotation\locus.pb.cc">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\annotation</Filter>
+    </None>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\annotation\locus.pb.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\annotation</Filter>
+    </ClInclude>
+    <None Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\annotation\rasterization.pb.cc">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\annotation</Filter>
+    </None>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\annotation\rasterization.pb.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\annotation</Filter>
+    </ClInclude>
+    <Filter Include="Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\motion">
+      <UniqueIdentifier>{1C4EF968-5521-4854-B116-892B3AE9CF46}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\motion\optical_flow_field_data.pb.cc">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\motion</Filter>
+    </None>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\motion\optical_flow_field_data.pb.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\motion</Filter>
+    </ClInclude>
+    <Filter Include="Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\object_detection">
+      <UniqueIdentifier>{FAD9D50F-A434-41CC-9B39-997AB02E7BB9}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\object_detection\anchor.pb.cc">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\object_detection</Filter>
+    </None>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\object_detection\anchor.pb.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\framework\formats\object_detection</Filter>
+    </ClInclude>
+    <Filter Include="Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\modules">
+      <UniqueIdentifier>{56EDBBA3-00A2-4A06-880E-B0E35202E463}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\modules\face_geometry">
+      <UniqueIdentifier>{4E123F72-A1E1-4FD0-9230-C47C8587D029}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\modules\face_geometry\protos">
+      <UniqueIdentifier>{881586EE-08BA-4C66-A6E5-1DA4A445C72C}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\modules\face_geometry\protos\environment.pb.cc">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\modules\face_geometry\protos</Filter>
+    </None>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\modules\face_geometry\protos\environment.pb.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\modules\face_geometry\protos</Filter>
+    </ClInclude>
+    <None Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\modules\face_geometry\protos\face_geometry.pb.cc">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\modules\face_geometry\protos</Filter>
+    </None>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\modules\face_geometry\protos\face_geometry.pb.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\modules\face_geometry\protos</Filter>
+    </ClInclude>
+    <None Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\modules\face_geometry\protos\geometry_pipeline_metadata.pb.cc">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\modules\face_geometry\protos</Filter>
+    </None>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\modules\face_geometry\protos\geometry_pipeline_metadata.pb.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\modules\face_geometry\protos</Filter>
+    </ClInclude>
+    <None Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\modules\face_geometry\protos\mesh_3d.pb.cc">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\modules\face_geometry\protos</Filter>
+    </None>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\modules\face_geometry\protos\mesh_3d.pb.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Private\mediapipe\modules\face_geometry\protos</Filter>
+    </ClInclude>
+    <Filter Include="Plugins\MediaPipe\Source\MediaPipe\Public">
+      <UniqueIdentifier>{22B7C7B8-9770-431D-B93D-E5697A4E0D72}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Public\IMediaPipeModule.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Public\MediaPipeFaceMeshObserverComponent.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Public\MediaPipeLandmarkObserverComponent.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Public\MediaPipeObserverComponent.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Public\MediaPipePipelineComponent.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\MediaPipe\Source\MediaPipe\Public\MediaPipePresenceObserverComponent.h">
+      <Filter>Plugins\MediaPipe\Source\MediaPipe\Public</Filter>
+    </ClInclude>
+    <None Include="..\..\Plugins\MediaPipe\MediaPipe.uplugin">
+      <Filter>Plugins\MediaPipe</Filter>
+    </None>
+    <Filter Include="Plugins\MediaPipe\Config">
+      <UniqueIdentifier>{72A0C804-E7AD-4C05-852C-95F5F4AB2A52}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\MediaPipe\Config\FilterPlugin.ini">
+      <Filter>Plugins\MediaPipe\Config</Filter>
+    </None>
+    <Filter Include="Plugins\MediaPipe\Resources">
+      <UniqueIdentifier>{D9FD5E6E-2A3D-4406-8E0F-ADA3E2BB3733}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\MediaPipe\Resources\Icon128.png">
+      <Filter>Plugins\MediaPipe\Resources</Filter>
+    </None>
+    <Filter Include="Source\VirEarthAR">
+      <UniqueIdentifier>{6D8775C8-3BA6-44E8-9BB3-77AA9424D709}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\VirEarthAR\Hand_Tracking.cpp">
+      <Filter>Source\VirEarthAR</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\VirEarthAR\Hand_Tracking.h">
+      <Filter>Source\VirEarthAR</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\VirEarthAR\MyActor2.cpp">
+      <Filter>Source\VirEarthAR</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\VirEarthAR\MyActor2.h">
+      <Filter>Source\VirEarthAR</Filter>
+    </ClInclude>
+    <None Include="..\..\Source\VirEarthAR\VirEarthAR.Build.cs">
+      <Filter>Source\VirEarthAR</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\VirEarthAR\VirEarthAR.cpp">
+      <Filter>Source\VirEarthAR</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\VirEarthAR\VirEarthAR.h">
+      <Filter>Source\VirEarthAR</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,25 @@
+﻿  Invalidating makefile for VirEarthAREditor (VirEarthAR.Build.cs modified)
+  Parsing headers for VirEarthAREditor
+    Running UnrealHeaderTool "F:\1125\VirEarth-Yang-Hyunseung\VirEarthAR.uproject" "F:\1125\VirEarth-Yang-Hyunseung\Intermediate\Build\Win64\VirEarthAREditor\Development\VirEarthAREditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -abslog="C:\Users\yjh75\AppData\Local\UnrealBuildTool\Log_UHT.txt" -installed
+  LogInit: Display: Loading text-based GConfig....
+  Reflection code generated for VirEarthAREditor in 4.04527 seconds
+  Building VirEarthAREditor...
+  Using Visual Studio 2019 14.27.29111 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110) and Windows 10.0.18362.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+  Building 11 actions with 6 processes...
+    [1/11] UE4Editor-MediaPipe-0006.lib
+       F:\1125\VirEarth-Yang-Hyunseung\Plugins\MediaPipe\Intermediate\Build\Win64\UE4Editor\Development\MediaPipe\UE4Editor-MediaPipe-0006.lib 라이브러리 및 F:\1125\VirEarth-Yang-Hyunseung\Plugins\MediaPipe\Intermediate\Build\Win64\UE4Editor\Development\MediaPipe\UE4Editor-MediaPipe-0006.exp 개체를 생성하고 있습니다.
+    [2/11] UE4Editor-MediaPipe-0006.dll
+       F:\1125\VirEarth-Yang-Hyunseung\Plugins\MediaPipe\Intermediate\Build\Win64\UE4Editor\Development\MediaPipe\UE4Editor-MediaPipe-0006.suppressed.lib 라이브러리 및 F:\1125\VirEarth-Yang-Hyunseung\Plugins\MediaPipe\Intermediate\Build\Win64\UE4Editor\Development\MediaPipe\UE4Editor-MediaPipe-0006.suppressed.exp 개체를 생성하고 있습니다.
+    [3/11] VirEarthAR.init.gen.cpp
+    [4/11] VirEarthAR.cpp
+    [5/11] Hand_Tracking.cpp
+    [6/11] MyActor2.cpp
+    [7/11] MyActor2.gen.cpp
+    [8/11] Hand_Tracking.gen.cpp
+    [9/11] UE4Editor-VirEarthAR-0006.lib
+       F:\1125\VirEarth-Yang-Hyunseung\Intermediate\Build\Win64\UE4Editor\Development\VirEarthAR\UE4Editor-VirEarthAR-0006.lib 라이브러리 및 F:\1125\VirEarth-Yang-Hyunseung\Intermediate\Build\Win64\UE4Editor\Development\VirEarthAR\UE4Editor-VirEarthAR-0006.exp 개체를 생성하고 있습니다.
+    [10/11] UE4Editor-VirEarthAR-0006.dll
+       F:\1125\VirEarth-Yang-Hyunseung\Intermediate\Build\Win64\UE4Editor\Development\VirEarthAR\UE4Editor-VirEarthAR-0006.suppressed.lib 라이브러리 및 F:\1125\VirEarth-Yang-Hyunseung\Intermediate\Build\Win64\UE4Editor\Development\VirEarthAR\UE4Editor-VirEarthAR-0006.suppressed.exp 개체를 생성하고 있습니다.
+    [11/11] VirEarthAREditor.target
+  Total time in Parallel executor: 8.01 seconds
+  Total execution time: 14.59 seconds
