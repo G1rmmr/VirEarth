@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: ReferenceImageLibrary
+  m_EditorClassIdentifier: 
+  m_GuidLow: 5166057094780989997
+  m_GuidHigh: 16194486192570945213
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 4951149264656981676
+      m_GuidHigh: 524582657860423299
+    m_SerializedTextureGuid:
+      m_GuidLow: 5224118429484203267
+      m_GuidHigh: 9439744222893241771
+    m_Size: {x: 0.2, y: 0.26666668}
+    m_SpecifySize: 1
+    m_Name: batterybox
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4787858086319965202
+      m_GuidHigh: 4829401768448231071
+    m_SerializedTextureGuid:
+      m_GuidLow: 4802626204515717124
+      m_GuidHigh: 13648498001535703186
+    m_Size: {x: 0.2, y: 0.26666668}
+    m_SpecifySize: 1
+    m_Name: board
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4918497369745221053
+      m_GuidHigh: 17591288750088428203
+    m_SerializedTextureGuid:
+      m_GuidLow: 5130640412456308579
+      m_GuidHigh: 8634590949178226861
+    m_Size: {x: 0.2, y: 0.15}
+    m_SpecifySize: 1
+    m_Name: charger_scaled
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5690618102687528493
+      m_GuidHigh: 17907963045325593527
+    m_SerializedTextureGuid:
+      m_GuidLow: 5347664505003642739
+      m_GuidHigh: 3558394737145042092
+    m_Size: {x: 0.2, y: 0.26089174}
+    m_SpecifySize: 1
+    m_Name: drawer
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5386630569322532565
+      m_GuidHigh: 14810736667232156323
+    m_SerializedTextureGuid:
+      m_GuidLow: 4870588264500276114
+      m_GuidHigh: 9099336931099290032
+    m_Size: {x: 0.2, y: 0.26666668}
+    m_SpecifySize: 1
+    m_Name: elevator
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5043382646772385052
+      m_GuidHigh: 8922625274220272021
+    m_SerializedTextureGuid:
+      m_GuidLow: 4735328904015122392
+      m_GuidHigh: 11685093095215806141
+    m_Size: {x: 0.2, y: 0.26666668}
+    m_SpecifySize: 1
+    m_Name: fireplug
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5368231836879340214
+      m_GuidHigh: 10190947432616475063
+    m_SerializedTextureGuid:
+      m_GuidLow: 4771291740283240452
+      m_GuidHigh: 15322036113586104740
+    m_Size: {x: 0.2, y: 0.26666668}
+    m_SpecifySize: 1
+    m_Name: locker
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5654632638214174882
+      m_GuidHigh: 9989873894148257941
+    m_SerializedTextureGuid:
+      m_GuidLow: 5737408780331513789
+      m_GuidHigh: 14109724183600825220
+    m_Size: {x: 0.2, y: 0.2776413}
+    m_SpecifySize: 1
+    m_Name: mask
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4612277169685492726
+      m_GuidHigh: 18194922244280969614
+    m_SerializedTextureGuid:
+      m_GuidLow: 5177734499773134562
+      m_GuidHigh: 5920728068840608133
+    m_Size: {x: 0.2, y: 0.18756478}
+    m_SpecifySize: 1
+    m_Name: switch
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5457723170014920357
+      m_GuidHigh: 6272142875956587680
+    m_SerializedTextureGuid:
+      m_GuidLow: 5272568500571104783
+      m_GuidHigh: 577587484085332874
+    m_Size: {x: 0.2, y: 0.26666668}
+    m_SpecifySize: 1
+    m_Name: vendingmachine
+    m_Texture: {fileID: 0}
