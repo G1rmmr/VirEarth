@@ -1,2 +1,0 @@
-F:\1125\VirEarth-Yang-Hyunseung\Intermediate\Build\Win64\UE4\Development\VirEarthAR\Definitions.VirEarthAR.h
-F:\1125\VirEarth-Yang-Hyunseung\Source\VirEarthAR\VirEarthAR.h
