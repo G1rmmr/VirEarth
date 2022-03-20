@@ -1,43 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.ARFoundation;
+using ManoMotion;
 
 public class RingManager : MonoBehaviour
 {
-    [SerializeField]
-    private FingerInfoGizmo fingerInfoGizmo;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        Screen.orientation = ScreenOrientation.Portrait;
-
-        if (fingerInfoGizmo == null)
-        {
-            try
-            {
-                fingerInfoGizmo = GameObject.Find("TryOnManager").GetComponent<FingerInfoGizmo>();
-            }
-            catch
-            {
-                Debug.Log("Cant find 'TryOnManager' GameObject");
-            }
-        }
-    }
+    [SerializeField] GameObject _drawObjectPrefab;
+    [SerializeField] GameObject _draw;
 
     // Update is called once per frame
     void Update()
     {
-        //SetFingerInfoSettings();
-
-        if (ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.mano_class == ManoClass.GRAB_GESTURE)
+        if (ARSession.state == ARSessionState.SessionTracking)
         {
-            fingerInfoGizmo.ShowFingerInformation();
-            float centerPosition = 0.5f;
-            Vector3 ringPlacement = Vector3.Lerp(fingerInfoGizmo.LeftFingerPoint3DPosition, fingerInfoGizmo.RightFingerPoint3DPosition, centerPosition);
-
-            Debug.Log("Finger info at " + ringPlacement);
-            GameObject.Find("Finger").transform.position = ringPlacement;
+            FollowPalmCenter(_drawObjectPrefab);
+        }
+        else
+        {
+            FollowPalmCenter(_draw);
         }
     }
+
+    private void FollowPalmCenter(GameObject obj)
+    {
+        HandInfo currentlyDetectedHand = ManomotionManager.Instance.Hand_infos[0].hand_info;
+        float y_top = ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[8].y;
+        float y_down = ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[5].y;
+
+        ManoGestureContinuous currentlyDetectedManoClass = currentlyDetectedHand.gesture_info.mano_gesture_continuous;
+        Vector3 palmCenterPosition = currentlyDetectedHand.tracking_info.palm_center;
+
+        //Instantiate(_drawObjectPrefab, transform.position, Quaternion.identity);
+        //this.transform.position = ManoUtils.Instance.CalculateNewPosition(palmCenterPosition, currentlyDetectedHand.tracking_info.depth_estimation);
+        //This will draw on the Closed Hand Gesture
+        //if (currentlyDetectedManoClass == ManoGestureContinuous.NO_GESTURE)
+        
+        if (y_top <= y_down)
+        {
+            Instantiate(obj, transform.position, Quaternion.identity);
+            this.transform.position = ManoUtils.Instance.CalculateNewPosition(palmCenterPosition, currentlyDetectedHand.tracking_info.depth_estimation);
+        }
+    }
+
 }
