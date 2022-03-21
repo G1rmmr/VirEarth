@@ -24,23 +24,23 @@ public class sample_Text : MonoBehaviour
         {
             //test_txt.text = "Paper";
             if ((int)warning_check == 0) { test_txt.text = "Paper / 0"; }
-            else if ((int)warning_check == 1) { test_txt.text = "Paper / 1"; }
-            else if ((int)warning_check == 4) { test_txt.text = "Paper / 4"; }
-            else if ((int)warning_check == 5) { test_txt.text = "Paper / 5"; }
-            else if ((int)warning_check == 6) { test_txt.text = "Paper / 6"; }
-            else if ((int)warning_check == 0) { test_txt.text = "Paper / 0"; }
-            else { test_txt.text = "Paper / --"; }
+            //else if ((int)warning_check == 1) { test_txt.text = "Paper / 1"; }
+            //else if ((int)warning_check == 4) { test_txt.text = "Paper / 4"; }
+            //else if ((int)warning_check == 5) { test_txt.text = "Paper / 5"; }
+            //else if ((int)warning_check == 6) { test_txt.text = "Paper / 6"; }
+            //else if ((int)warning_check == 0) { test_txt.text = "Paper / 0"; }
+            else { test_txt.text = "Paper"; }
         }
         else
         {
             //test_txt.text = "Rock";
             if ((int)warning_check == 0) { test_txt.text = "Rock / 0"; }
-            else if ((int)warning_check == 1) { test_txt.text = "Rock / 1"; }
-            else if ((int)warning_check == 4) { test_txt.text = "Rock / 4"; }
-            else if ((int)warning_check == 5) { test_txt.text = "Rock / 5"; }
-            else if ((int)warning_check == 6) { test_txt.text = "Rock / 6"; }
-            else if ((int)warning_check == 0) { test_txt.text = "Rock / 0"; }
-            else { test_txt.text = "Rock / --"; }
+            //else if ((int)warning_check == 1) { test_txt.text = "Rock / 1"; }
+            //else if ((int)warning_check == 4) { test_txt.text = "Rock / 4"; }
+            //else if ((int)warning_check == 5) { test_txt.text = "Rock / 5"; }
+            //else if ((int)warning_check == 6) { test_txt.text = "Rock / 6"; }
+            //else if ((int)warning_check == 0) { test_txt.text = "Rock / 0"; }
+            else { test_txt.text = "Rock"; }
         }
     }
 
