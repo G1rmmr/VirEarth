@@ -16,6 +16,8 @@ public class Show_x_y : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (HandTracking.isHandOn == false)
+            return;
         ShowFingerXY(index);
     }
 
@@ -23,6 +25,6 @@ public class Show_x_y : MonoBehaviour
     {
         float x = ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[index].x;
         float y = ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[index].y;
-        showXY.text = "Index : " + index + " | x = (" + x.ToString("F4") + "), y = (" + y.ToString("F4") + ")";
+        showXY.text = "Index : " + index + " | x = (" + x.ToString("F4") + "), y = (" + y.ToString("F4") + "), z = (" + HandTracking.zvalue.ToString("F4") + ")";
     }
 }
