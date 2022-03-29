@@ -7,6 +7,14 @@ public class GameStart : MonoBehaviour
 {
     public void MainStageOpen()
     {
-        SceneManager.LoadScene("Main");
+        LoadingSceneManager.Instance.LoadScene("Main");
+    }
+    void Start()
+    {
+
+    }
+    private void Update()
+    {
+
     }
 }
