@@ -46,9 +46,9 @@ public class HandTracking : MonoBehaviour
             test.text += "Right ? Left\n";
 
         if (((int)gesture.mano_class) == 0)
-            test.text += "";
+            test.text += "\n";
         else if (((int)gesture.mano_class) == 1)
-            test.text += "Dangerous\n";
+            test.text += "\n";
         else if (((int)gesture.mano_class) == 2)
             test.text += "Pointer\n";
         else
