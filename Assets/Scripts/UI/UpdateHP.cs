@@ -11,6 +11,11 @@ public class UpdateHP : MonoBehaviour
 
     void Update()
     {
+        float hp = manager.hp;
+        if(hp == 0)
+        {
+            GameOverLoad.Instance.LoadScene("Start");
+        }
         hpBar.value = manager.hp / maxHp;
     }
 }
