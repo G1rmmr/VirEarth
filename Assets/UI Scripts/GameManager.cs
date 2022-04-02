@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public float hp;
+    public float hp, time;
 
     // Start is called before the first frame update
     void Start()
@@ -16,5 +16,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         hp -= Time.deltaTime;
+
+        if (hp == 0)
+        {
+            GameOverLoad.Instance.LoadScene("Start");
+        }
     }
 }
