@@ -54,7 +54,4 @@ public class HandTracking : MonoBehaviour
         else
             test.text += "Gestrue?";
     }
-
-
-
 }
