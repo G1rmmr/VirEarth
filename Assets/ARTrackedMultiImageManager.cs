@@ -10,6 +10,8 @@ public class ARTrackedMultiImageManager : MonoBehaviour
     [SerializeField]
     private GameObject[] trackedPrefabs; // 이미지를 인식했을 때 출력되는 프리팹 목록
     public Text imageTrackedText;
+    public Text showPrefabPosition;
+    public Text showFingerPosition;
 
     // 이미지를 인식했을 때 출력되는 오브젝트 목록
     private Dictionary<string, GameObject> spawnedObjects = new Dictionary<string, GameObject>();
@@ -72,8 +74,14 @@ public class ARTrackedMultiImageManager : MonoBehaviour
         // 이미지의 추적 상태가 추적중(Tracking)일 때
         if(trackedImage.trackingState == TrackingState.Tracking)
         {
-            trackedObject.transform.position = trackedImage.transform.position;
-            trackedObject.transform.rotation = trackedImage.transform.rotation;
+            //trackedObject.transform.position = trackedImage.transform.position;
+            trackedObject.transform.position = new Vector3(0.5f, 0.5f, 0.5f);
+            //trackedObject.transform.rotation = trackedImage.transform.rotation;
+            showPrefabPosition.text = "( " + trackedObject.transform.position.x + ", " + trackedObject.transform.position.y + ", "
+                + trackedObject.transform.position.z + " )";
+            showFingerPosition.text = "( " + ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[8].x + ", " 
+                + ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[8].y + ", "
+                + ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[8].z + " )";
             trackedObject.SetActive(true);
         }
         else
