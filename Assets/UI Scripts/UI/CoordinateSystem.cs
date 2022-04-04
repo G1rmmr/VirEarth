@@ -5,7 +5,7 @@ using UnityEngine;
 public class CoordinateSystem : MonoBehaviour
 {
     [SerializeField]
-    private GameObject item0;
+    public GameObject item0;
 
     [SerializeField]
     private GameObject item1;
@@ -16,19 +16,29 @@ public class CoordinateSystem : MonoBehaviour
     [SerializeField]
     private GameObject item3;
 
-    public void transCoord(GameObject i, float x, float y)
-    {
-        i.transform.position = new Vector2(x * 264, y * 556);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
+    public static CoordinateSystem instance;
 
-    }
-
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-
+        instance = this;
     }
+    public void transCoord(int i, float x, float y)
+    {
+        switch (i)
+        {
+            case 0: 
+                item0.transform.position = new Vector2(x * Screen.width, y * Screen.height);
+                break;
+            case 1: 
+                item1.transform.position = new Vector2(x * Screen.width, y * Screen.height);
+                break;
+            case 2:
+                item2.transform.position = new Vector2(x * Screen.width, y * Screen.height);
+                break;
+            case 3:
+                item3.transform.position = new Vector2(x * Screen.width, y * Screen.height);
+                break;
+        }
+    }
+
 }

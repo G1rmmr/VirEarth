@@ -39,7 +39,16 @@ public class HandTracking : MonoBehaviour
         isHandOn = true;
 
         test.text = "It is Debug Text\n";
-        InventoryOn();
+        if (inventoryOnFlag)
+            test.text += "flag : True\n";
+        else
+            test.text += "flag : False\n";
+        InventoryOn();  // 손바닥 상태에서 손가락을 전부 피면 온, 주먹을 쥐면 오프
+        if (inventoryOnFlag)
+        {
+            DisplayInventory();
+            SelectItem();
+        }
         /*gesture = ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info;
         test.text = "Hand_side : " + gesture.hand_side.ToString() + " || is_right = " + gesture.is_right.ToString() + "\n";
         if (ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.is_right == 1) // 오른손이면
@@ -61,14 +70,19 @@ public class HandTracking : MonoBehaviour
 
     private void InventoryOn()
     {
-        if (ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.hand_side != HandSide.Palmside)
+        if (ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.hand_side != HandSide.Palmside) // 손바닥이 아니면 즉시 종료
             return;
-        if (IsFoldFinger(false, false, false, false, false))
+        if (IsFoldFinger(false, false, false, false, false) && !inventoryOnFlag)
         {
             test.text += "Inventory ON\n";
+            inventoryOnFlag = true;
+            
         }
-        else
+        else if(IsFoldFinger(true, true, true, true, true) && inventoryOnFlag)
+        {
             test.text += "Inventory OFF\n";
+            inventoryOnFlag = false;
+        }
         return;
     }
 
@@ -112,19 +126,77 @@ public class HandTracking : MonoBehaviour
         else
             return false;
 
-        if ((hand.skeleton.joints[12].y < hand.skeleton.joints[10].y) == (point)) { } // 중지
+        if ((hand.skeleton.joints[12].y < hand.skeleton.joints[10].y) == (big)) { } // 중지
         else
             return false;
 
-        if ((hand.skeleton.joints[16].y < hand.skeleton.joints[14].y) == (point)) { } // 약지
+        if ((hand.skeleton.joints[16].y < hand.skeleton.joints[14].y) == (four)) { } // 약지
         else
             return false;
 
-        if ((hand.skeleton.joints[20].y < hand.skeleton.joints[18].y) == (point)) { } // 새끼
+        if ((hand.skeleton.joints[20].y < hand.skeleton.joints[18].y) == (little)) { } // 새끼
         else
             return false;
 
         return true;
     }
 
+    private void DisplayInventory()
+    {
+        // ItemSystem.get0;
+        if (ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.hand_side != HandSide.Palmside) // 손바닥이 아니면 즉시 종료
+            return;
+        /*if (ItemSystem.instance.get0)
+            CoordinateSystem.instance.transCoord(0, GetX(8), GetY(8));
+        if (ItemSystem.instance.get1)
+            CoordinateSystem.instance.transCoord(1, GetX(12), GetY(12));
+        if (ItemSystem.instance.get2)
+            CoordinateSystem.instance.transCoord(2, GetX(16), GetY(16));
+        if (ItemSystem.instance.get3)
+            CoordinateSystem.instance.transCoord(3, GetX(20), GetY(20));*/
+
+        CoordinateSystem.instance.transCoord(0, GetX(8), GetY(8));
+        CoordinateSystem.instance.transCoord(1, GetX(12), GetY(12));
+        CoordinateSystem.instance.transCoord(2, GetX(16), GetY(16));
+        CoordinateSystem.instance.transCoord(3, GetX(20), GetY(20));
+
+    }
+
+    private float GetX(int index)
+    {
+        return ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[index].x;
+    }
+
+    private float GetY(int index)
+    {
+        return ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[index].y;
+    }
+
+    private void SelectItem()
+    {
+        if (ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.hand_side != HandSide.Palmside) // 손바닥이 아니면 즉시 종료
+        {
+            test.text += "SelectItem() no palm\n";
+        }
+
+        //return;
+        if (IsFoldFinger(true, false, true, true, true)) // 0번 인덱스
+        {
+            test.text += "item0 Select\n";
+        }
+        else if (IsFoldFinger(true, false, false, true, true)) // 1번 인덱스
+        {
+            test.text += "item1 Select\n";
+        }
+        else if (IsFoldFinger(true, false, false, false, true)) // 2번 인덱스
+        {
+            test.text += "item2 Select\n";
+        }
+        else if (IsFoldFinger(true, false, false, false, false)) // 3번 인덱스
+        {
+            test.text += "item3 Select\n";
+        }
+        else
+            test.text += "no search item\n";
+    }
 }
