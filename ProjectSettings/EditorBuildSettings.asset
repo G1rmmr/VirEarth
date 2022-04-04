@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/yoo-jung-hun/Room.unity
     guid: d3689368b7f53a340aade57472909993
+  - enabled: 0
+    path: Assets/Scenes/YangHyeonseung/YangHyeonseungTest.unity
+    guid: caaa0bceaa783094da3414e4fca538c5
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 744b813df90924c169af73489b8325de,
       type: 2}
