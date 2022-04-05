@@ -48,6 +48,8 @@ public class gps : MonoBehaviour
         {
             data[3].text = "Time Over";
         }
+        while(true)
+        {
         sec++;
         data[0].text = "Latitude : " + Input.location.lastData.latitude.ToString();
         data[1].text = "Longitude : " + Input.location.lastData.longitude.ToString();
@@ -87,7 +89,8 @@ public class gps : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1.0f);
-        StartCoroutine(Gps_manger());
+        }
+        
     }
 
     // Update is called once per frame
