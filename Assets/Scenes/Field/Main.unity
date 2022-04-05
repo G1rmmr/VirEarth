@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -413,6 +413,18 @@ RectTransform:
   m_AnchoredPosition: {x: 100, y: -250}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &297179463 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1535925540208472304, guid: 62d354ab8dfcb4f49a66c25b02bab485,
+    type: 3}
+  m_PrefabInstance: {fileID: 1535925539898255701}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &599426164
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1026,8 +1038,8 @@ GameObject:
   - component: {fileID: 797114525}
   - component: {fileID: 797114524}
   - component: {fileID: 797114523}
-  - component: {fileID: 797114526}
   - component: {fileID: 797114527}
+  - component: {fileID: 797114526}
   m_Layer: 0
   m_Name: AR Session
   m_TagString: Untagged
@@ -2103,6 +2115,28 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: New Text
+--- !u!1 &1754317602 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1535925541284773183, guid: 62d354ab8dfcb4f49a66c25b02bab485,
+    type: 3}
+  m_PrefabInstance: {fileID: 1535925539898255701}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1754317603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754317602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d56d29dcb064a546be244d6402dcdeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
+  maxHp: 100
+  damage: 20
+  hpBar: {fileID: 297179463}
 --- !u!1 &1763861079
 GameObject:
   m_ObjectHideFlags: 0
@@ -2209,7 +2243,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 0
-  time: 0
+  maxHp: 0
+  damage: 0
+  hpBar: {fileID: 0}
 --- !u!4 &1771143471
 Transform:
   m_ObjectHideFlags: 0
@@ -2859,7 +2895,7 @@ PrefabInstance:
     - target: {fileID: 1535925540208472304, guid: 62d354ab8dfcb4f49a66c25b02bab485,
         type: 3}
       propertyPath: m_Direction
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1535925540208472304, guid: 62d354ab8dfcb4f49a66c25b02bab485,
         type: 3}
