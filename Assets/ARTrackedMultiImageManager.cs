@@ -10,6 +10,10 @@ public class ARTrackedMultiImageManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] trackedPrefabs; // 이미지를 인식했을 때 출력되는 프리팹 목록
+
+    [SerializeField]
+    private GameObject nextScene;
+
     public Text imageTrackedText; // 인식된 물체 표시
     public Text showFingerPosition; // 검지 위치(디버그)
     public Text showThumbPosition; // 엄지 위치(디버그)
@@ -84,7 +88,7 @@ public class ARTrackedMultiImageManager : MonoBehaviour
         if (trackedImage.trackingState == TrackingState.Tracking)
         {
             trackedObject.transform.position = trackedImage.transform.position;
-            trackedObject.transform.rotation = trackedImage.transform.rotation;
+            //trackedObject.transform.rotation = trackedImage.transform.rotation;
 
             trackedObject.SetActive(true);
 
@@ -109,9 +113,13 @@ public class ARTrackedMultiImageManager : MonoBehaviour
             if (IsTouch() == true)
             {
                 touchText.text = "Touch!";
+                if (trackedObject.tag == "hint")
+                    nextScene.SetActive(true);
                 if (IsPickUp() == true)
                 {
                     PickUpText.text = "PickUp!";
+                    if (trackedObject.tag == "item")
+                        nextScene.SetActive(true);
                     Destroy(trackedObject);
                     // 인벤토리에 아이템 넣는 기능 추가
                 }

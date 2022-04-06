@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Field/Start.unity
     guid: f0bb8f5eaa983ce4e9b409aa8f38d205
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Field/Main.unity
     guid: 3bcfc599405c8a343b5ddd600d39dad9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/onlyManomotion.unity
     guid: 436f8303ab112334f81968b2333c8f54
   - enabled: 0
@@ -26,6 +26,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/YangHyeonseung/YangHyeonseungTest.unity
     guid: caaa0bceaa783094da3414e4fca538c5
+  - enabled: 1
+    path: Assets/Scenes/YangHyeonseung/SceneTest1/SceneTest1.unity
+    guid: 08442ad92bcdfb9469400fbe55c49322
+  - enabled: 1
+    path: Assets/Scenes/YangHyeonseung/SceneTest2/SceneTest2.unity
+    guid: 526854e18c626344b82a93c26b5db374
+  - enabled: 1
+    path: Assets/Scenes/YangHyeonseung/SceneTest3/SceneTest3.unity
+    guid: 630956a04cd9edd4f875ef2acac248ba
+  - enabled: 1
+    path: Assets/Scenes/YangHyeonseung/SceneTest4/SceneTest4.unity
+    guid: fd2096dbc76a3aa4da51cd98ca8368ab
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 744b813df90924c169af73489b8325de,
       type: 2}
