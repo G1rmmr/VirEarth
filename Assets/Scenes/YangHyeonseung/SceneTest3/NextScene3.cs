@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MySceneManager : MonoBehaviour
+public class NextScene3 : MonoBehaviour
 {
-
+    public void NextSceneMove()
+    {
+        SceneManager.LoadScene("SceneTest4");
+    }
     // Start is called before the first frame update
     void Start()
     {

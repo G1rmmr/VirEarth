@@ -67,19 +67,21 @@ public class GameOverLoad : MonoBehaviour
         yield return StartCoroutine(Fade(true));
 
         AsyncOperation op = SceneManager.LoadSceneAsync(loadSceneName);
-        op.allowSceneActivation = false;
         //op.allowSceneActivation = true;
-
-        float timer = 0f;
+        op.allowSceneActivation = false;
+        
+        float timer = 100.0f;
         while(!op.isDone)
         {
             yield return null;
-            
-            timer += Time.unscaledDeltaTime * 0.1f;
-            if(timer >= 12f)
+            timer -= Time.unscaledDeltaTime * 12f;
+            if (op.progress >= 0.9f)
             {
-                op.allowSceneActivation = true;
-                yield break;
+                if (timer <= 0f)
+                {
+                    op.allowSceneActivation = true;
+                    break;
+                }
             }
         }
     }

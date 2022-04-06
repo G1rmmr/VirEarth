@@ -27,7 +27,23 @@ public class LoadingSceneManager : MonoBehaviour
     }
     private static LoadingSceneManager Create()
     {
-        return Instantiate(Resources.Load<LoadingSceneManager>("Loading UI"));
+        int r = Random.Range(0, 5);
+        switch (r)
+        {
+            case 0: 
+                return Instantiate(Resources.Load<LoadingSceneManager>("Loading UI_0"));
+            case 1:
+                return Instantiate(Resources.Load<LoadingSceneManager>("Loading UI_1"));
+            case 2:
+                return Instantiate(Resources.Load<LoadingSceneManager>("Loading UI_2"));
+            case 3:
+                return Instantiate(Resources.Load<LoadingSceneManager>("Loading UI_3"));
+            case 4:
+                return Instantiate(Resources.Load<LoadingSceneManager>("Loading UI_4"));
+            default:
+                return null;
+        }
+        
     }
     private void Awake()
     {
@@ -39,8 +55,7 @@ public class LoadingSceneManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    [SerializeField]
-    private CanvasGroup canvasGroup;
+    [SerializeField] private CanvasGroup canvasGroup;
     //[SerializeField]
     //private Image progressbar;
     
