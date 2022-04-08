@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
         hp -= Time.deltaTime * damage;
         hpBar.value = hp / maxHp;
 
-        GameOver(hp);
-
-        //GameOverLoad.Instance.LoadScene("Start");
+        //GameOver(hp);
+        if (hp <= 0)
+            GameOverLoad.Instance.LoadScene("Start");
     }
 }
