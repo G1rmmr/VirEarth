@@ -21,7 +21,6 @@ public class HandTracking : MonoBehaviour
     private int selectItem;             // 선택한 아이템 번호 (0~3, 4개, -1은 null)
     private List<int> selectItemList = new List<int>();
     private int[] selectItemArray = new int[3];
-    private int cnt = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -85,12 +84,13 @@ public class HandTracking : MonoBehaviour
         {
             test.text += "Inventory ON\n";
             inventoryOnFlag = true;
-            
+            CoordinateSystem.instance.showImg();
         }
         else if(IsFoldFinger(true, true, true, true, true) && inventoryOnFlag)
         {
             test.text += "Inventory OFF\n";
             inventoryOnFlag = false;
+            CoordinateSystem.instance.hideImg();
         }
         return;
     }
