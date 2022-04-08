@@ -23,9 +23,14 @@ public class HPManager : MonoBehaviour
         while (true)
         {
             hp -= 1;
-            yield return new WaitForSeconds(1f);
-            GameOver(hp);
+            yield return new WaitForSeconds(0.1f);
+            if (hp <= 0)
+            {
+                break;
+            }
         }
+        GameOverLoad.Instance.LoadScene("Start");
+        StopCoroutine("HPManagement");
     }
     // Start is called before the first frame update
     void Start()
