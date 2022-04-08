@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class HandTracking : MonoBehaviour
 {
+    public static HandTracking instance; // 인스턴스
+
     // 인스펙터
     [SerializeField] private Image HandImage; // 화면 11시 손 이미지
     [SerializeField] private Text test;
@@ -14,20 +16,27 @@ public class HandTracking : MonoBehaviour
     public static float[,] hand = new float[21, 2];   // landmark 21개의 x, y 배열
     public static float zvalue;       // landmark 0번의 z value
 
+    // FLAG
+    private bool flag_pattern;           // 패턴 게임 시작
+    private bool flag_inventoryOn;       // 인벤토리 온 오프 flag
+
 
     // private 변수
     private GestureInfo gesture;        // 제스처
-    private bool inventoryOnFlag;       // 인벤토리 온 오프 flag
     private int selectItem;             // 선택한 아이템 번호 (0~3, 4개, -1은 null)
     private List<int> selectItemList = new List<int>();
     private int[] selectItemArray = new int[3];
 
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
         HandImage.enabled = false;
         isHandOn = false;
-        inventoryOnFlag = false;
+        flag_inventoryOn = false;
         selectItem = -1;
     }
 
@@ -43,12 +52,12 @@ public class HandTracking : MonoBehaviour
         isHandOn = true;
 
         test.text = "It is Debug Text\n";
-        if (inventoryOnFlag)
+        if (flag_inventoryOn)
             test.text += "flag : True\n";
         else
             test.text += "flag : False\n";
         InventoryOn();  // 손바닥 상태에서 손가락을 전부 피면 온, 주먹을 쥐면 오프
-        if (inventoryOnFlag)
+        if (flag_inventoryOn)
         {
             DisplayInventory();
             SelectItem();
@@ -80,22 +89,22 @@ public class HandTracking : MonoBehaviour
     {
         if (ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.hand_side != HandSide.Palmside) // 손바닥이 아니면 즉시 종료
             return;
-        if (IsFoldFinger(false, false, false, false, false) && !inventoryOnFlag)
+        if (IsFoldFinger(false, false, false, false, false) && !flag_inventoryOn)
         {
             test.text += "Inventory ON\n";
-            inventoryOnFlag = true;
+            flag_inventoryOn = true;
             CoordinateSystem.instance.showImg();
         }
-        else if(IsFoldFinger(true, true, true, true, true) && inventoryOnFlag)
+        else if(IsFoldFinger(true, true, true, true, true) && flag_inventoryOn)
         {
             test.text += "Inventory OFF\n";
-            inventoryOnFlag = false;
+            flag_inventoryOn = false;
             CoordinateSystem.instance.hideImg();
         }
         return;
     }
 
-    private bool IsFoldFinger(bool thumb, bool point, bool big, bool four, bool little) // 엄지, 검지, 중지, 약지, 새끼
+    public bool IsFoldFinger(bool thumb, bool point, bool big, bool four, bool little) // 엄지, 검지, 중지, 약지, 새끼
     {
         //int count = 0;
         TrackingInfo hand = ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info;
