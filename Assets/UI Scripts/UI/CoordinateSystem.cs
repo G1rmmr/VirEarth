@@ -23,8 +23,8 @@ public class CoordinateSystem : MonoBehaviour
     }
     public void transCoord(float x, float y)
     {
-        panel.transform.position = new Vector2(x * Screen.width - 200, y * Screen.height - 20);
-        backPanel.transform.position = new Vector2(x * Screen.width - 200, y * Screen.height - 20);
+        panel.transform.position = new Vector2(x * Screen.width - 120, y * Screen.height - 20);
+        backPanel.transform.position = new Vector2(x * Screen.width - 120, y * Screen.height - 20);
     }
 
     public void showImg()
