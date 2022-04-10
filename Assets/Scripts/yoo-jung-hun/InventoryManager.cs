@@ -8,8 +8,8 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager instance; // 인스턴스
 
     // 인스펙터
-    [SerializeField] private Text test;
     [SerializeField] private Text debug;
+    [SerializeField] private Image[] backImage = new Image[5];
 
     // public 변수
 
@@ -34,6 +34,10 @@ public class InventoryManager : MonoBehaviour
         flag_inventoryOn = false;
         inventoryManagement_enable = true;
         selectItem = -1;
+        for (int i = 0; i < 5; i++)
+        {
+            backImage[i].enabled = false;
+        }
     }
 
     // Update is called once per frame
@@ -46,7 +50,6 @@ public class InventoryManager : MonoBehaviour
 
     public void InventoryManagement()
     {
-        debug.text = "aaaa";
         if (inventoryManagement_enable == false)
             return;
         if (!HandTracking.isHandOn)
@@ -59,11 +62,19 @@ public class InventoryManager : MonoBehaviour
         InventoryOn();  // 손바닥 상태에서 손가락을 전부 피면 온, 주먹을 쥐면 오프
         if (flag_inventoryOn)
         {
+            for (int i = 0; i < 5; i++)
+            {
+                backImage[i].enabled = false;
+            }
             DisplayInventory();
             SelectItem();
             if ((selectItemList[0] == selectItemList[1]) && (selectItemList[1] == selectItemList[2]))
             {
                 debug.text = debug.text + "item select : " + selectItemList[2] + "\n";
+                if (selectItemList[2] == -1)
+                    backImage[4].enabled = true;
+                else
+                    backImage[selectItemList[2]].enabled = true;
             }
         }
     }
