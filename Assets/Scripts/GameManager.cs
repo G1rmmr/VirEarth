@@ -50,7 +50,8 @@ public class GameManager : MonoBehaviour
             {
                 flag_startGame = GameStartEffect.instance.gameStartEffect();
             }
-            // 게임 스타트에 관한 AR 네비게이션 실행()
+            
+            ARNavigator.instance.ARNavigatorEvent();
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "locker")
         {
@@ -58,8 +59,12 @@ public class GameManager : MonoBehaviour
             {
                 // 이펙트 구현(?)
                 HPObject.SetActive(true);
+                if (ARNavigator.instance.SpawnLimit != 1)
+                    ARNavigator.instance.Limit_init();
             }*/
-            // B동 소화전에 관한 AR 네비게이션 실행()
+                       
+            //ARNavigator.instance.ARNavigatorEvent();
+
             //GPSObject.SetActive(true);    // GPS ON!
         }
         if (GPSObject.GetComponent<gps>().isInB == true)
@@ -88,7 +93,11 @@ public class GameManager : MonoBehaviour
                     // 키 카드 확보
                     InventoryManager.instance.set_inventoryManagement_enable(true);
                 }
+
+                if (ARNavigator.instance.SpawnLimit != 1)
+                    ARNavigator.instance.Limit_init();                
             }
+            ARNavigator.instance.ARNavigatorEvent();
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "exitdoor")
         {

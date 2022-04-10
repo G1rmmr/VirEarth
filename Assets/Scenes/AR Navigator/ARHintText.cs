@@ -1,38 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.ARFoundation;
+using UnityEngine.UI;
+using System;
+
 
 public class ARHintText : MonoBehaviour
 {
+
+    public static ARHintText instance;
+
     TextMesh text_mesh;
+    ARTrackedMultiImageManager arTrackedMultiImageManager;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
-        text_mesh = GetComponent<TextMesh>();
-        test test = GameObject.Find("AR Session Origin").GetComponent<test>();
+      text_mesh = GetComponent<TextMesh>();
+      arTrackedMultiImageManager = GameObject.Find("AR Session Origin").GetComponent<ARTrackedMultiImageManager>();
     }
 
     // Update is called once per frame
-    void Update()
+    public void HintTextUpdate()
     {
-        switch (test.EventCount)
-        {
-            case 1:
-                text_mesh.text = "A동 1층 휴대폰 충전 단자함을 인식하면 시작";
-                break;
-
-            case 2:
+        switch (arTrackedMultiImageManager.imageTrackedText.text)
+        {            
+            case "charger":
                 text_mesh.text = "A동 엘리베이터 옆의 층별 안내판에 단서가 있다.";
                 break;
 
-            case 3:
+            case "locker":
                 text_mesh.text = "4층 사물함, 17학번 남지원";
                 break;
 
-            case 4:
+            case "fireplug":
                 text_mesh.text = "백신은 502에";
                 break;
-        }
-
+        }      
     }
 }
