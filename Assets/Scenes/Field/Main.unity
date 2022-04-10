@@ -1019,6 +1019,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1324912489 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4692216960338552427, guid: ee577cb4643af874a96a9411b2529aa2,
+    type: 3}
+  m_PrefabInstance: {fileID: 413515784}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1326893159
 GameObject:
   m_ObjectHideFlags: 0
@@ -1554,7 +1560,7 @@ MonoBehaviour:
   ARObject: {fileID: 887210787}
   HPObject: {fileID: 1857000554}
   PatternObject: {fileID: 422582347}
-  GPSObject: {fileID: 0}
+  GPSObject: {fileID: 1324912489}
   ARPortalObject: {fileID: 0}
   debug: {fileID: 0}
 --- !u!4 &1771143471
