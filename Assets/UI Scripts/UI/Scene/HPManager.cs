@@ -23,6 +23,7 @@ public class HPManager : MonoBehaviour
         while (true)
         {
             hp -= 1;
+            hpBar.value = hp / maxHp;
             yield return new WaitForSeconds(0.1f);
             if (hp <= 0)
             {
