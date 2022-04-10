@@ -11,27 +11,27 @@ public class ARNavigator : MonoBehaviour
 {
     public static ARNavigator instance;
 
-    [SerializeField] private GameObject Panel;
+    //[SerializeField] private GameObject Panel;
     [SerializeField] private GameObject _spawnablePrefab;
     private GameObject placedObject;
     [SerializeField] private ARPlaneManager arPlaneManager;
     //[SerializeField] private Button ActiveButton;
-    [SerializeField] private Text PositionCheckText;
+    //[SerializeField] private Text PositionCheckText;
 
     ARTrackedMultiImageManager arTrackedMultiImageManager;
 
     public int AREventCount = 0 , SpawnLimit = 1;
 
-    string PositionMessage = "";
+    //string PositionMessage = "";
 
     Vector3 PlanePosition;
     Quaternion c, n;
 
-     public Text togglePlaneDetectionText
+     /*public Text togglePlaneDetectionText
     {
         get { return PositionCheckText; }
         set { PositionCheckText = value; }
-    }
+    }*/
 
     void Awake()
     {
@@ -62,15 +62,15 @@ public class ARNavigator : MonoBehaviour
             n.w = RotationRound(c.w);
 
             placedObject = Instantiate(_spawnablePrefab, PlanePosition, n); 
-            PositionMessage = AREventCount.ToString() + "," + SpawnLimit.ToString() + "," + arTrackedMultiImageManager.imageTrackedText.text;
+            //PositionMessage = AREventCount.ToString() + "," + SpawnLimit.ToString() + "," + arTrackedMultiImageManager.imageTrackedText.text;
             
             Destroy(placedObject, 5.0f);
 
             SpawnLimit = SpawnLimit - 1;
             AREventCount = 0;
 
-            if (togglePlaneDetectionText != null)
-                 togglePlaneDetectionText.text = PositionMessage;
+           /* if (togglePlaneDetectionText != null)
+                 togglePlaneDetectionText.text = PositionMessage;*/
 
         }
     }
