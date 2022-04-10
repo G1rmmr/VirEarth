@@ -64,20 +64,20 @@ public class GameManager : MonoBehaviour
             // B동 소화전에 관한 AR 네비게이션 실행()
             //GPSObject.SetActive(true);    // GPS ON!
         }
-        /*if (B동인것을 감지하면)
+        if (GPSObject.GetComponent<gps>().isInB == true)
                 {
             if (!flag_hp)
             {
                 HPObject.SetActive(true);
             }
-        }*/
-        /*else
+        }
+        else
         {
             if (flag_hp)
             {
                 HPObject.SetActive(false);
             }
-        }*/
+        }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "fireplug")
         {
             if (!flag_pattern)
