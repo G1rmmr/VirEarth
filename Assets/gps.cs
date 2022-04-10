@@ -60,15 +60,18 @@ public class gps : MonoBehaviour
         if (Math.Abs(Input.location.lastData.latitude - 37.37476) < 0.0002 && Math.Abs(Input.location.lastData.longitude - 126.63353) < 0.0003)
         {
             isIn[0].text = "in B_A";
+            rate++;
         }
         else if (Math.Abs(Input.location.lastData.latitude - 37.37456) < 0.0002 && Math.Abs(Input.location.lastData.longitude - 126.63393) < 0.0003)
         {
             isIn[0].text = "in B_B";
+            rate++;
         }
         else
         {
             isIn[0].text = "not in B";
         }
+        countRate++;
 
         //GPS 정확도 검사
         if(countRate == 40)
