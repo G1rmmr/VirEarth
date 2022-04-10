@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public void GameOver(float hp)
     {
         if (hp <= 0)
-            SceneManager.LoadScene("GameOverScene");
+            GameOverLoad.Instance.LoadScene("Start");
     }
 
     // Start is called before the first frame update
@@ -27,9 +27,6 @@ public class GameManager : MonoBehaviour
     {
         hp -= Time.deltaTime * damage;
         hpBar.value = hp / maxHp;
-
-        //GameOver(hp);
-        if (hp <= 0)
-            GameOverLoad.Instance.LoadScene("Start");
+        GameOver(hp);
     }
 }
