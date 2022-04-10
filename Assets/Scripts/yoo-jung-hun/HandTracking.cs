@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+// akejkfjwek;
 public class HandTracking : MonoBehaviour
 {
     public static HandTracking instance; // 인스턴스
