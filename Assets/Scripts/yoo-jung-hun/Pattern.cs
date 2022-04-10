@@ -51,7 +51,7 @@ public class Pattern : MonoBehaviour
             patternText.text = "Doing";
     }
 
-    private bool PatternCheck()
+    public bool PatternCheck()
     {
         if (HandTracking.instance.IsFoldFinger(false, false, false, false, false))
         {
