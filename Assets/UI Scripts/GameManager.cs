@@ -14,7 +14,11 @@ public class GameManager : MonoBehaviour
     public void GameOver(float hp)
     {
         if (hp <= 0)
+<<<<<<< HEAD
             GameOverLoad.Instance.LoadScene("Start");
+=======
+            SceneManager.LoadScene("GameOverScene");
+>>>>>>> parent of 275a71c (0410)
     }
 
     // Start is called before the first frame update
@@ -27,6 +31,13 @@ public class GameManager : MonoBehaviour
     {
         hp -= Time.deltaTime * damage;
         hpBar.value = hp / maxHp;
+<<<<<<< HEAD
         GameOver(hp);
+=======
+
+        //GameOver(hp);
+        if (hp <= 0)
+            GameOverLoad.Instance.LoadScene("Start");
+>>>>>>> parent of 275a71c (0410)
     }
 }
