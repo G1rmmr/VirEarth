@@ -46,6 +46,7 @@ public class InventoryManager : MonoBehaviour
 
     public void InventoryManagement()
     {
+        debug.text = "aaaa";
         if (inventoryManagement_enable == false)
             return;
         if (!HandTracking.isHandOn)
@@ -99,11 +100,7 @@ public class InventoryManager : MonoBehaviour
             CoordinateSystem.instance.transCoord(2, GetX(16), GetY(16));
         if (ItemSystem.instance.get3)
             CoordinateSystem.instance.transCoord(3, GetX(20), GetY(20));*/
-
-        CoordinateSystem.instance.transCoord(0, HandTracking.instance.GetX(8), HandTracking.instance.GetY(8));
-        CoordinateSystem.instance.transCoord(1, HandTracking.instance.GetX(12), HandTracking.instance.GetY(12));
-        CoordinateSystem.instance.transCoord(2, HandTracking.instance.GetX(16), HandTracking.instance.GetY(16));
-        CoordinateSystem.instance.transCoord(3, HandTracking.instance.GetX(20), HandTracking.instance.GetY(20));
+        CoordinateSystem.instance.transCoord(HandTracking.instance.GetX(0), HandTracking.instance.GetY(0));
 
     }
 
