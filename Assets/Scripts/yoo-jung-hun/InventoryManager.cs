@@ -8,10 +8,12 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager instance; // 인스턴스
 
     // 인스펙터
-    [SerializeField] private Text test;
     [SerializeField] private Text debug;
+    [SerializeField] private Text debug_inventory;
+    [SerializeField] private Image[] backImage = new Image[5];
 
     // public 변수
+    
 
     // FLAG
     private bool flag_inventoryOn;       // 인벤토리 온 오프 flag
@@ -22,6 +24,7 @@ public class InventoryManager : MonoBehaviour
     private int selectItem;             // 선택한 아이템 번호 (0~3, 4개, -1은 null)
     private List<int> selectItemList = new List<int>();
     private int[] selectItemArray = new int[3];
+    private int final_selectItem = -1;
 
     private void Awake()
     {
@@ -34,19 +37,20 @@ public class InventoryManager : MonoBehaviour
         flag_inventoryOn = false;
         inventoryManagement_enable = true;
         selectItem = -1;
+        for (int i = 0; i < 5; i++)
+        {
+            var tempColor = backImage[i].color;
+            tempColor.a = 0f;
+            backImage[i].color = tempColor;
+        }
+        selectItemList[0] = -1;
+        selectItemList[1] = 1;
+        selectItemList[2] = 2;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    
 
     public void InventoryManagement()
     {
-        debug.text = "aaaa";
         if (inventoryManagement_enable == false)
             return;
         if (!HandTracking.isHandOn)
@@ -59,13 +63,32 @@ public class InventoryManager : MonoBehaviour
         InventoryOn();  // 손바닥 상태에서 손가락을 전부 피면 온, 주먹을 쥐면 오프
         if (flag_inventoryOn)
         {
+            for (int i = 0; i < 5; i++)
+            {
+                var tempColor = backImage[i].color;
+                tempColor.a = 0f;
+                backImage[i].color = tempColor;
+            }
             DisplayInventory();
             SelectItem();
             if ((selectItemList[0] == selectItemList[1]) && (selectItemList[1] == selectItemList[2]))
             {
                 debug.text = debug.text + "item select : " + selectItemList[2] + "\n";
+                if (selectItemList[2] == -1)
+                {
+                    var tempColor = backImage[4].color;
+                    tempColor.a = 1f;
+                    backImage[4].color = tempColor;
+                }
+                else
+                {
+                    var tempColor = backImage[selectItemList[2]].color;
+                    tempColor.a = 1f;
+                    backImage[selectItemList[2]].color = tempColor;
+                }
             }
         }
+        return;
     }
 
     private void InventoryOn()
@@ -80,11 +103,17 @@ public class InventoryManager : MonoBehaviour
         }
         else if (HandTracking.instance.IsFoldFinger(true, true, true, true, true) && flag_inventoryOn)
         {
+            if ((selectItemList[0] != -1) && (selectItemList[0] == selectItemList[1]) && (selectItemList[1] == selectItemList[2]))
+            {
+                final_selectItem = selectItemList[2];
+                // 아이템 효과 여기서!
+                // 아이템 db 수정 여기서!
+                debug_inventory.text = final_selectItem.ToString();
+            }
             debug.text += "Inventory OFF\n";
             flag_inventoryOn = false;
             CoordinateSystem.instance.hideImg();
         }
-        return;
     }
 
     private void DisplayInventory()
@@ -92,14 +121,6 @@ public class InventoryManager : MonoBehaviour
         // ItemSystem.get0;
         if (ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.hand_side != HandSide.Palmside) // 손바닥이 아니면 즉시 종료
             return;
-        /*if (ItemSystem.instance.get0)
-            CoordinateSystem.instance.transCoord(0, GetX(8), GetY(8));
-        if (ItemSystem.instance.get1)
-            CoordinateSystem.instance.transCoord(1, GetX(12), GetY(12));
-        if (ItemSystem.instance.get2)
-            CoordinateSystem.instance.transCoord(2, GetX(16), GetY(16));
-        if (ItemSystem.instance.get3)
-            CoordinateSystem.instance.transCoord(3, GetX(20), GetY(20));*/
         CoordinateSystem.instance.transCoord(HandTracking.instance.GetX(0), HandTracking.instance.GetY(0));
 
     }
@@ -113,7 +134,6 @@ public class InventoryManager : MonoBehaviour
             return;
         }
 
-        //return;
         if (HandTracking.instance.IsFoldFinger(true, false, true, true, true)) // 0번 인덱스
         {
             debug.text += "item0 Select\n";
