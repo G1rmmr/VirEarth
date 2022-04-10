@@ -12,7 +12,7 @@ public class ARTrackedMultiImageManager : MonoBehaviour
     private GameObject[] trackedPrefabs; // 이미지를 인식했을 때 출력되는 프리팹 목록
 
     [SerializeField]
-    private GameObject nextScene;
+    //private GameObject nextScene;
 
     public Text imageTrackedText; // 인식된 물체 표시
     public Text showFingerPosition; // 검지 위치(디버그)
@@ -21,6 +21,7 @@ public class ARTrackedMultiImageManager : MonoBehaviour
     public Text touchText; // 터치 여부(디버그)
     public Text PickUpText; // 픽업 여부(디버그)
     //public Text distDebug; // 거리 계산(디버그)
+    public Text TrackingText; // 트래킹 상태(디버그)
 
     private Vector3 thumbPosition;
     private Vector3 indexPosition;
@@ -87,6 +88,7 @@ public class ARTrackedMultiImageManager : MonoBehaviour
         // 이미지의 추적 상태가 추적중(Tracking)일 때
         if (trackedImage.trackingState == TrackingState.Tracking)
         {
+            TrackingText.text = "Tracking";
             trackedObject.transform.position = trackedImage.transform.position;
             //trackedObject.transform.rotation = trackedImage.transform.rotation;
 
@@ -114,17 +116,23 @@ public class ARTrackedMultiImageManager : MonoBehaviour
             {
                 touchText.text = "Touch!";
                 if (trackedObject.tag == "hint")
-                    nextScene.SetActive(true);
-                if (IsPickUp() == true)
                 {
-                    PickUpText.text = "PickUp!";
-                    if (trackedObject.tag == "item")
-                        nextScene.SetActive(true);
-                    Destroy(trackedObject);
-                    // 인벤토리에 아이템 넣는 기능 추가
+                    //nextScene.SetActive(true);
                 }
+
                 else
-                    PickUpText.text = "Non-Pickup";
+                {
+                    if (IsPickUp() == true)
+                    {
+                        PickUpText.text = "PickUp!";
+                        if (trackedObject.tag == "item")
+                            //nextScene.SetActive(true);
+                            Destroy(trackedObject);
+                        // 인벤토리에 아이템 넣는 기능 추가
+                    }
+                    else
+                        PickUpText.text = "Non-Pickup";
+                }
             }
             else
             {
@@ -132,10 +140,25 @@ public class ARTrackedMultiImageManager : MonoBehaviour
                 PickUpText.text = "X";
             }
         }
+
+        else if (trackedImage.trackingState == TrackingState.Limited)
+        {
+            TrackingText.text = "Limited";
+            trackedObject.SetActive(false);
+            thumbPosition = Vector3.zero;
+            indexPosition = Vector3.zero;
+        }
+
+        else if (trackedImage.trackingState == TrackingState.None)
+            TrackingText.text = "None";
+
+        /*
         else
         {
             trackedObject.SetActive(false);
-        }
+            thumbPosition = Vector3.zero;
+            indexPosition = Vector3.zero;
+        }*/
     }
 
     private bool IsTouch()
