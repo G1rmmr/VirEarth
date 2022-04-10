@@ -48,9 +48,7 @@ public class GameManager : MonoBehaviour
         {
             if (!flag_startGame)
             {
-                // 게임 스타트 이펙트 구현
-                //flag_startGame = GameStartEffect.instance.gameStartEffect();
-
+                flag_startGame = GameStartEffect.instance.gameStartEffect();
             }
             // 게임 스타트에 관한 AR 네비게이션 실행()
         }
