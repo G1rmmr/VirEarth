@@ -8,12 +8,13 @@ using UnityEngine.UI;
 public class gps : MonoBehaviour
 {
     public Text[] data = new Text[4];
-    public Text[] isIn = new Text[3];
+    public Text[] isIn = new Text[2];
     public float delay;
     public float maxtime = 5.0f;
     public int sec = 0;
-    public bool isInX = false;
-    public bool isInY = false;
+    public int countRate = 0;
+    public int rate = 0;
+    public bool isInB = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,38 +54,37 @@ public class gps : MonoBehaviour
         data[0].text = "Latitude : " + Input.location.lastData.latitude.ToString();
         data[1].text = "Longitude : " + Input.location.lastData.longitude.ToString();
         //data[2].text = "Altitude : " + Input.location.lastData.altitude.ToString();
-        data[3].text = "GPS ON.  "+sec;
+        data[3].text = "GPS ON.  "+sec + "times renewed";
         
-
-        if (Math.Abs(Input.location.lastData.latitude - 37.37475) < 0.0002)
+        //B동 내부 검사
+        if (Math.Abs(Input.location.lastData.latitude - 37.37476) < 0.0002 && Math.Abs(Input.location.lastData.longitude - 126.63353) < 0.0003)
         {
-            isIn[0].text = "LATI IN";
-            isInX = true;
+            isIn[0].text = "in B_A";
+        }
+        else if (Math.Abs(Input.location.lastData.latitude - 37.37456) < 0.0002 && Math.Abs(Input.location.lastData.longitude - 126.63393) < 0.0003)
+        {
+            isIn[0].text = "in B_B";
         }
         else
         {
-            isIn[0].text = "LATI OUT";
-            isInX = false;
+            isIn[0].text = "not in B";
         }
 
-        if (Math.Abs(Input.location.lastData.longitude - 126.63358) < 0.0003)
+        //GPS 정확도 검사
+        if(countRate == 40)
         {
-            isIn[1].text = "LOGI IN";
-            isInY = true;
-        }
-        else
-        {
-            isIn[1].text = "LOGI OUT";
-            isInY = false;
-        }
-
-        if(isInX && isInY)
-        {
-            isIn[2].text = "IN B";
-        }
-        else
-        {
-            isIn[2].text = "OUT of B";
+            if(rate > 26)
+            {
+                isInB = true;
+                isIn[1].text = "in B now";
+            }
+            else
+            {
+                isInB = false;
+                isIn[1].text = "not in B now";
+            }
+            countRate = 0;
+            rate = 0;
         }
 
         yield return new WaitForSeconds(1.0f);
