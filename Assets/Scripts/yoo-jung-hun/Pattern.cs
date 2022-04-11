@@ -23,15 +23,15 @@ public class Pattern : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PatternCircles[0].transform.position = new Vector2(0.3f * Screen.width, 0.65f * Screen.height);
-        PatternCircles[1].transform.position = new Vector2(0.5f * Screen.width, 0.65f * Screen.height);
-        PatternCircles[2].transform.position = new Vector2(0.7f * Screen.width, 0.65f * Screen.height);
-        PatternCircles[3].transform.position = new Vector2(0.3f * Screen.width, 0.5f * Screen.height);
-        PatternCircles[4].transform.position = new Vector2(0.5f * Screen.width, 0.5f * Screen.height);
-        PatternCircles[5].transform.position = new Vector2(0.7f * Screen.width, 0.5f * Screen.height);
-        PatternCircles[6].transform.position = new Vector2(0.3f * Screen.width, 0.35f * Screen.height);
+        PatternCircles[0].transform.position = new Vector2(0.2f * Screen.width, 0.85f * Screen.height);
+        PatternCircles[1].transform.position = new Vector2(0.5f * Screen.width, 0.85f * Screen.height);
+        PatternCircles[2].transform.position = new Vector2(0.8f * Screen.width, 0.85f * Screen.height);
+        PatternCircles[3].transform.position = new Vector2(0.2f * Screen.width, 0.6f * Screen.height);
+        PatternCircles[4].transform.position = new Vector2(0.5f * Screen.width, 0.6f * Screen.height);
+        PatternCircles[5].transform.position = new Vector2(0.8f * Screen.width, 0.6f * Screen.height);
+        PatternCircles[6].transform.position = new Vector2(0.2f * Screen.width, 0.35f * Screen.height);
         PatternCircles[7].transform.position = new Vector2(0.5f * Screen.width, 0.35f * Screen.height);
-        PatternCircles[8].transform.position = new Vector2(0.7f * Screen.width, 0.35f * Screen.height);
+        PatternCircles[8].transform.position = new Vector2(0.8f * Screen.width, 0.35f * Screen.height);
         for (int i = 0; i < 9; i++)
         {
             PatternCircles[i].enabled = false;
@@ -151,33 +151,33 @@ public class Pattern : MonoBehaviour
 
     private int which_pattern(float x, float y)
     {
-        if (x >= 0.65 && x <= 0.75)
+        if (x >= 0.7 && x <= 0.9)
         {
-            if (y >= 0.62 && y <= 0.68)
+            if (y >= 0.8 && y <= 0.9)
                 return 3;
-            else if (y >= 0.47 && y <= 0.53)
+            else if (y >= 0.55 && y <= 0.65)
                 return 6;
-            else if (y >= 0.32 && y <= 0.38)
+            else if (y >= 0.3 && y <= 0.4)
                 return 9;
             else return -1;
         }
-        else if (x >=0.45 && x <= 0.55)
+        else if (x >=0.4 && x <= 0.6)
         {
-            if (y >= 0.62 && y <= 0.68)
+            if (y >= 0.8 && y <= 0.9)
                 return 2;
-            else if (y >= 0.47 && y <= 0.53)
+            else if (y >= 0.55 && y <= 0.65)
                 return 5;
-            else if (y >= 0.32 && y <= 0.38)
+            else if (y >= 0.3 && y <= 0.4)
                 return 8;
             else return -1;
         }
-        else if (x >= 0.25 && x <= 0.35)
+        else if (x >= 0.1 && x <= 0.3)
         {
-            if (y >= 0.62 && y <= 0.68)
+            if (y >= 0.8 && y <= 0.9)
                 return 1;
-            else if (y >= 0.47 && y <= 0.53)
+            else if (y >= 0.55 && y <= 0.65)
                 return 4;
-            else if (y >= 0.32 && y <= 0.38)
+            else if (y >= 0.3 && y <= 0.4)
                 return 7;
             else return -1;
         }

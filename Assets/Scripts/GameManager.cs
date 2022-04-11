@@ -49,9 +49,10 @@ public class GameManager : MonoBehaviour
             if (!flag_startGame)
             {
                 flag_startGame = GameStartEffect.instance.gameStartEffect();
+                ARNavigator.instance.ARNavigatorEvent(); //@@@@ 위치 수정 필요
             }
             
-            ARNavigator.instance.ARNavigatorEvent();
+            
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "locker")
         {
@@ -67,11 +68,12 @@ public class GameManager : MonoBehaviour
 
             //GPSObject.SetActive(true);    // GPS ON!
         }
+        
         if (GPSObject.GetComponent<gps>().isInB == true)
                 {
             if (!flag_hp)
             {
-                HPObject.SetActive(true);
+                HPObject.SetActive(false); //@@@@ true로 수정 필요
             }
         }
         else
