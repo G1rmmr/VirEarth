@@ -54,6 +54,10 @@ public class GameManager : MonoBehaviour
             ARNavigator.instance.ARNavigatorEvent(); //@@@@ 위치 수정 필요
 
         }
+        if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "board")
+        {
+            // 남지원 사물함으로 가라! (ar navigate)
+        }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "locker")
         {
             /*if (!플래그)
