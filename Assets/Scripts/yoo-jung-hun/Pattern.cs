@@ -43,12 +43,12 @@ public class Pattern : MonoBehaviour
     {
 
 
-        if (PatternCheck())
+        /*if (PatternCheck())
         {
             patternText.text = "Clear";
         }
         else
-            patternText.text = "Doing";
+            patternText.text = "Doing";*/
     }
 
     public bool PatternCheck()
