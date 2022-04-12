@@ -49,10 +49,10 @@ public class GameManager : MonoBehaviour
             if (!flag_startGame)
             {
                 flag_startGame = GameStartEffect.instance.gameStartEffect();
-                ARNavigator.instance.ARNavigatorEvent(); //@@@@ 위치 수정 필요
+                //ARNavigator.instance.ARNavigatorEvent(); //@@@@ 위치 수정 필요
             }
-            
-            
+            ARNavigator.instance.ARNavigatorEvent(); //@@@@ 위치 수정 필요
+
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "locker")
         {

@@ -1,0 +1,7 @@
+f6154412e38f42719f060036527b0543|D:\VirEarth\Assets\TrackedImage\board.jpg|0.2
+685b65bd034c4442ab9a5862eacf20f4|D:\VirEarth\Assets\TrackedImage\charger.jpg|0.2
+94baced527f64ac1a3ba3938874e8acd|D:\VirEarth\Assets\TrackedImage\elevator.jpg|0.2
+d73cc51cb1cb45fd9559d2ad6988d37b|D:\VirEarth\Assets\TrackedImage\fireplug.jpg|0.2
+dd22c2b6ca694a7fb7b9c82db2846d8d|D:\VirEarth\Assets\TrackedImage\locker.jpg|0.2
+c815f8a24a6c4e7995b8a7cb6029a38a|D:\VirEarth\Assets\TrackedImage\mask.jpg|0.2
+95c9031984c64b39b9017f0b373fe54e|D:\VirEarth\Assets\TrackedImage\exitdoor.jpg|0.2

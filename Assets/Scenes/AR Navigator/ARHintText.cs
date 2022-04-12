@@ -25,13 +25,12 @@ public class ARHintText : MonoBehaviour
       arTrackedMultiImageManager = GameObject.Find("AR Session Origin").GetComponent<ARTrackedMultiImageManager>();
     }
 
-    // Update is called once per frame
     public void HintTextUpdate()
     {
         switch (arTrackedMultiImageManager.imageTrackedText.text)
         {            
             case "charger":
-                text_mesh.text = "A동 엘리베이터 옆의 층별 안내판에 단서가 있다.";
+                text_mesh.text = "A동 엘리베이터 옆 층별 안내판에 단서가 있다.";
                 break;
 
             case "locker":
