@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "charger")
         {
             if (!flag_startGame)
@@ -98,6 +99,8 @@ public class GameManager : MonoBehaviour
                 {
                     // 키 카드 확보
                     InventoryManager.instance.set_inventoryManagement_enable(true);
+                    GameStartEffect.instance.gameStartEffect(); // test / 패턴 종류 이펙트로 변경
+                    PatternObject.SetActive(false);
                 }
 
                 if (ARNavigator.instance.SpawnLimit != 1)
@@ -114,8 +117,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
-
-
         InventoryManager.instance.InventoryManagement(); // 인벤토리, inventoryManagement_enable이 false면 작동안함
+
+
     }
 }
