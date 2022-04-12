@@ -30,15 +30,15 @@ public class ARHintText : MonoBehaviour
         switch (arTrackedMultiImageManager.imageTrackedText.text)
         {            
             case "charger":
-                text_mesh.text = "Aµ¿ ¿¤¸®º£ÀÌÅÍ ¿· \nÃþº° ¾È³»ÆÇ¿¡ ´Ü¼­°¡ ÀÖ´Ù.";
+                text_mesh.text = "Aï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ \nï¿½ï¿½ï¿½ï¿½ ï¿½È³ï¿½ï¿½Ç¿ï¿½ ï¿½Ü¼ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½.";
                 break;
 
             case "board":
-                text_mesh.text = "4Ãþ »ç¹°ÇÔ, 17ÇÐ¹ø ³²Áö¿ø";
+                text_mesh.text = "4ï¿½ï¿½ ï¿½ç¹°ï¿½ï¿½, 17ï¿½Ð¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
                 break;
 
             case "fireplug":
-                text_mesh.text = "¹é½ÅÀº 502¿¡";
+                text_mesh.text = "ï¿½ï¿½ï¿½ï¿½ï¿½ 502ï¿½ï¿½";
                 break;
         }      
     }
