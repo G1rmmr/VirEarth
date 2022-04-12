@@ -30,10 +30,10 @@ public class ARHintText : MonoBehaviour
         switch (arTrackedMultiImageManager.imageTrackedText.text)
         {            
             case "charger":
-                text_mesh.text = "A동 엘리베이터 옆 층별 안내판에 단서가 있다.";
+                text_mesh.text = "A동 엘리베이터 옆 \n층별 안내판에 단서가 있다.";
                 break;
 
-            case "locker":
+            case "board":
                 text_mesh.text = "4층 사물함, 17학번 남지원";
                 break;
 
