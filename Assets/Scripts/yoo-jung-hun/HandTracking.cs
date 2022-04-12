@@ -25,7 +25,7 @@ public class HandTracking : MonoBehaviour
         isHandOn = false;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         HandImage.enabled = false;
         isHandOn = false;
@@ -34,7 +34,6 @@ public class HandTracking : MonoBehaviour
         // -------------------------------------------------------------------------------
         HandImage.enabled = true;
         isHandOn = true;
-        InventoryManager.instance.InventoryManagement(); // 인벤토리, inventoryManagement_enable이 false면 작동안함
     }
 
     public bool IsFoldFinger(bool thumb, bool point, bool big, bool four, bool little) // 엄지, 검지, 중지, 약지, 새끼

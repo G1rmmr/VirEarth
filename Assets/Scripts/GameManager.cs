@@ -93,12 +93,14 @@ public class GameManager : MonoBehaviour
             if (!flag_pattern)
             {
                 PatternObject.SetActive(true);
-                InventoryManager.instance.set_inventoryManagement_enable(false);
+                InventoryManager.instance.inventoryManagement_enable = false;
+                //InventoryManager.instance.set_inventoryManagement_enable(false);
                 flag_pattern = Pattern.instance.PatternCheck();
                 if (flag_pattern)
                 {
                     // 키 카드 확보
-                    InventoryManager.instance.set_inventoryManagement_enable(true);
+                    //InventoryManager.instance.set_inventoryManagement_enable(true);
+                    InventoryManager.instance.inventoryManagement_enable = true;
                     GameStartEffect.instance.gameStartEffect(); // test / 패턴 종류 이펙트로 변경
                     PatternObject.SetActive(false);
                 }
@@ -110,14 +112,14 @@ public class GameManager : MonoBehaviour
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "exitdoor")
         {
-            if (!flag_arPortal)
+            /*if (!flag_arPortal)
             {
                 ARPortalObject.SetActive(true);
                 flag_arPortal = true;
-            }
+            }*/
         }
 
-        //InventoryManager.instance.InventoryManagement(); // 인벤토리, inventoryManagement_enable이 false면 작동안함
+        InventoryManager.instance.InventoryManagement(); // 인벤토리, inventoryManagement_enable이 false면 작동안함
 
 
     }
