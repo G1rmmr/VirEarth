@@ -7,36 +7,46 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(ARPlaneManager))]
 
-public class test : MonoBehaviour
+public class ARNavigator : MonoBehaviour
 {
-    [SerializeField] private GameObject Panel;
+    public static ARNavigator instance;
+
+    //[SerializeField] private GameObject Panel;
     [SerializeField] private GameObject _spawnablePrefab;
     private GameObject placedObject;
     [SerializeField] private ARPlaneManager arPlaneManager;
-    [SerializeField] private Button ActiveButton;
-    [SerializeField] private Text PositionCheckText;
+    //[SerializeField] private Button ActiveButton;
+  //  [SerializeField] private Text PositionCheckText;
 
-    public static int EventCount = 0;
-    string PositionMessage = "";
+    ARTrackedMultiImageManager arTrackedMultiImageManager;
+
+    public int AREventCount = 0 , SpawnLimit = 1;
+
+    //string PositionMessage = "";
+
     Vector3 PlanePosition;
     Quaternion c, n;
 
-     public Text togglePlaneDetectionText
+  /*  public Text togglePlaneDetectionText
     {
         get { return PositionCheckText; }
         set { PositionCheckText = value; }
     }
-
+  */
     void Awake()
     {
-        ActiveButton.onClick.AddListener(Activate);
+        //ActiveButton.onClick.AddListener(Activate);
+        arTrackedMultiImageManager = GameObject.Find("AR Session Origin").GetComponent<ARTrackedMultiImageManager>();
         arPlaneManager = GetComponent<ARPlaneManager>();
         arPlaneManager.planesChanged += PlaneChanged;
+        instance = this;
     }
+
+
 
     private void PlaneChanged(ARPlanesChangedEventArgs args)
     {
-        if(args.added != null && placedObject == null && EventCount != 0)
+        if (args.added != null && placedObject == null && AREventCount != 0)
         {
 
             ARPlane arPlane = args.added[0];
@@ -51,15 +61,16 @@ public class test : MonoBehaviour
             n.y = RotationRound(c.y);
             n.w = RotationRound(c.w);
 
-            placedObject = Instantiate(_spawnablePrefab, PlanePosition, n);
-            PositionMessage = n.ToString() + c.ToString();
-            arPlaneManager.enabled = false;
+            placedObject = Instantiate(_spawnablePrefab, PlanePosition, n); 
+           // PositionMessage = n.ToString() + "," + c.ToString();
+            
+            Destroy(placedObject, 30.0f);
 
-            if (togglePlaneDetectionText != null)
-                togglePlaneDetectionText.text = PositionMessage;
+            SpawnLimit = SpawnLimit - 1;
+            AREventCount = 0;
 
-            Destroy(placedObject, 10.0f);
-            placedObject = null;
+           /*if (togglePlaneDetectionText != null)
+                 togglePlaneDetectionText.text = PositionMessage;*/
 
         }
     }
@@ -92,19 +103,21 @@ public class test : MonoBehaviour
             return x;
 
     }
-    public void Activate()
+
+    public void ARNavigatorEvent()
     {
-        EventCount = 3;
-       
-        Panel.SetActive(false);
-        arPlaneManager.enabled = true;
-       
+        AREventCount = 1;
+
+        if (placedObject == null && SpawnLimit == 1)
+            arPlaneManager.enabled = true;
+        else
+            arPlaneManager.enabled = false;
+
+        ARHintText.instance.HintTextUpdate();
     }
 
-    public void HintEventCount()
+    public void Limit_init()
     {
-        EventCount += 1;
-        arPlaneManager.enabled = true;
-
+        SpawnLimit = 1;
     }
 }

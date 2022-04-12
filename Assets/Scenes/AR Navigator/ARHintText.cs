@@ -1,38 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.ARFoundation;
+using UnityEngine.UI;
+using System;
+
 
 public class ARHintText : MonoBehaviour
 {
+
+    public static ARHintText instance;
+
     TextMesh text_mesh;
+    ARTrackedMultiImageManager arTrackedMultiImageManager;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
-        text_mesh = GetComponent<TextMesh>();
-        test test = GameObject.Find("AR Session Origin").GetComponent<test>();
+      text_mesh = GetComponent<TextMesh>();
+      arTrackedMultiImageManager = GameObject.Find("AR Session Origin").GetComponent<ARTrackedMultiImageManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void HintTextUpdate()
     {
-        switch (test.EventCount)
-        {
-            case 1:
-                text_mesh.text = "Aµ¿ 1Ãþ ÈÞ´ëÆù ÃæÀü ´ÜÀÚÇÔÀ» ÀÎ½ÄÇÏ¸é ½ÃÀÛ";
+        switch (arTrackedMultiImageManager.imageTrackedText.text)
+        {            
+            case "charger":
+                text_mesh.text = "Aï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ \nï¿½ï¿½ï¿½ï¿½ ï¿½È³ï¿½ï¿½Ç¿ï¿½ ï¿½Ü¼ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½.";
                 break;
 
-            case 2:
-                text_mesh.text = "Aµ¿ ¿¤¸®º£ÀÌÅÍ ¿·ÀÇ Ãþº° ¾È³»ÆÇ¿¡ ´Ü¼­°¡ ÀÖ´Ù.";
+            case "board":
+                text_mesh.text = "4ï¿½ï¿½ ï¿½ç¹°ï¿½ï¿½, 17ï¿½Ð¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
                 break;
 
-            case 3:
-                text_mesh.text = "4Ãþ »ç¹°ÇÔ, 17ÇÐ¹ø ³²Áö¿ø";
+            case "fireplug":
+                text_mesh.text = "ï¿½ï¿½ï¿½ï¿½ï¿½ 502ï¿½ï¿½";
                 break;
-
-            case 4:
-                text_mesh.text = "¹é½ÅÀº 502¿¡";
-                break;
-        }
-
+        }      
     }
 }
