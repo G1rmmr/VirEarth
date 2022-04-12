@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        InventoryManager.instance.InventoryManagement(); // 인벤토리, inventoryManagement_enable이 false면 작동안함
+        //InventoryManager.instance.InventoryManagement(); // 인벤토리, inventoryManagement_enable이 false면 작동안함
 
 
     }
