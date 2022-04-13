@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "board")
         {
+            ARNavigator.instance.ARNavigatorEvent();
             // 남지원 사물함으로 가라! (ar navigate)
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "locker")
@@ -119,7 +120,7 @@ public class GameManager : MonoBehaviour
             }*/
         }
 
-        InventoryManager.instance.InventoryManagement(); // 인벤토리, inventoryManagement_enable이 false면 작동안함
+        //InventoryManager.instance.InventoryManagement(); // 인벤토리, inventoryManagement_enable이 false면 작동안함
 
 
     }

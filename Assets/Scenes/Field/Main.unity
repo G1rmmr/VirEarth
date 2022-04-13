@@ -2256,6 +2256,11 @@ PrefabInstance:
       propertyPath: imageTrackedText
       value: 
       objectReference: {fileID: 7399554878804596039}
+    - target: {fileID: 4003968016563654001, guid: 790cf8fd48fcb634bba8460bcc4f79a4,
+        type: 3}
+      propertyPath: m_MaxNumberOfMovingImages
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4003968016563654002, guid: 790cf8fd48fcb634bba8460bcc4f79a4,
         type: 3}
       propertyPath: m_RootOrder
