@@ -285,9 +285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materials:
-  - {fileID: 4765656954686367367, guid: 1a98131c98a2dfa4ea55aaeaa5afc999, type: 3}
-  - {fileID: -1599846783264857849, guid: 1a98131c98a2dfa4ea55aaeaa5afc999, type: 3}
-  - {fileID: -3535299393112797105, guid: 1a98131c98a2dfa4ea55aaeaa5afc999, type: 3}
+  - {fileID: 2100000, guid: c4d6ccba0f6a7a640ab668ab0714a0d2, type: 2}
 --- !u!1 &1739452558402351678
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,6 +840,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: room_sample
       objectReference: {fileID: 0}
+    - target: {fileID: 4407187375235809858, guid: 1a98131c98a2dfa4ea55aaeaa5afc999,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c4d6ccba0f6a7a640ab668ab0714a0d2, type: 2}
+    - target: {fileID: 4431670454091400558, guid: 1a98131c98a2dfa4ea55aaeaa5afc999,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c4d6ccba0f6a7a640ab668ab0714a0d2, type: 2}
+    - target: {fileID: 8424073627695423409, guid: 1a98131c98a2dfa4ea55aaeaa5afc999,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c4d6ccba0f6a7a640ab668ab0714a0d2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a98131c98a2dfa4ea55aaeaa5afc999, type: 3}
 --- !u!4 &6363434865774035638 stripped
