@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45037687, g: 0.4981411, b: 0.5631694, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4853,7 +4853,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
+  m_TextStyleHashCode: 0
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -4865,9 +4865,9 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 514
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -7029,7 +7029,7 @@ PrefabInstance:
     - target: {fileID: 114251843207838166, guid: 3b19460acec7fad4baeab3db2a8268e1,
         type: 3}
       propertyPath: _licenseKey
-      value: BLWVA-VIQUW-AXIQX-LXWAP
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114656061702543436, guid: 3b19460acec7fad4baeab3db2a8268e1,
         type: 3}
@@ -10342,7 +10342,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1849737038, guid: 0f8504ddba966c5459c5954aff90da2d, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1184720179808240, guid: 0f8504ddba966c5459c5954aff90da2d, type: 3}
       propertyPath: m_IsActive

@@ -16,22 +16,12 @@ MonoBehaviour:
   m_GuidHigh: 16194486192570945213
   m_Images:
   - m_SerializedGuid:
-      m_GuidLow: 4951149264656981676
-      m_GuidHigh: 524582657860423299
-    m_SerializedTextureGuid:
-      m_GuidLow: 5224118429484203267
-      m_GuidHigh: 9439744222893241771
-    m_Size: {x: 0.2, y: 0.26666668}
-    m_SpecifySize: 1
-    m_Name: batterybox
-    m_Texture: {fileID: 0}
-  - m_SerializedGuid:
       m_GuidLow: 4787858086319965202
       m_GuidHigh: 4829401768448231071
     m_SerializedTextureGuid:
-      m_GuidLow: 4802626204515717124
-      m_GuidHigh: 13648498001535703186
-    m_Size: {x: 0.2, y: 0.26666668}
+      m_GuidLow: 11282923051940821249
+      m_GuidHigh: 5744757148904080137
+    m_Size: {x: 0.2, y: 0.2}
     m_SpecifySize: 1
     m_Name: board
     m_Texture: {fileID: 0}
@@ -39,21 +29,11 @@ MonoBehaviour:
       m_GuidLow: 4918497369745221053
       m_GuidHigh: 17591288750088428203
     m_SerializedTextureGuid:
-      m_GuidLow: 5130640412456308579
-      m_GuidHigh: 8634590949178226861
-    m_Size: {x: 0.2, y: 0.15}
+      m_GuidLow: 14584015546549304392
+      m_GuidHigh: 5132943458652361930
+    m_Size: {x: 0.2, y: 0.2}
     m_SpecifySize: 1
-    m_Name: charger_scaled
-    m_Texture: {fileID: 0}
-  - m_SerializedGuid:
-      m_GuidLow: 5690618102687528493
-      m_GuidHigh: 17907963045325593527
-    m_SerializedTextureGuid:
-      m_GuidLow: 5347664505003642739
-      m_GuidHigh: 3558394737145042092
-    m_Size: {x: 0.2, y: 0.26089174}
-    m_SpecifySize: 1
-    m_Name: drawer
+    m_Name: charger
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
       m_GuidLow: 5386630569322532565
@@ -69,9 +49,9 @@ MonoBehaviour:
       m_GuidLow: 5043382646772385052
       m_GuidHigh: 8922625274220272021
     m_SerializedTextureGuid:
-      m_GuidLow: 4735328904015122392
-      m_GuidHigh: 11685093095215806141
-    m_Size: {x: 0.2, y: 0.26666668}
+      m_GuidLow: 10374420987681712
+      m_GuidHigh: 13988006354685956585
+    m_Size: {x: 0.2, y: 0.2}
     m_SpecifySize: 1
     m_Name: fireplug
     m_Texture: {fileID: 0}
@@ -96,22 +76,12 @@ MonoBehaviour:
     m_Name: mask
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
-      m_GuidLow: 4612277169685492726
-      m_GuidHigh: 18194922244280969614
+      m_GuidLow: 5420509614968472345
+      m_GuidHigh: 5685019610273743289
     m_SerializedTextureGuid:
-      m_GuidLow: 5177734499773134562
-      m_GuidHigh: 5920728068840608133
-    m_Size: {x: 0.2, y: 0.18756478}
+      m_GuidLow: 18024676934387953565
+      m_GuidHigh: 12738286946636485368
+    m_Size: {x: 0.2, y: 0.2}
     m_SpecifySize: 1
-    m_Name: switch
-    m_Texture: {fileID: 0}
-  - m_SerializedGuid:
-      m_GuidLow: 5457723170014920357
-      m_GuidHigh: 6272142875956587680
-    m_SerializedTextureGuid:
-      m_GuidLow: 5272568500571104783
-      m_GuidHigh: 577587484085332874
-    m_Size: {x: 0.2, y: 0.26666668}
-    m_SpecifySize: 1
-    m_Name: vendingmachine
+    m_Name: exitdoor
     m_Texture: {fileID: 0}
