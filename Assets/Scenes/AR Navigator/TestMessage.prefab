@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 9218342540501809687}
   - component: {fileID: 2371561067508598740}
   - component: {fileID: 4688885071548134870}
-  - component: {fileID: 8054164965616773943}
   m_Layer: 0
   m_Name: TestMessage
   m_TagString: Untagged
@@ -82,7 +81,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4172354944369295472}
-  m_Text: 111
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 2
@@ -96,15 +95,3 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4278650631
---- !u!114 &8054164965616773943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4172354944369295472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cea21685993ab9e498301aa57ee57bfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

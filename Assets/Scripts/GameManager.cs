@@ -50,10 +50,9 @@ public class GameManager : MonoBehaviour
             if (!flag_startGame)
             {
                 flag_startGame = GameStartEffect.instance.gameStartEffect();
-                //ARNavigator.instance.ARNavigatorEvent(); //@@@@ 위치 수정 필요
+                ARNavigator.instance.ARNavigatorEvent(); 
             }
-            ARNavigator.instance.ARNavigatorEvent(); //@@@@ 위치 수정 필요
-
+            // ARNavigator.instance.PositionCheckText.text = ARNavigator.instance.arPlaneManager.enabled.ToString() + "," + ARNavigator.instance.text_mesh.text;
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "board")
         {
@@ -105,9 +104,6 @@ public class GameManager : MonoBehaviour
                     GameStartEffect.instance.gameStartEffect(); // test / 패턴 종류 이펙트로 변경
                     PatternObject.SetActive(false);
                 }
-
-                if (ARNavigator.instance.SpawnLimit != 1)
-                    ARNavigator.instance.Limit_init();                
             }
             ARNavigator.instance.ARNavigatorEvent();
         }
