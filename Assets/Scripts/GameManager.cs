@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
         }
         
         if (GPSObject.GetComponent<gps>().isInB == true)
-                {
+        {
             if (!flag_hp)
             {
                 HPObject.SetActive(false); //@@@@ true로 수정 필요
@@ -126,8 +126,8 @@ public class GameManager : MonoBehaviour
                 if (ARObject.GetComponent<ARNavigator>().arPlaneManager.enabled == true)
                     debug.text = "ARPlaneManger ON!";
                 //ARObject.GetComponent<ARNavigator>().arPlaneManager.detectionMode = PlaneDetectionMode.Horizontal;
-                ARObject.GetComponent<ARNavigator>().arPlaneManager.detectionMode = mode;
-                debug.text = arPlaneManager.currentDetectionMode.ToString();
+                ARObject.GetComponent<ARNavigator>().arPlaneManager.requestedDetectionMode = mode;
+                //debug.text = arPlaneManager.currentDetectionMode.ToString();
 
                 ARObject.GetComponent<AREnvironmentProbeManager>().enabled = true;
                 if (ARObject.GetComponent<AREnvironmentProbeManager>().enabled == true)

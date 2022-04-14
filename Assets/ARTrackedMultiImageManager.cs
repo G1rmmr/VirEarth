@@ -82,12 +82,13 @@ public class ARTrackedMultiImageManager : MonoBehaviour
     private void UpdateImage(ARTrackedImage trackedImage)
     {
         string name = trackedImage.referenceImage.name;
-        imageTrackedText.text = name;
         GameObject trackedObject = spawnedObjects[name];
 
         // 이미지의 추적 상태가 추적중(Tracking)일 때
         if (trackedImage.trackingState == TrackingState.Tracking)
         {
+            imageTrackedText.text = name;
+
             TrackingText.text = "Tracking";
             trackedObject.transform.position = trackedImage.transform.position;
             //trackedObject.transform.rotation = trackedImage.transform.rotation;
