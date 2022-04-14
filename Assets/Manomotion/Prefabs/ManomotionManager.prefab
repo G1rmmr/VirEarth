@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statusAnimator: {fileID: 0}
+  lowPowerAnimator: {fileID: 0}
 --- !u!114 &114251843207838166
 MonoBehaviour:
   m_ObjectHideFlags: 0

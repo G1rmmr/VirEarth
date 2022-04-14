@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -11,13 +13,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject HPObject;
     [SerializeField] private GameObject PatternObject;
     [SerializeField] private GameObject GPSObject;
-    [SerializeField] private GameObject ARPortalObject;
+    [SerializeField] public ARPlaneManager arPlaneManager;
 
     // flag
     private bool flag_pattern;
     private bool flag_hp;
     private bool flag_startGame;
     private bool flag_arPortal;
+    private bool flag_board;
+
+    //
+    private PlaneDetectionMode mode = (PlaneDetectionMode)1;
 
     // 인스펙터
     [SerializeField] private Text debug;
@@ -28,12 +34,14 @@ public class GameManager : MonoBehaviour
         HPObject.SetActive(false);
         PatternObject.SetActive(false);
         //GPSObject.SetActive(false);
+        arPlaneManager = GetComponent<ARPlaneManager>();
 
         // flag
         flag_pattern = false;
         flag_hp = false;
         flag_startGame = false;
         flag_arPortal = false;
+        flag_board = false;
     }
     // Start is called before the first frame update
     void Start()
@@ -56,8 +64,11 @@ public class GameManager : MonoBehaviour
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "board")
         {
-            ARNavigator.instance.ARNavigatorEvent();
-            // 남지원 사물함으로 가라! (ar navigate)
+            if (!flag_board)
+            {
+                ARNavigator.instance.ARNavigatorEvent();
+                flag_board = true;
+            }
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "locker")
         {
@@ -109,13 +120,35 @@ public class GameManager : MonoBehaviour
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "exitdoor")
         {
-            /*if (!flag_arPortal)
+            if (!flag_arPortal)
             {
-                ARPortalObject.SetActive(true);
-                flag_arPortal = true;
-            }*/
-        }
+                ARObject.GetComponent<ARNavigator>().arPlaneManager.enabled = true;
+                if (ARObject.GetComponent<ARNavigator>().arPlaneManager.enabled == true)
+                    debug.text = "ARPlaneManger ON!";
+                //ARObject.GetComponent<ARNavigator>().arPlaneManager.detectionMode = PlaneDetectionMode.Horizontal;
+                ARObject.GetComponent<ARNavigator>().arPlaneManager.detectionMode = mode;
+                debug.text = arPlaneManager.currentDetectionMode.ToString();
 
+                ARObject.GetComponent<AREnvironmentProbeManager>().enabled = true;
+                if (ARObject.GetComponent<AREnvironmentProbeManager>().enabled == true)
+                    debug.text += "AREnvironmentProbeManager ON!\n";
+                else
+                    debug.text += "AREnvironmentProbeManager Off!\n";
+
+                ARObject.GetComponent<ARRaycastManager>().enabled = true;
+                if (ARObject.GetComponent<ARRaycastManager>().enabled == true)
+                    debug.text += "ARRaycastManager ON!\n";
+                else
+                    debug.text += "ARRaycastManager Off!\n";
+
+                ARObject.GetComponent<PlaceOnPlane>().enabled = true;
+                if (ARObject.GetComponent<PlaceOnPlane>().enabled == true)
+                    debug.text += "PlaceOnPlane ON!\n";
+                else
+                    debug.text += "PlaceOnPlane Off!\n";
+                flag_arPortal = true;
+            }
+        }
         //InventoryManager.instance.InventoryManagement(); // 인벤토리, inventoryManagement_enable이 false면 작동안함
 
 

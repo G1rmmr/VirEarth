@@ -59,7 +59,6 @@ public class ARNavigator : MonoBehaviour
             SpawnLimit = SpawnLimit - 1;
             AREventCount = 0;
             arPlaneManager.enabled = false;
-
         }
     }
 

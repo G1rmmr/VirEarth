@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/yoo-jung-hun/Basic Scene 1.unity
     guid: fd426ef784212184cb67c174bb0eaa7c
+  - enabled: 0
+    path: Assets/Scenes/yoo-jung-hun/testScene1.unity
+    guid: 4d1bf04786498374da6b933fbfc93dd7
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 744b813df90924c169af73489b8325de,
       type: 2}
