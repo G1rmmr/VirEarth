@@ -114,42 +114,46 @@ public class ARTrackedMultiImageManager : MonoBehaviour
 
             showThumbPosition.text = "( " + thumbPosition.x.ToString("N2") + ", " + thumbPosition.y.ToString("N2") + " )";
 
-            if (IsTouch() == true)
+            if (HandTracking.isHandOn == true)
             {
-                touchText.text = "Touch!";
-                if (trackedObject.tag == "hint")
+                if (IsTouch() == true)
                 {
-                    //nextScene.SetActive(true);
-                }
+                    touchText.text = "Touch!";
+                    if (trackedObject.tag == "hint")
+                    {
+                        //nextScene.SetActive(true);
+                    }
 
+                    else
+                    {
+                        if (IsPickUp() == true)
+                        {
+                            PickUpText.text = "PickUp!";
+                            if (trackedObject.tag == "item")
+                            {
+                                //nextScene.SetActive(true);
+                                Destroy(trackedObject);
+                                // 인벤토리에 아이템 넣는 기능 추가
+                            }
+                        }
+                        else
+                            PickUpText.text = "Non-Pickup";
+                    }
+                }
                 else
                 {
-                    if (IsPickUp() == true)
-                    {
-                        PickUpText.text = "PickUp!";
-                        if (trackedObject.tag == "item")
-                        {
-                            //nextScene.SetActive(true);
-                            Destroy(trackedObject);
-                            // 인벤토리에 아이템 넣는 기능 추가
-                        }
-                    }
-                    else
-                        PickUpText.text = "Non-Pickup";
+                    touchText.text = "Untouch";
+                    PickUpText.text = "X";
                 }
             }
-            else
-            {
-                touchText.text = "Untouch";
-                PickUpText.text = "X";
-            }
+            
         }
 
         else if (trackedImage.trackingState == TrackingState.Limited)
         {
             TrackingText.text = "Limited";
             trackedObject.SetActive(false);
-            thumbPosition = new Vector3(-1,-1,0);
+            thumbPosition = new Vector3(0,0,0);
             indexPosition = new Vector3(1,1,0);
         }
 
