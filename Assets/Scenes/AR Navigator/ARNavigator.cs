@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.UI;
+using UnityEngine.XR.ARSubsystems;
+using System;
 
 
 [RequireComponent(typeof(ARPlaneManager))]
@@ -21,8 +23,10 @@ public class ARNavigator : MonoBehaviour
     public int AREventCount = 0 , SpawnLimit = 1;
     private GameObject placedObject;
 
-    Vector3 PlanePosition;
-    Quaternion c, n;
+    Vector3 PlanePosition, prefebRotationChange;
+    Quaternion lookprefeb, prefebRotation;
+
+    //private PlaneDetectionMode test = (PlaneDetectionMode)1;
 
     void Awake()
     {
@@ -41,18 +45,25 @@ public class ARNavigator : MonoBehaviour
 
             ARPlane arPlane = args.added[0];
             PlanePosition = arPlane.transform.position;
-            n = _spawnablePrefab.transform.rotation;
 
             if (PlanePosition.y < 0)
                 PlanePosition.y = 0;
 
-            c = Quaternion.LookRotation(PlanePosition);
+            lookprefeb = Quaternion.LookRotation(PlanePosition);
 
-            n.y = RotationRound(c.y);
-            n.w = RotationRound(c.w);
+            RotationPrefeb(lookprefeb.y);
 
-            placedObject = Instantiate(_spawnablePrefab, PlanePosition, n); 
-           // PositionMessage = n.ToString() + "," + c.ToString();
+            //n.y = RotationRound(c.y);
+            //n.w = RotationRound(c.w);
+
+            _spawnablePrefab.transform.Rotate(prefebRotationChange);
+
+            prefebRotation = _spawnablePrefab.transform.rotation;
+
+            placedObject = Instantiate(_spawnablePrefab, PlanePosition, prefebRotation);
+            //arPlaneManager.detectionMode = test;
+            
+            //PositionCheckText.text = PlanePosition.ToString() + "," + lookprefeb.ToString() + "," + prefebRotationChange.ToString();
             
             Destroy(placedObject, 30.0f);
 
@@ -91,13 +102,37 @@ public class ARNavigator : MonoBehaviour
 
     }
 
+    private Vector3 RotationPrefeb(float x)
+    {
+        Double a = Math.Round(Convert.ToDouble(x), 2);
+
+        if (a > 0 && a < 1)
+        {
+            prefebRotationChange =  new Vector3(0, 90, 0);
+        }
+
+        else if (a == 1)
+        {
+            prefebRotationChange = new Vector3(0, 180, 0);
+        }
+
+        else if (a < 0 && a > -1)
+        {
+            prefebRotationChange = new Vector3(0, 270, 0);
+        }
+
+        return prefebRotationChange;
+    }
+
     public void ARNavigatorEvent()
     {
         AREventCount = 1;
         SpawnLimit = 1;
 
         if (placedObject == null && SpawnLimit == 1)
+        {
             arPlaneManager.enabled = true;
+        }
         else
             arPlaneManager.enabled = false;
 
