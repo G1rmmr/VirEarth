@@ -50,13 +50,13 @@ public class GameManager : MonoBehaviour
             if (!flag_startGame)
             {
                 flag_startGame = GameStartEffect.instance.gameStartEffect();
-                //ARNavigator.instance.ARNavigatorEvent(); //@@@@ 위치 수정 필요
+                ARNavigator.instance.ARNavigatorEvent(); 
             }
-            ARNavigator.instance.ARNavigatorEvent(); //@@@@ 위치 수정 필요
-
+            // ARNavigator.instance.PositionCheckText.text = ARNavigator.instance.arPlaneManager.enabled.ToString() + "," + ARNavigator.instance.text_mesh.text;
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "board")
         {
+            ARNavigator.instance.ARNavigatorEvent();
             // 남지원 사물함으로 가라! (ar navigate)
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "locker")
@@ -93,28 +93,27 @@ public class GameManager : MonoBehaviour
             if (!flag_pattern)
             {
                 PatternObject.SetActive(true);
-                InventoryManager.instance.set_inventoryManagement_enable(false);
+                InventoryManager.instance.inventoryManagement_enable = false;
+                //InventoryManager.instance.set_inventoryManagement_enable(false);
                 flag_pattern = Pattern.instance.PatternCheck();
                 if (flag_pattern)
                 {
                     // 키 카드 확보
-                    InventoryManager.instance.set_inventoryManagement_enable(true);
+                    //InventoryManager.instance.set_inventoryManagement_enable(true);
+                    InventoryManager.instance.inventoryManagement_enable = true;
                     GameStartEffect.instance.gameStartEffect(); // test / 패턴 종류 이펙트로 변경
                     PatternObject.SetActive(false);
                 }
-
-                if (ARNavigator.instance.SpawnLimit != 1)
-                    ARNavigator.instance.Limit_init();                
             }
             ARNavigator.instance.ARNavigatorEvent();
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "exitdoor")
         {
-            if (!flag_arPortal)
+            /*if (!flag_arPortal)
             {
                 ARPortalObject.SetActive(true);
                 flag_arPortal = true;
-            }
+            }*/
         }
 
         //InventoryManager.instance.InventoryManagement(); // 인벤토리, inventoryManagement_enable이 false면 작동안함

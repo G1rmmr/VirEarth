@@ -11,31 +11,21 @@ public class ARNavigator : MonoBehaviour
 {
     public static ARNavigator instance;
 
-    //[SerializeField] private GameObject Panel;
     [SerializeField] private GameObject _spawnablePrefab;
-    private GameObject placedObject;
-    [SerializeField] private ARPlaneManager arPlaneManager;
-    //[SerializeField] private Button ActiveButton;
-  //  [SerializeField] private Text PositionCheckText;
+    [SerializeField] public TextMesh text_mesh;
+    [SerializeField] public ARPlaneManager arPlaneManager;
+    //[SerializeField] public Text PositionCheckText;
 
     ARTrackedMultiImageManager arTrackedMultiImageManager;
 
     public int AREventCount = 0 , SpawnLimit = 1;
-
-    //string PositionMessage = "";
+    private GameObject placedObject;
 
     Vector3 PlanePosition;
     Quaternion c, n;
 
-  /*  public Text togglePlaneDetectionText
-    {
-        get { return PositionCheckText; }
-        set { PositionCheckText = value; }
-    }
-  */
     void Awake()
     {
-        //ActiveButton.onClick.AddListener(Activate);
         arTrackedMultiImageManager = GameObject.Find("AR Session Origin").GetComponent<ARTrackedMultiImageManager>();
         arPlaneManager = GetComponent<ARPlaneManager>();
         arPlaneManager.planesChanged += PlaneChanged;
@@ -68,9 +58,7 @@ public class ARNavigator : MonoBehaviour
 
             SpawnLimit = SpawnLimit - 1;
             AREventCount = 0;
-
-           /*if (togglePlaneDetectionText != null)
-                 togglePlaneDetectionText.text = PositionMessage;*/
+            arPlaneManager.enabled = false;
 
         }
     }
@@ -107,17 +95,31 @@ public class ARNavigator : MonoBehaviour
     public void ARNavigatorEvent()
     {
         AREventCount = 1;
+        SpawnLimit = 1;
 
         if (placedObject == null && SpawnLimit == 1)
             arPlaneManager.enabled = true;
         else
             arPlaneManager.enabled = false;
 
-        ARHintText.instance.HintTextUpdate();
+        HintTextUpdate();
     }
 
-    public void Limit_init()
+    public void HintTextUpdate()
     {
-        SpawnLimit = 1;
+        switch (arTrackedMultiImageManager.imageTrackedText.text)
+        {
+            case "charger":
+                text_mesh.text = "A동 엘리베이터 옆 \n 층별 안내판에 단서가 있다";
+                break;
+
+            case "board":
+                text_mesh.text = "4층 사물함, 17학번 남지원.";
+                break;
+
+            case "fireplug":
+                text_mesh.text = "백신은 502에.";
+                break;
+        }
     }
 }

@@ -25,7 +25,7 @@ public class HandTracking : MonoBehaviour
         isHandOn = false;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         HandImage.enabled = false;
         isHandOn = false;

@@ -92,7 +92,8 @@ public class ARTrackedMultiImageManager : MonoBehaviour
             trackedObject.transform.position = trackedImage.transform.position;
             //trackedObject.transform.rotation = trackedImage.transform.rotation;
 
-            trackedObject.SetActive(true);
+            if (trackedObject.tag == "item")
+                trackedObject.SetActive(true);
 
             // 엄지와 검지의 위치
             thumbPosition = new Vector3(ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[4].x,
@@ -126,9 +127,11 @@ public class ARTrackedMultiImageManager : MonoBehaviour
                     {
                         PickUpText.text = "PickUp!";
                         if (trackedObject.tag == "item")
+                        {
                             //nextScene.SetActive(true);
                             Destroy(trackedObject);
-                        // 인벤토리에 아이템 넣는 기능 추가
+                            // 인벤토리에 아이템 넣는 기능 추가
+                        }
                     }
                     else
                         PickUpText.text = "Non-Pickup";
@@ -145,8 +148,8 @@ public class ARTrackedMultiImageManager : MonoBehaviour
         {
             TrackingText.text = "Limited";
             trackedObject.SetActive(false);
-            thumbPosition = Vector3.zero;
-            indexPosition = Vector3.zero;
+            thumbPosition = new Vector3(-1,-1,0);
+            indexPosition = new Vector3(1,1,0);
         }
 
         else if (trackedImage.trackingState == TrackingState.None)
