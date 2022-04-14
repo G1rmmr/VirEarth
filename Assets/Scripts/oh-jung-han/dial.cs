@@ -57,7 +57,23 @@ public class Dial : MonoBehaviour
         if (ThumbCenter(x1,y1))
         {
             //다이얼 진행
-            DialTurn(x2, y2); //@@@@@ 0 반환시 이전 이미지, 1반환시 정지, 2반환시 다음 이미지
+            if(DialTurn(x2, y2) == 0)
+            {
+                //dialimg.transform.rotation.SetEulerRotation(0, 0, 30);
+                dialimg.transform.localEulerAngles = new Vector3(0,0,-90);
+            }
+            else if(DialTurn(x2, y2) == 1)
+            {
+                dialimg.transform.localEulerAngles = new Vector3(0, 0, 0);
+            }
+            else if(DialTurn(x2, y2) == 2)
+            {
+                dialimg.transform.localEulerAngles = new Vector3(0, 0, -180);
+            }
+            else
+            {
+                dialimg.transform.localEulerAngles = new Vector3(0, 0, -270);
+            }
             
         }
     }
