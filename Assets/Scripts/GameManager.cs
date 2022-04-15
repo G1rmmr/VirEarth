@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "fireplug")
         {
-            if (!flag_pattern)
+            if (!flag_pattern && InventoryManager.instance.equip_key)
             {
                 PatternObject.SetActive(true);
                 InventoryManager.instance.inventoryManagement_enable = false;
@@ -113,6 +113,8 @@ public class GameManager : MonoBehaviour
                     //InventoryManager.instance.set_inventoryManagement_enable(true);
                     InventoryManager.instance.inventoryManagement_enable = true;
                     GameStartEffect.instance.gameStartEffect(); // test / 패턴 종류 이펙트로 변경
+                    InventoryManager.instance.equip_key = false;
+                    InventoryManager.instance.distroy_key_display();
                     PatternObject.SetActive(false);
                 }
             }

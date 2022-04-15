@@ -6,10 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class HPManager : MonoBehaviour
 {
+    public static HPManager instance; // 인스턴스
+
     public float hp;
 
-    [SerializeField] private int maxHp, damage;
+    [SerializeField] public int maxHp, damage;
     [SerializeField] private Slider hpBar;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public void GameOver(float hp)
     {

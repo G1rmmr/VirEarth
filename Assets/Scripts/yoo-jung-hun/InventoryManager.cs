@@ -12,9 +12,14 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private Text debug;
     [SerializeField] private Text debug_inventory;
     [SerializeField] private Image[] backImage = new Image[5];
+    [SerializeField] private Image[] panelImage = new Image[5];
+    [SerializeField] private Image[] selectedBoxImage = new Image[4];
+    [SerializeField] private GameObject HPObject;
+
 
     // public 변수
-    
+    public bool[] canUseItem = new bool[4];
+    public bool equip_key;
 
     // FLAG
     private bool flag_inventoryOn;       // 인벤토리 온 오프 flag
@@ -44,6 +49,13 @@ public class InventoryManager : MonoBehaviour
             tempColor.a = 0f;
             backImage[i].color = tempColor;
         }
+        for (int i = 0; i < 4; i++)
+        {
+            var tempColor = selectedBoxImage[i].color;
+            tempColor.a = 0f;
+            selectedBoxImage[i].color = tempColor;
+        }
+        equip_key = false;
     }
 
 
@@ -68,6 +80,22 @@ public class InventoryManager : MonoBehaviour
                 tempColor.a = 0f;
                 backImage[i].color = tempColor;
             }
+
+            for (int i = 0; i < 4; i++)
+            {
+                tempColor = panelImage[i].color;
+                if (canUseItem[i])                      // 아이템이 존재하면 인벤토리 색깔 진하게, 없으면 연하게.
+                {
+                    tempColor.a = 1f;
+                    panelImage[i].color = tempColor;
+                }
+                else
+                {
+                    tempColor.a = 0.3f;
+                    panelImage[i].color = tempColor;
+                }
+            }
+            
             CoordinateSystem.instance.transCoord(HandTracking.instance.GetX(0), HandTracking.instance.GetY(0)); // display inventory
             SelectItem();
 
@@ -92,24 +120,36 @@ public class InventoryManager : MonoBehaviour
         }
         else if (HandTracking.instance.IsFoldFinger(true, true, true, true, true) && flag_inventoryOn)
         {
-            if (final_selectItem != 4)
-            {
-                debug_inventory.text = final_selectItem.ToString();
-                // 아이템 효과 여기서!
-                // 아이템 db 수정 여기서!
-            }
-
-            /*if ((selectItemList[0] != -1) && (selectItemList[0] == selectItemList[1]) && (selectItemList[1] == selectItemList[2]))
-            {
-                final_selectItem = selectItemList[2];
-                // 아이템 효과 여기서!
-                // 아이템 db 수정 여기서!
-                debug_inventory.text = final_selectItem.ToString();
-            }*/
             debug.text += "Inventory OFF\n";
             flag_inventoryOn = false;
             CoordinateSystem.instance.hideImg();
-            
+
+            if (final_selectItem == 4)
+                return;
+
+            debug_inventory.text = final_selectItem.ToString();
+
+            if (canUseItem[final_selectItem])   // 선택한 아이템이 사용할 수 있으면(갖고 있으면)
+            {
+                if (final_selectItem == 0)  // 항생제
+                {
+                    if (HPObject.activeSelf == false)
+                        return;
+                    StartCoroutine(antibioticDisplay());
+                    HPManager.instance.hp = HPManager.instance.maxHp;
+                }
+                else if (final_selectItem == 1)
+                {
+                    var tempColor = selectedBoxImage[1].color;
+                    tempColor.a = 1f;
+                    selectedBoxImage[1].color = tempColor;
+                    equip_key = true;
+                }
+                canUseItem[final_selectItem] = false;   // 아이템 사용 완료
+
+            }
+
+            return;
         }
     }
 
@@ -148,7 +188,7 @@ public class InventoryManager : MonoBehaviour
             selectItem = 3;
         }
         selectItemList.Add(selectItem);
-        if (selectItemList.Count == 11)
+        if (selectItemList.Count == 5)
             selectItemList.RemoveAt(0);
 
         final_selectItem = check_selectItemList(selectItemList);
@@ -176,5 +216,42 @@ public class InventoryManager : MonoBehaviour
     public void set_inventoryManagement_enable(bool flag)
     {
         inventoryManagement_enable = flag;
+    }
+
+    private IEnumerator antibioticDisplay()
+    {
+        Color tempColor;
+        tempColor = selectedBoxImage[0].color;
+
+        float minus = 0.8f;
+        while (true)
+        {
+            tempColor.a = 1.0f - minus;
+            selectedBoxImage[0].color = tempColor;
+            if (minus >= 0.0f)
+                break;
+            yield return new WaitForSeconds(0.1f);
+            minus -= 0.2f;
+            if (minus < 0.0f)
+                minus = 0.0f;
+        }
+        minus = 0.0f;
+        while (true)
+        {
+            tempColor.a = 1.0f - minus;
+            selectedBoxImage[0].color = tempColor;
+            if (minus >= 1.0f)
+                break;
+            yield return new WaitForSeconds(0.1f);
+            minus += 0.1f;
+            if (minus > 1.0f)
+                minus = 1.0f;
+        }
+    }
+    public void distroy_key_display()
+    {
+        var tempColor = selectedBoxImage[1].color;
+        tempColor.a = 0f;
+        selectedBoxImage[1].color = tempColor;
     }
 }
