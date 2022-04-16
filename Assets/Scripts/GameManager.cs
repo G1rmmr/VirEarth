@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     private bool flag_startGame;
     private bool flag_arPortal;
     private bool flag_board;
+    private bool flag_dial;
 
     //
     private PlaneDetectionMode mode = (PlaneDetectionMode)1;
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
         HPObject.SetActive(false);
         PatternObject.SetActive(false);
         //GPSObject.SetActive(false);
+        DialObject.SetActive(false);
         arPlaneManager = GetComponent<ARPlaneManager>();
 
         // flag
@@ -43,6 +45,7 @@ public class GameManager : MonoBehaviour
         flag_startGame = false;
         flag_arPortal = false;
         flag_board = false;
+        flag_dial = false;
     }
     // Start is called before the first frame update
     void Start()
@@ -61,6 +64,16 @@ public class GameManager : MonoBehaviour
             {
                 flag_startGame = GameStartEffect.instance.gameStartEffect();
                 ARNavigator.instance.ARNavigatorEvent(); 
+            }
+
+            if (flag_startGame && !flag_dial)
+            {
+                DialObject.SetActive(true);
+                flag_dial = Dial.instance.DialCheck();
+                if (flag_dial)
+                {
+                    DialObject.SetActive(false);
+                }
             }
             // ARNavigator.instance.PositionCheckText.text = ARNavigator.instance.arPlaneManager.enabled.ToString() + "," + ARNavigator.instance.text_mesh.text;
         }
