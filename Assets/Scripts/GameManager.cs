@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject HPObject;
     [SerializeField] private GameObject PatternObject;
     [SerializeField] private GameObject GPSObject;
+    [SerializeField] private GameObject DialObject;
     [SerializeField] public ARPlaneManager arPlaneManager;
 
     // flag
@@ -46,8 +47,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+    
     }
+
 
     // Update is called once per frame
     private void Update()

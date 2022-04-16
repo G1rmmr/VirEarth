@@ -7,8 +7,10 @@ public class Dial : MonoBehaviour
 {
     public static Dial instance; // 인스턴스
 
-    [SerializeField]
-    private Image dialimg;
+    [SerializeField] private Image dialimg;
+    [SerializeField] private Text dialtext;
+    [SerializeField] private Text thumbtext;
+    private int degree;
     
     private void Awake()
     {
@@ -32,7 +34,7 @@ public class Dial : MonoBehaviour
         if (HandTracking.instance.IsFoldFinger(false, false, true, true, true))
         {
             dialimg.enabled = true;
-            
+            thumbtext.text = "finger on";
             return false;
         }
         else
@@ -61,18 +63,22 @@ public class Dial : MonoBehaviour
             {
                 //dialimg.transform.rotation.SetEulerRotation(0, 0, 30);
                 dialimg.transform.localEulerAngles = new Vector3(0,0,-90);
+                dialtext.text = "-90";
             }
             else if(DialTurn(x2, y2) == 1)
             {
                 dialimg.transform.localEulerAngles = new Vector3(0, 0, 0);
+                dialtext.text = "0";
             }
             else if(DialTurn(x2, y2) == 2)
             {
                 dialimg.transform.localEulerAngles = new Vector3(0, 0, -180);
+                dialtext.text = "-180";
             }
             else
             {
                 dialimg.transform.localEulerAngles = new Vector3(0, 0, -270);
+                dialtext.text = "-270";
             }
             
         }
@@ -82,9 +88,14 @@ public class Dial : MonoBehaviour
     {
         if (x < 0.6 && x > 0.4 && y < 0.6 && y > 0.4)
         {
+            thumbtext.text = "IN";
             return true;
         }
-        else return false;
+        else
+        {
+            thumbtext.text = "OUT";
+            return false;
+        }
     }
 
     private int DialTurn(float x, float y)
