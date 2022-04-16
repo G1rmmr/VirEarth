@@ -14,6 +14,7 @@ public class ARNavigator : MonoBehaviour
     public static ARNavigator instance;
 
     [SerializeField] private GameObject _spawnablePrefab;
+    //[SerializeField] private GameObject fogEffect;
     [SerializeField] public TextMesh text_mesh;
     [SerializeField] public ARPlaneManager arPlaneManager;
     //[SerializeField] public Text PositionCheckText;
@@ -40,28 +41,29 @@ public class ARNavigator : MonoBehaviour
 
     private void PlaneChanged(ARPlanesChangedEventArgs args)
     {
-        if (args.added != null && placedObject == null && AREventCount != 0)
+        if (args.added != null && placedObject == null && AREventCount != 0 && arPlaneManager.currentDetectionMode == (PlaneDetectionMode)2)
         {
 
             ARPlane arPlane = args.added[0];
             PlanePosition = arPlane.transform.position;
+            prefebRotation = _spawnablePrefab.transform.rotation;
 
             if (PlanePosition.y < 0)
                 PlanePosition.y = 0;
 
             lookprefeb = Quaternion.LookRotation(PlanePosition);
 
-            RotationPrefeb(lookprefeb.y);
+            //RotationPrefeb(lookprefeb.y);
 
-            //n.y = RotationRound(c.y);
-            //n.w = RotationRound(c.w);
+            prefebRotation.y = RotationRound(lookprefeb.y);
+            prefebRotation.w = RotationRound(lookprefeb.w);
 
-            _spawnablePrefab.transform.Rotate(prefebRotationChange);
+            //_spawnablePrefab.transform.Rotate(prefebRotationChange);
 
-            prefebRotation = _spawnablePrefab.transform.rotation;
+            //prefebRotation = _spawnablePrefab.transform.rotation;
 
             placedObject = Instantiate(_spawnablePrefab, PlanePosition, prefebRotation);
-            //arPlaneManager.detectionMode = test;
+            //arPlaneManager.detectionMode = (PlaneDetectionMode)1;
             
             //PositionCheckText.text = PlanePosition.ToString() + "," + lookprefeb.ToString() + "," + prefebRotationChange.ToString();
             

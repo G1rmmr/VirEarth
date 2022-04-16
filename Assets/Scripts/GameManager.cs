@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject PatternObject;
     [SerializeField] private GameObject GPSObject;
     [SerializeField] private GameObject DialObject;
+    [SerializeField] private GameObject FogEffect;
     [SerializeField] public ARPlaneManager arPlaneManager;
 
     // flag
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
         PatternObject.SetActive(false);
         //GPSObject.SetActive(false);
         DialObject.SetActive(false);
+        FogEffect.SetActive(true);
         arPlaneManager = GetComponent<ARPlaneManager>();
 
         // flag
@@ -50,7 +52,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    
+       
     }
 
 
@@ -75,7 +77,7 @@ public class GameManager : MonoBehaviour
                     DialObject.SetActive(false);
                 }
             }
-            // ARNavigator.instance.PositionCheckText.text = ARNavigator.instance.arPlaneManager.enabled.ToString() + "," + ARNavigator.instance.text_mesh.text;
+            //ARNavigator.instance.PositionCheckText.text = ARNavigator.instance.arPlaneManager.currentDetectionMode.ToString() + "," + ARNavigator.instance.text_mesh.text;
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "board")
         {
