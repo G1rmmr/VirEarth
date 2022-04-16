@@ -35,7 +35,7 @@ public class Dial : MonoBehaviour
         if (HandTracking.instance.IsFoldFinger(false, false, true, true, true))
         {
             dialimg.enabled = true;
-            thumbtext.text = "finger on";
+            //thumbtext.text = "finger on";
             //return false;
         }
         else
@@ -91,7 +91,7 @@ public class Dial : MonoBehaviour
 
     private bool ThumbCenter(float x, float y)
     {
-        if (x < 0.6 && x > 0.4 && y < 0.6 && y > 0.4)
+        if (x < 0.65 && x > 0.35 && y < 0.6 && y > 0.4)
         {
             thumbtext.text = "IN";
             return true;

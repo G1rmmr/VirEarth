@@ -1605,6 +1605,12 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaDirect: 0.5
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
+--- !u!1 &1515140308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6516303856211063161, guid: 3781838eb59ca1f4bab5faca8d2eb5c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1156467072}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1523014700 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6648430736800409873, guid: ba3d19f511b586a46a2e060ee0b3ef15,
@@ -1963,7 +1969,7 @@ MonoBehaviour:
   HPObject: {fileID: 1857000554}
   PatternObject: {fileID: 422582347}
   GPSObject: {fileID: 695467992}
-  DialObject: {fileID: 0}
+  DialObject: {fileID: 1515140308}
   arPlaneManager: {fileID: 887210794}
   debug: {fileID: 1111749444}
 --- !u!4 &1771143471
