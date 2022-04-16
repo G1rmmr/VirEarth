@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1081,6 +1081,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &969308512 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1623700575561559907, guid: 3781838eb59ca1f4bab5faca8d2eb5c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1156467072}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &975845344 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 127080591659705726, guid: 618abfa77a061f64fbaa2f0da758c62d,
@@ -1234,6 +1246,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5055238061578244706, guid: 3781838eb59ca1f4bab5faca8d2eb5c5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -542
+      objectReference: {fileID: 0}
+    - target: {fileID: 5055238061578244706, guid: 3781838eb59ca1f4bab5faca8d2eb5c5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -143
+      objectReference: {fileID: 0}
     - target: {fileID: 5725294138288229427, guid: 3781838eb59ca1f4bab5faca8d2eb5c5,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -1299,6 +1321,36 @@ PrefabInstance:
       propertyPath: dialimg
       value: 
       objectReference: {fileID: 1156467073}
+    - target: {fileID: 7255742579007912392, guid: 3781838eb59ca1f4bab5faca8d2eb5c5,
+        type: 3}
+      propertyPath: dialtext
+      value: 
+      objectReference: {fileID: 1911549974}
+    - target: {fileID: 7255742579007912392, guid: 3781838eb59ca1f4bab5faca8d2eb5c5,
+        type: 3}
+      propertyPath: thumbtext
+      value: 
+      objectReference: {fileID: 969308512}
+    - target: {fileID: 8482860938252682559, guid: 3781838eb59ca1f4bab5faca8d2eb5c5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -543
+      objectReference: {fileID: 0}
+    - target: {fileID: 8482860938252682559, guid: 3781838eb59ca1f4bab5faca8d2eb5c5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -102
+      objectReference: {fileID: 0}
+    - target: {fileID: 8514674532997853159, guid: 3781838eb59ca1f4bab5faca8d2eb5c5,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8514674532997853159, guid: 3781838eb59ca1f4bab5faca8d2eb5c5,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3781838eb59ca1f4bab5faca8d2eb5c5, type: 3}
 --- !u!114 &1156467073 stripped
@@ -1886,6 +1938,7 @@ MonoBehaviour:
   HPObject: {fileID: 1857000554}
   PatternObject: {fileID: 422582347}
   GPSObject: {fileID: 695467992}
+  DialObject: {fileID: 0}
   arPlaneManager: {fileID: 887210794}
   debug: {fileID: 1111749444}
 --- !u!4 &1771143471
@@ -2235,6 +2288,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1911549974 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8514674532997853159, guid: 3781838eb59ca1f4bab5faca8d2eb5c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1156467072}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2005964941
 PrefabInstance:
   m_ObjectHideFlags: 0

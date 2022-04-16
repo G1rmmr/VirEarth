@@ -11,7 +11,8 @@ public class Dial : MonoBehaviour
     [SerializeField] private Text dialtext;
     [SerializeField] private Text thumbtext;
     private int degree;
-    
+    private int goal;
+
     private void Awake()
     {
         instance = this;
@@ -26,16 +27,16 @@ public class Dial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //DialCheck();
     }
 
-    public bool PatternCheck()
+    public bool DialCheck()
     {
         if (HandTracking.instance.IsFoldFinger(false, false, true, true, true))
         {
             dialimg.enabled = true;
             thumbtext.text = "finger on";
-            return false;
+            //return false;
         }
         else
         {
@@ -43,9 +44,10 @@ public class Dial : MonoBehaviour
             return false;
         }
         
-        //@@@@@@@@@@@@@@@@@@ 酒贰 内靛 公均?
         if (((int)ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.mano_class) != 2)
+        {
             return false;
+        }
         
         //决瘤
         float x1 = ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[4].x;
@@ -64,11 +66,13 @@ public class Dial : MonoBehaviour
                 //dialimg.transform.rotation.SetEulerRotation(0, 0, 30);
                 dialimg.transform.localEulerAngles = new Vector3(0,0,-90);
                 dialtext.text = "-90";
+                //degree -= 90;
             }
             else if(DialTurn(x2, y2) == 1)
             {
                 dialimg.transform.localEulerAngles = new Vector3(0, 0, 0);
                 dialtext.text = "0";
+                
             }
             else if(DialTurn(x2, y2) == 2)
             {
@@ -82,6 +86,7 @@ public class Dial : MonoBehaviour
             }
             
         }
+        return false; //@@@@@@
     }
 
     private bool ThumbCenter(float x, float y)
