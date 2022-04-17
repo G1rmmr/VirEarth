@@ -13,8 +13,11 @@ public class gps : MonoBehaviour
     public float maxtime = 5.0f;
     public int sec = 0;
     public int countRate = 0;
-    public int rate = 0;
+    public int rateA = 0;
+    public int rateB = 0;
     public bool isInB = false;
+    public bool isInA = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -55,44 +58,79 @@ public class gps : MonoBehaviour
         data[1].text = "Longitude : " + Input.location.lastData.longitude.ToString();
         //data[2].text = "Altitude : " + Input.location.lastData.altitude.ToString();
         data[3].text = "GPS ON.  "+sec + "times renewed";
-        
-        //B동 내부 검사
-        if (Math.Abs(Input.location.lastData.latitude - 37.37476) < 0.0002 && Math.Abs(Input.location.lastData.longitude - 126.63353) < 0.0003)
+
+        //B_A 37.37476, 126.63353
+        //B-B 37.37456, 126.63393
+        //A 37.37463, 126.63307
+        if (IsIN(37.37476, 126.63353)) //B_A 검사
         {
             isIn[0].text = "in B_A";
-            rate++;
+            rateB++;
         }
-        else if (Math.Abs(Input.location.lastData.latitude - 37.37456) < 0.0002 && Math.Abs(Input.location.lastData.longitude - 126.63393) < 0.0003)
+        else if (IsIN(37.37456, 126.63393)) //B_B 검사
         {
             isIn[0].text = "in B_B";
-            rate++;
+            rateB++;
+        }
+        else if(IsIN(37.37463, 126.63307)) //A 검사
+        {
+            isIn[0].text = "in A";
+            rateA++;
         }
         else
         {
-            isIn[0].text = "not in B";
+            isIn[0].text = "not in";
         }
         countRate++;
 
         //GPS 정확도 검사
-        if(countRate == 40)
+        if(countRate == 30)
         {
-            if(rate > 26)
+            if(AccuracyTest(rateB))
             {
+                isInA = false;
                 isInB = true;
                 isIn[1].text = "in B now";
             }
+            else if(AccuracyTest(rateA))
+            {
+                isInA = true;
+                isInB = false;
+                isIn[1].text = "in A now";
+            }
             else
             {
+                isInA = false;
                 isInB = false;
-                isIn[1].text = "not in B now";
+                isIn[1].text = "not in now";
             }
             countRate = 0;
-            rate = 0;
+            rateA = 0;
+            rateB = 0;
         }
 
         yield return new WaitForSeconds(1.0f);
         StartCoroutine(Gps_manger());
 
+    }
+       
+
+    private bool IsIN(double x, double y)
+    {
+        if (Math.Abs(Input.location.lastData.latitude - x) < 0.0002 && Math.Abs(Input.location.lastData.longitude - y) < 0.0003)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private bool AccuracyTest(int rate)
+    {
+        if (rate > 19) { return true; }
+        else return false;
     }
 
     // Update is called once per frame
