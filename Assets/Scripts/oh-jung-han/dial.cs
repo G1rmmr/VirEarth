@@ -10,7 +10,7 @@ public class Dial : MonoBehaviour
     [SerializeField] private Image dialimg;
     [SerializeField] private Text dialtext;
     [SerializeField] private Text thumbtext;
-    private int degree;
+    private int degree = 0;
     private int goal;
 
     private void Awake()
@@ -61,28 +61,26 @@ public class Dial : MonoBehaviour
         if (ThumbCenter(x1,y1))
         {
             //다이얼 진행
-            if(DialTurn(x2, y2) == 0)
+            if(DialTurn(x2, y2) == 0) //반시계 회전
             {
-                //dialimg.transform.rotation.SetEulerRotation(0, 0, 30);
-                dialimg.transform.localEulerAngles = new Vector3(0,0,-90);
-                dialtext.text = "-90";
-                //degree -= 90;
+                degree += 30;
+                dialimg.transform.localEulerAngles = new Vector3(0,0,degree);
+                dialtext.text = "CCW";
             }
-            else if(DialTurn(x2, y2) == 1)
+            else if(DialTurn(x2, y2) == 1) //회전X
             {
-                dialimg.transform.localEulerAngles = new Vector3(0, 0, 0);
-                dialtext.text = "0";
-                
+                //dialimg.transform.localEulerAngles = new Vector3(0, 0, 0);
+                dialtext.text = "NONE";
             }
-            else if(DialTurn(x2, y2) == 2)
+            else if(DialTurn(x2, y2) == 2) //시계 회전
             {
-                dialimg.transform.localEulerAngles = new Vector3(0, 0, -180);
-                dialtext.text = "-180";
+                degree -= 30;
+                dialimg.transform.localEulerAngles = new Vector3(0, 0, degree);
+                dialtext.text = "CW";
             }
             else
             {
-                dialimg.transform.localEulerAngles = new Vector3(0, 0, -270);
-                dialtext.text = "-270";
+                dialtext.text = "EEE";
             }
             
         }
@@ -105,19 +103,23 @@ public class Dial : MonoBehaviour
 
     private int DialTurn(float x, float y)
     {
-        if (y < 0.65)
+        if (x < 0.45)
         {
             return 0; //반시계 방향 회전
         }
-        else if (y >= 0.65 && y < 0.75)
+        else if (x >= 0.45 && x < 0.55)
         {
             return 1; //정지
         }
-        else if (y >= 0.75)
+        else if (x >= 0.55)
         {
             return 2; //시계 방향 회전
         }
         else return -1;
     }
 
+    IEnumerator delay()
+    {
+        yield return new WaitForSeconds(1.0f);
+    }
 }
