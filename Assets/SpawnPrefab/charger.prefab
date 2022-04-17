@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226292828208146068}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0.51, y: -0.699, z: 0}
+  m_LocalPosition: {x: 0.621, y: -0.699, z: 0}
   m_LocalScale: {x: 0.17428046, y: 0.110819995, z: 0.110819995}
   m_Children: []
   m_Father: {fileID: 1240707158158793566}
@@ -81,7 +81,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226292828208146068}
-  m_Text: Touch!
+  m_Text: charger
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1

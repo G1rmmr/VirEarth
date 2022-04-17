@@ -27,6 +27,8 @@ public class ARTrackedMultiImageManager : MonoBehaviour
     private Vector3 indexPosition;
     private Vector3 prefabPosition;
 
+    private bool hasKey;
+
     // 이미지를 인식했을 때 출력되는 오브젝트 목록
     private Dictionary<string, GameObject> spawnedObjects = new Dictionary<string, GameObject>();
     private ARTrackedImageManager trackedImageManager;
@@ -82,17 +84,19 @@ public class ARTrackedMultiImageManager : MonoBehaviour
     private void UpdateImage(ARTrackedImage trackedImage)
     {
         string name = trackedImage.referenceImage.name;
-        imageTrackedText.text = name;
         GameObject trackedObject = spawnedObjects[name];
 
         // 이미지의 추적 상태가 추적중(Tracking)일 때
         if (trackedImage.trackingState == TrackingState.Tracking)
         {
+            imageTrackedText.text = name;
+
             TrackingText.text = "Tracking";
             trackedObject.transform.position = trackedImage.transform.position;
             //trackedObject.transform.rotation = trackedImage.transform.rotation;
 
-            trackedObject.SetActive(true);
+            if (trackedObject.tag == "item" && !hasKey)
+                trackedObject.SetActive(true);
 
             // 엄지와 검지의 위치
             thumbPosition = new Vector3(ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[4].x,
@@ -107,58 +111,45 @@ public class ARTrackedMultiImageManager : MonoBehaviour
 
             // 디버그용
             showPrefabPosition.text = "( " + prefabPosition.x.ToString("N2") + ", " + prefabPosition.y.ToString("N2") + " )";
-
             showFingerPosition.text = "( " + indexPosition.x.ToString("N2") + ", " + indexPosition.y.ToString("N2") + " )";
-
             showThumbPosition.text = "( " + thumbPosition.x.ToString("N2") + ", " + thumbPosition.y.ToString("N2") + " )";
 
-            if (IsTouch() == true)
+            if (HandTracking.isHandOn && IsTouch())
             {
                 touchText.text = "Touch!";
-                if (trackedObject.tag == "hint")
-                {
-                    //nextScene.SetActive(true);
-                }
 
-                else
+                if (IsPickUp() == true)
                 {
-                    if (IsPickUp() == true)
+                    PickUpText.text = "PickUp!";
+                    if (trackedObject.tag == "item")
                     {
-                        PickUpText.text = "PickUp!";
-                        if (trackedObject.tag == "item")
-                            //nextScene.SetActive(true);
-                            Destroy(trackedObject);
+                        //nextScene.SetActive(true);
+                        trackedObject.SetActive(false);
+                        hasKey = true;
+                        InventoryManager.instance.canUseItem[1] = true;
                         // 인벤토리에 아이템 넣는 기능 추가
                     }
-                    else
-                        PickUpText.text = "Non-Pickup";
                 }
+                else
+                    PickUpText.text = "Non-Pickup";
             }
             else
             {
                 touchText.text = "Untouch";
                 PickUpText.text = "X";
-            }
+            }           
         }
 
         else if (trackedImage.trackingState == TrackingState.Limited)
         {
             TrackingText.text = "Limited";
             trackedObject.SetActive(false);
-            thumbPosition = Vector3.zero;
-            indexPosition = Vector3.zero;
+            thumbPosition = new Vector3(0,0,0);
+            indexPosition = new Vector3(1,1,0);
         }
 
-        else if (trackedImage.trackingState == TrackingState.None)
-            TrackingText.text = "None";
-
-        /*
         else
-        {
-            trackedObject.SetActive(false);
-            thumbPosition = Vector3.zero;
-            indexPosition = Vector3.zero;
-        }*/
+            TrackingText.text = "None";
     }
 
     private bool IsTouch()

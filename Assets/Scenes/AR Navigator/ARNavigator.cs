@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.UI;
+using UnityEngine.XR.ARSubsystems;
+using System;
 
 
 [RequireComponent(typeof(ARPlaneManager))]
@@ -11,31 +13,24 @@ public class ARNavigator : MonoBehaviour
 {
     public static ARNavigator instance;
 
-    //[SerializeField] private GameObject Panel;
     [SerializeField] private GameObject _spawnablePrefab;
-    private GameObject placedObject;
-    [SerializeField] private ARPlaneManager arPlaneManager;
-    //[SerializeField] private Button ActiveButton;
-  //  [SerializeField] private Text PositionCheckText;
+    //[SerializeField] private GameObject fogEffect;
+    [SerializeField] public TextMesh text_mesh;
+    [SerializeField] public ARPlaneManager arPlaneManager;
+    //[SerializeField] public Text PositionCheckText;
 
     ARTrackedMultiImageManager arTrackedMultiImageManager;
 
     public int AREventCount = 0 , SpawnLimit = 1;
+    private GameObject placedObject;
 
-    //string PositionMessage = "";
+    Vector3 PlanePosition, prefebRotationChange;
+    Quaternion lookprefeb, prefebRotation;
 
-    Vector3 PlanePosition;
-    Quaternion c, n;
+    //private PlaneDetectionMode test = (PlaneDetectionMode)1;
 
-  /*  public Text togglePlaneDetectionText
-    {
-        get { return PositionCheckText; }
-        set { PositionCheckText = value; }
-    }
-  */
     void Awake()
     {
-        //ActiveButton.onClick.AddListener(Activate);
         arTrackedMultiImageManager = GameObject.Find("AR Session Origin").GetComponent<ARTrackedMultiImageManager>();
         arPlaneManager = GetComponent<ARPlaneManager>();
         arPlaneManager.planesChanged += PlaneChanged;
@@ -46,32 +41,37 @@ public class ARNavigator : MonoBehaviour
 
     private void PlaneChanged(ARPlanesChangedEventArgs args)
     {
-        if (args.added != null && placedObject == null && AREventCount != 0)
+        if (args.added != null && placedObject == null && AREventCount != 0 && arPlaneManager.currentDetectionMode == (PlaneDetectionMode)2)
         {
 
             ARPlane arPlane = args.added[0];
             PlanePosition = arPlane.transform.position;
-            n = _spawnablePrefab.transform.rotation;
+            prefebRotation = _spawnablePrefab.transform.rotation;
 
             if (PlanePosition.y < 0)
                 PlanePosition.y = 0;
 
-            c = Quaternion.LookRotation(PlanePosition);
+            lookprefeb = Quaternion.LookRotation(PlanePosition);
 
-            n.y = RotationRound(c.y);
-            n.w = RotationRound(c.w);
+            //RotationPrefeb(lookprefeb.y);
 
-            placedObject = Instantiate(_spawnablePrefab, PlanePosition, n); 
-           // PositionMessage = n.ToString() + "," + c.ToString();
+            prefebRotation.y = RotationRound(lookprefeb.y);
+            prefebRotation.w = RotationRound(lookprefeb.w);
+
+            //_spawnablePrefab.transform.Rotate(prefebRotationChange);
+
+            //prefebRotation = _spawnablePrefab.transform.rotation;
+
+            placedObject = Instantiate(_spawnablePrefab, PlanePosition, prefebRotation);
+            //arPlaneManager.detectionMode = (PlaneDetectionMode)1;
+            
+            //PositionCheckText.text = PlanePosition.ToString() + "," + lookprefeb.ToString() + "," + prefebRotationChange.ToString();
             
             Destroy(placedObject, 30.0f);
 
             SpawnLimit = SpawnLimit - 1;
             AREventCount = 0;
-
-           /*if (togglePlaneDetectionText != null)
-                 togglePlaneDetectionText.text = PositionMessage;*/
-
+            arPlaneManager.enabled = false;
         }
     }
 
@@ -104,20 +104,58 @@ public class ARNavigator : MonoBehaviour
 
     }
 
+    private Vector3 RotationPrefeb(float x)
+    {
+        Double a = Math.Round(Convert.ToDouble(x), 2);
+
+        if (a > 0 && a < 1)
+        {
+            prefebRotationChange =  new Vector3(0, 90, 0);
+        }
+
+        else if (a == 1)
+        {
+            prefebRotationChange = new Vector3(0, 180, 0);
+        }
+
+        else if (a < 0 && a > -1)
+        {
+            prefebRotationChange = new Vector3(0, 270, 0);
+        }
+
+        return prefebRotationChange;
+    }
+
     public void ARNavigatorEvent()
     {
         AREventCount = 1;
+        SpawnLimit = 1;
 
         if (placedObject == null && SpawnLimit == 1)
+        {
             arPlaneManager.enabled = true;
+        }
         else
             arPlaneManager.enabled = false;
 
-        ARHintText.instance.HintTextUpdate();
+        HintTextUpdate();
     }
 
-    public void Limit_init()
+    public void HintTextUpdate()
     {
-        SpawnLimit = 1;
+        switch (arTrackedMultiImageManager.imageTrackedText.text)
+        {
+            case "charger":
+                text_mesh.text = "A동 엘리베이터 옆 \n 층별 안내판에 단서가 있다";
+                break;
+
+            case "board":
+                text_mesh.text = "4층 사물함, 17학번 남지원.";
+                break;
+
+            case "fireplug":
+                text_mesh.text = "백신은 502에.";
+                break;
+        }
     }
 }

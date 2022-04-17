@@ -11,7 +11,7 @@ public class GameStartEffect : MonoBehaviour
     public static GameStartEffect instance;
     void Start()
     {
-        gameStartEffect();
+        //gameStartEffect();
     }
     private void Awake()
     {

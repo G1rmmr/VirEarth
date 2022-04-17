@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -11,13 +13,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject HPObject;
     [SerializeField] private GameObject PatternObject;
     [SerializeField] private GameObject GPSObject;
-    [SerializeField] private GameObject ARPortalObject;
+    [SerializeField] private GameObject DialObject;
+    [SerializeField] private GameObject FogEffect;
+    [SerializeField] public ARPlaneManager arPlaneManager;
 
     // flag
     private bool flag_pattern;
     private bool flag_hp;
     private bool flag_startGame;
     private bool flag_arPortal;
+    private bool flag_board;
+    private bool flag_dial;
+
+    //
+    private PlaneDetectionMode mode = (PlaneDetectionMode)1;
 
     // 인스펙터
     [SerializeField] private Text debug;
@@ -28,18 +37,24 @@ public class GameManager : MonoBehaviour
         HPObject.SetActive(false);
         PatternObject.SetActive(false);
         //GPSObject.SetActive(false);
+        DialObject.SetActive(false);
+        FogEffect.SetActive(true);
+        arPlaneManager = GetComponent<ARPlaneManager>();
 
         // flag
         flag_pattern = false;
         flag_hp = false;
         flag_startGame = false;
         flag_arPortal = false;
+        flag_board = false;
+        flag_dial = false;
     }
     // Start is called before the first frame update
     void Start()
     {
-
+       
     }
+
 
     // Update is called once per frame
     private void Update()
@@ -50,14 +65,27 @@ public class GameManager : MonoBehaviour
             if (!flag_startGame)
             {
                 flag_startGame = GameStartEffect.instance.gameStartEffect();
-                //ARNavigator.instance.ARNavigatorEvent(); //@@@@ 위치 수정 필요
+                ARNavigator.instance.ARNavigatorEvent(); 
             }
-            ARNavigator.instance.ARNavigatorEvent(); //@@@@ 위치 수정 필요
 
+            if (flag_startGame && !flag_dial)
+            {
+                DialObject.SetActive(true);
+                flag_dial = Dial.instance.DialCheck();
+                if (flag_dial)
+                {
+                    DialObject.SetActive(false);
+                }
+            }
+            //ARNavigator.instance.PositionCheckText.text = ARNavigator.instance.arPlaneManager.currentDetectionMode.ToString() + "," + ARNavigator.instance.text_mesh.text;
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "board")
         {
-            // 남지원 사물함으로 가라! (ar navigate)
+            if (!flag_board)
+            {
+                ARNavigator.instance.ARNavigatorEvent();
+                flag_board = true;
+            }
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "locker")
         {
@@ -75,10 +103,10 @@ public class GameManager : MonoBehaviour
         }
         
         if (GPSObject.GetComponent<gps>().isInB == true)
-                {
+        {
             if (!flag_hp)
             {
-                HPObject.SetActive(false); //@@@@ true로 수정 필요
+                HPObject.SetActive(true); //@@@@ true로 수정 필요
             }
         }
         else
@@ -90,7 +118,7 @@ public class GameManager : MonoBehaviour
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "fireplug")
         {
-            if (!flag_pattern)
+            if (!flag_pattern && InventoryManager.instance.equip_key)
             {
                 PatternObject.SetActive(true);
                 InventoryManager.instance.inventoryManagement_enable = false;
@@ -102,24 +130,37 @@ public class GameManager : MonoBehaviour
                     //InventoryManager.instance.set_inventoryManagement_enable(true);
                     InventoryManager.instance.inventoryManagement_enable = true;
                     GameStartEffect.instance.gameStartEffect(); // test / 패턴 종류 이펙트로 변경
+                    InventoryManager.instance.equip_key = false;
+                    InventoryManager.instance.canUseItem[2] = true;
+                    InventoryManager.instance.distroy_key_display();
                     PatternObject.SetActive(false);
-                }
 
-                if (ARNavigator.instance.SpawnLimit != 1)
-                    ARNavigator.instance.Limit_init();                
+                    ARNavigator.instance.ARNavigatorEvent();
+                }
             }
-            ARNavigator.instance.ARNavigatorEvent();
+            //ARNavigator.instance.ARNavigatorEvent();
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "exitdoor")
         {
-            /*if (!flag_arPortal)
+            if (!flag_arPortal)
             {
-                ARPortalObject.SetActive(true);
-                flag_arPortal = true;
-            }*/
-        }
+                ARObject.GetComponent<ARNavigator>().arPlaneManager.enabled = true;
+                if (ARObject.GetComponent<ARNavigator>().arPlaneManager.enabled == true)
+                    debug.text = "ARPlaneManger ON!";
 
-        InventoryManager.instance.InventoryManagement(); // 인벤토리, inventoryManagement_enable이 false면 작동안함
+                //ARObject.GetComponent<ARNavigator>().arPlaneManager.detectionMode = PlaneDetectionMode.Horizontal;
+                ARObject.GetComponent<ARNavigator>().arPlaneManager.requestedDetectionMode = mode;
+                ARObject.GetComponent<AREnvironmentProbeManager>().enabled = true;
+                ARObject.GetComponent<ARRaycastManager>().enabled = true;
+                ARObject.GetComponent<PlaceOnPlane>().enabled = true;
+                if (ARObject.GetComponent<PlaceOnPlane>().enabled == true)
+                    debug.text += "PlaceOnPlane ON!\n";
+                else
+                    debug.text += "PlaceOnPlane Off!\n";
+                flag_arPortal = true;
+            }
+        }
+        //InventoryManager.instance.InventoryManagement(); // 인벤토리, inventoryManagement_enable이 false면 작동안함
 
 
     }

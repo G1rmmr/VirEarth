@@ -184,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SerializedLibrary: {fileID: 11400000, guid: 72d22808078722244b38d4124937a78e,
     type: 2}
-  m_MaxNumberOfMovingImages: 3
+  m_MaxNumberOfMovingImages: 7
   m_TrackedImagePrefab: {fileID: 0}
 --- !u!114 &4003968016563654000
 MonoBehaviour:
@@ -205,6 +205,7 @@ MonoBehaviour:
   - {fileID: 8425516128635219477, guid: 87fb5d046f75ebd4aa222363ca8b162b, type: 3}
   - {fileID: 5471339199417788933, guid: 8b8f385aa2679bd4cb3509d1f70d9cfd, type: 3}
   - {fileID: 8458659916343495554, guid: 5db0ec827745fe345b032b34f4064fc7, type: 3}
+  - {fileID: 8141432206046997777, guid: 03886cc57aa894241a5ac1c878d672b4, type: 3}
   imageTrackedText: {fileID: 0}
   showFingerPosition: {fileID: 0}
   showThumbPosition: {fileID: 0}
@@ -250,10 +251,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88e293ddf51f94848ad0be031e55eb29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Panel: {fileID: 0}
   _spawnablePrefab: {fileID: 4172354944369295472, guid: 38869471dd00c13479899c00454d5a6c,
     type: 3}
+  text_mesh: {fileID: 0}
   arPlaneManager: {fileID: 4003968016563654013}
-  PositionCheckText: {fileID: 0}
   AREventCount: 0
   SpawnLimit: 1
