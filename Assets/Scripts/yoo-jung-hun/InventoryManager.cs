@@ -162,6 +162,8 @@ public class InventoryManager : MonoBehaviour
                 }
                 else if (final_selectItem == 2)
                 {
+                    eqpItmSnd.Play();//일반 아이템 장착 사운드
+
                     var tempColor = selectedBoxImage[2].color;
                     tempColor.a = 1f;
                     selectedBoxImage[2].color = tempColor;
