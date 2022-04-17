@@ -10,6 +10,7 @@ public class test : MonoBehaviour
 {
     private PlaneDetectionMode mode = (PlaneDetectionMode)1;
     public ARPlaneManager apm;
+    public Text debug;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,7 @@ public class test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //debug.text = 
     }
 
     public void Horizon()
