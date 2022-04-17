@@ -226,6 +226,7 @@ MonoBehaviour:
   touchText: {fileID: 0}
   PickUpText: {fileID: 0}
   TrackingText: {fileID: 0}
+  puzzleEffect: {fileID: 0}
 --- !u!114 &4383810825290180115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,7 +286,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PlacedPrefab: {fileID: 1309186990687066828, guid: 927b61332f1038544b06d25c7441a676,
     type: 3}
-  genSnd: {fileID: 4629731142492966895}
 --- !u!114 &3520207592597497696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,10 +461,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4383810826877850231}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1, z: 0.2}
+  m_Size: {x: 0.1, y: 0.1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9115381768131017379
 GameObject:

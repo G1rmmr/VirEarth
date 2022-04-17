@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2990,22 +2990,22 @@ PrefabInstance:
     - target: {fileID: 3908072827555488443, guid: 618abfa77a061f64fbaa2f0da758c62d,
         type: 3}
       propertyPath: canUseItem.Array.data[0]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3908072827555488443, guid: 618abfa77a061f64fbaa2f0da758c62d,
         type: 3}
       propertyPath: canUseItem.Array.data[1]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3908072827555488443, guid: 618abfa77a061f64fbaa2f0da758c62d,
         type: 3}
       propertyPath: canUseItem.Array.data[2]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3908072827555488443, guid: 618abfa77a061f64fbaa2f0da758c62d,
         type: 3}
       propertyPath: canUseItem.Array.data[3]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3908072827912113444, guid: 618abfa77a061f64fbaa2f0da758c62d,
         type: 3}
@@ -3145,6 +3145,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 812511649908108129, guid: c90ede05386d36f4da24afc318940177,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 812511649908108129, guid: c90ede05386d36f4da24afc318940177,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4383810825290180113, guid: c90ede05386d36f4da24afc318940177,
         type: 3}
       propertyPath: m_PlanePrefab
@@ -3271,6 +3281,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383810826877850230, guid: c90ede05386d36f4da24afc318940177,
+        type: 3}
+      propertyPath: far clip plane
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c90ede05386d36f4da24afc318940177, type: 3}
