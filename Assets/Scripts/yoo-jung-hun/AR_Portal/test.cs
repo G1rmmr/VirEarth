@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class test : MonoBehaviour
 {
     private PlaneDetectionMode mode = (PlaneDetectionMode)1;
-    public ARPlaneManager apm;
+    //public ARPlaneManager apm;
     public Text debug;
     // Start is called before the first frame update
     void Start()
@@ -20,10 +20,10 @@ public class test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //debug.text = 
+        debug.text = ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.mano_gesture_trigger.ToString();
     }
 
-    public void Horizon()
+   /* public void Horizon()
     {
         apm.requestedDetectionMode = (PlaneDetectionMode)1;
     }
@@ -39,5 +39,5 @@ public class test : MonoBehaviour
     public void evrything()
     {
         apm.requestedDetectionMode = (PlaneDetectionMode)1 | (PlaneDetectionMode)2;
-    }
+    }*/
 }

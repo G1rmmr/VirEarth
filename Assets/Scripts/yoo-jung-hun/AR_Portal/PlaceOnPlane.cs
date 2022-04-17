@@ -17,7 +17,7 @@ public class PlaceOnPlane : MonoBehaviour
     [Tooltip("Instantiates this prefab on a plane at the touch location.")]
     GameObject m_PlacedPrefab;
 
-    [SerializeField] AudioSource genSnd;
+    //[SerializeField] AudioSource genSnd;
 
     /// <summary>
     /// The prefab to instantiate on touch.
@@ -37,6 +37,18 @@ public class PlaceOnPlane : MonoBehaviour
     {
         m_RaycastManager = GetComponent<ARRaycastManager>();
     }
+
+    bool TrySwipeAutoPosition(out Vector2 position)
+    {
+        if (ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.mano_gesture_trigger == ManoGestureTrigger.SWIPE_RIGHT)
+        {
+            position = new Vector2(0.5f * Screen.width, 0.7f * Screen.height);
+            return true;
+        }
+        position = default;
+        return false;
+    }
+
 
     bool TryGetTouchPosition(out Vector2 touchPosition)
     {
@@ -61,9 +73,13 @@ public class PlaceOnPlane : MonoBehaviour
 
     void Update()
     {
-        if (!TryGetTouchPosition(out Vector2 touchPosition))
+        /*if (!TryGetTouchPosition(out Vector2 touchPosition))
+            return;*/
+        /*if (!TrySwipeAutoPosition(out Vector2 touchPosition))
+            return;*/
+        if (!HandTracking.instance.swipe)
             return;
-
+        Vector2 touchPosition = new Vector2(0.5f * Screen.width, 0.7f * Screen.height);
         if (m_RaycastManager.Raycast(touchPosition, s_Hits, TrackableType.PlaneWithinPolygon))
         {
             // Raycast hits are sorted by distance, so the first one
@@ -72,7 +88,7 @@ public class PlaceOnPlane : MonoBehaviour
 
             if ((spawnedObject == null))
             {
-                genSnd.Play(); //소환 사운드
+                //genSnd.Play(); //소환 사운드
                 spawnedObject = Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation);
             }
             else

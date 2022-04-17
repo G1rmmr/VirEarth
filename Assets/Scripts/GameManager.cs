@@ -146,6 +146,10 @@ public class GameManager : MonoBehaviour
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "exitdoor")
         {
+            
+        }
+        if (InventoryManager.instance.equip_cardkey)
+        {
             if (!flag_arPortal)
             {
                 ARObject.GetComponent<ARNavigator>().arPlaneManager.enabled = true;

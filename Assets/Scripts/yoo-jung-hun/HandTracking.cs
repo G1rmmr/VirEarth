@@ -13,6 +13,7 @@ public class HandTracking : MonoBehaviour
 
     // public 변수
     public static bool isHandOn = false;
+    public bool swipe;
 
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class HandTracking : MonoBehaviour
         isHandOn = false;
     }
 
+
     private void Update()
     {
         HandImage.enabled = false;
@@ -35,8 +37,18 @@ public class HandTracking : MonoBehaviour
         HandImage.enabled = true;
         isHandOn = true;
         InventoryManager.instance.InventoryManagement(); // 인벤토리, inventoryManagement_enable이 false면 작동안함
+        if (InventoryManager.instance.equip_cardkey)
+        {
+            if (ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.mano_gesture_trigger == ManoGestureTrigger.SWIPE_RIGHT)
+                StartCoroutine(swiping());
+        }
     }
-
+    private IEnumerator swiping()
+    {
+        swipe = true;
+        yield return new WaitForSeconds(3.0f);
+        swipe = false;
+    }
     public bool IsFoldFinger(bool thumb, bool point, bool big, bool four, bool little) // 엄지, 검지, 중지, 약지, 새끼
     {
         //int count = 0;
