@@ -15,6 +15,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private Image[] panelImage = new Image[5];
     [SerializeField] private Image[] selectedBoxImage = new Image[4];
     [SerializeField] private GameObject HPObject;
+    [SerializeField] private AudioSource openInvenSnd, slcItmSnd, eqpItmSnd;
 
 
     // public 변수
@@ -31,6 +32,7 @@ public class InventoryManager : MonoBehaviour
     private List<int> selectItemList = new List<int>();
     private int[] selectItemArray = new int[3];
     private int final_selectItem = 4;
+    private int now_selectItem = 4;
 
     private void Awake()
     {
@@ -70,7 +72,9 @@ public class InventoryManager : MonoBehaviour
             debug.text += "flag : True\n";
         else
             debug.text += "flag : False\n";
+
         InventoryOn();  // 손바닥 상태에서 손가락을 전부 피면 온, 주먹을 쥐면 오프
+
         if (flag_inventoryOn)
         {
             Color tempColor;
@@ -111,8 +115,11 @@ public class InventoryManager : MonoBehaviour
     {
         if (ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.hand_side != HandSide.Palmside) // 손바닥이 아니면 즉시 종료
             return;
+
         if (HandTracking.instance.IsFoldFinger(false, false, false, false, false) && !flag_inventoryOn)
         {
+            openInvenSnd.Play();//인벤토리 오픈 사운드
+
             debug.text += "Inventory ON\n";
             flag_inventoryOn = true;
             CoordinateSystem.instance.showImg();
@@ -120,6 +127,8 @@ public class InventoryManager : MonoBehaviour
         }
         else if (HandTracking.instance.IsFoldFinger(true, true, true, true, true) && flag_inventoryOn)
         {
+            eqpItmSnd.Play();//인벤토리 오픈 사운드
+
             debug.text += "Inventory OFF\n";
             flag_inventoryOn = false;
             CoordinateSystem.instance.hideImg();
@@ -133,6 +142,8 @@ public class InventoryManager : MonoBehaviour
             {
                 if (final_selectItem == 0)  // 항생제
                 {
+                    //꿀꺽 사운드
+
                     if (HPObject.activeSelf == false)
                         return;
                     StartCoroutine(antibioticDisplay());
@@ -140,6 +151,8 @@ public class InventoryManager : MonoBehaviour
                 }
                 else if (final_selectItem == 1)
                 {
+                    eqpItmSnd.Play();//일반 아이템 장착 사운드
+
                     var tempColor = selectedBoxImage[1].color;
                     tempColor.a = 1f;
                     selectedBoxImage[1].color = tempColor;
@@ -192,6 +205,11 @@ public class InventoryManager : MonoBehaviour
             selectItemList.RemoveAt(0);
 
         final_selectItem = check_selectItemList(selectItemList);
+
+        if(now_selectItem != final_selectItem)
+            slcItmSnd.Play();//아이템 선텍 사운드
+
+        now_selectItem = final_selectItem;
     }
 
     private int check_selectItemList(List<int> ls)
