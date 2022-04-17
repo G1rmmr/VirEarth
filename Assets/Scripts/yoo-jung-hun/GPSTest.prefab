@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2985840749386414204}
   - component: {fileID: 1284353206521680778}
   m_Layer: 5
-  m_Name: isInB
+  m_Name: isInNow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -208,14 +208,16 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 4692216960936108922}
   isIn:
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 4692216961373967493}
+  - {fileID: 1284353206521680778}
   delay: 0
   maxtime: 5
   sec: 0
-  isInX: 0
-  isInY: 0
+  countRate: 0
+  rateA: 0
+  rateB: 0
+  isInB: 0
+  isInA: 0
 --- !u!1 &4692216960582083718
 GameObject:
   m_ObjectHideFlags: 0
