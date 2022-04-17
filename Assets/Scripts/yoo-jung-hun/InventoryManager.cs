@@ -127,7 +127,7 @@ public class InventoryManager : MonoBehaviour
         }
         else if (HandTracking.instance.IsFoldFinger(true, true, true, true, true) && flag_inventoryOn)
         {
-            openInvenSnd.Play();//인벤토리 오픈 사운드
+            eqpItmSnd.Play();//인벤토리 오픈 사운드
 
             debug.text += "Inventory OFF\n";
             flag_inventoryOn = false;
