@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
         {
             if (!flag_hp)
             {
-                HPObject.SetActive(false); //@@@@ true로 수정 필요
+                HPObject.SetActive(true); //@@@@ true로 수정 필요
             }
         }
         else
@@ -133,9 +133,11 @@ public class GameManager : MonoBehaviour
                     InventoryManager.instance.equip_key = false;
                     InventoryManager.instance.distroy_key_display();
                     PatternObject.SetActive(false);
+
+                    ARNavigator.instance.ARNavigatorEvent();
                 }
             }
-            ARNavigator.instance.ARNavigatorEvent();
+            //ARNavigator.instance.ARNavigatorEvent();
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "exitdoor")
         {
@@ -144,22 +146,11 @@ public class GameManager : MonoBehaviour
                 ARObject.GetComponent<ARNavigator>().arPlaneManager.enabled = true;
                 if (ARObject.GetComponent<ARNavigator>().arPlaneManager.enabled == true)
                     debug.text = "ARPlaneManger ON!";
+
                 //ARObject.GetComponent<ARNavigator>().arPlaneManager.detectionMode = PlaneDetectionMode.Horizontal;
                 ARObject.GetComponent<ARNavigator>().arPlaneManager.requestedDetectionMode = mode;
-                //debug.text = arPlaneManager.currentDetectionMode.ToString();
-
                 ARObject.GetComponent<AREnvironmentProbeManager>().enabled = true;
-                if (ARObject.GetComponent<AREnvironmentProbeManager>().enabled == true)
-                    debug.text += "AREnvironmentProbeManager ON!\n";
-                else
-                    debug.text += "AREnvironmentProbeManager Off!\n";
-
                 ARObject.GetComponent<ARRaycastManager>().enabled = true;
-                if (ARObject.GetComponent<ARRaycastManager>().enabled == true)
-                    debug.text += "ARRaycastManager ON!\n";
-                else
-                    debug.text += "ARRaycastManager Off!\n";
-
                 ARObject.GetComponent<PlaceOnPlane>().enabled = true;
                 if (ARObject.GetComponent<PlaceOnPlane>().enabled == true)
                     debug.text += "PlaceOnPlane ON!\n";
