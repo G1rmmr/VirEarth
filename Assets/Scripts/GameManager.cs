@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     private bool flag_arPortal;
     private bool flag_board;
     private bool flag_dial;
+    private bool flag_dialDelay;
 
     //
     private PlaneDetectionMode mode = (PlaneDetectionMode)1;
@@ -48,6 +49,7 @@ public class GameManager : MonoBehaviour
         flag_arPortal = false;
         flag_board = false;
         flag_dial = false;
+        flag_dialDelay = false;
     }
     // Start is called before the first frame update
     void Start()
@@ -67,16 +69,18 @@ public class GameManager : MonoBehaviour
                 flag_startGame = GameStartEffect.instance.gameStartEffect();
                 ARNavigator.instance.ARNavigatorEvent(); 
             }
-
-            if (flag_startGame && !flag_dial)
+            
+            if (flag_startGame && !flag_dial && !flag_dialDelay)
             {
                 DialObject.SetActive(true);
                 flag_dial = Dial.instance.DialCheck();
+                flag_dialDelay = true;
                 if (flag_dial)
                 {
                     DialObject.SetActive(false);
                 }
             }
+            StartCoroutine(delay(flag_dialDelay));
             //ARNavigator.instance.PositionCheckText.text = ARNavigator.instance.arPlaneManager.currentDetectionMode.ToString() + "," + ARNavigator.instance.text_mesh.text;
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "board")
@@ -131,6 +135,7 @@ public class GameManager : MonoBehaviour
                     InventoryManager.instance.inventoryManagement_enable = true;
                     GameStartEffect.instance.gameStartEffect(); // test / 패턴 종류 이펙트로 변경
                     InventoryManager.instance.equip_key = false;
+                    InventoryManager.instance.canUseItem[2] = true;
                     InventoryManager.instance.distroy_key_display();
                     PatternObject.SetActive(false);
 
@@ -166,5 +171,11 @@ public class GameManager : MonoBehaviour
         //InventoryManager.instance.InventoryManagement(); // 인벤토리, inventoryManagement_enable이 false면 작동안함
 
 
+    }
+
+    IEnumerator delay(bool x)
+    {
+        yield return new WaitForSeconds(0.5f);
+        x = false;
     }
 }

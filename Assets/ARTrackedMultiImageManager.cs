@@ -29,12 +29,13 @@ public class ARTrackedMultiImageManager : MonoBehaviour
     private Vector3 indexPosition;
     private Vector3 prefabPosition;
 
-    private bool hasKey;
+    private bool hasKey = false;
 
     // 이미지를 인식했을 때 출력되는 오브젝트 목록
     private Dictionary<string, GameObject> spawnedObjects = new Dictionary<string, GameObject>();
     private ARTrackedImageManager trackedImageManager;
 
+    [SerializeField]
     private PuzzleEffect puzzleEffect;
 
     private void Awake()
@@ -101,7 +102,7 @@ public class ARTrackedMultiImageManager : MonoBehaviour
 
             if (trackedObject.tag == "item" && !hasKey)
             {
-                puzzleEffect.puzzleEffect(true);
+                //puzzleEffect.puzzleEffect(true);
                 trackedObject.SetActive(true);
             }
                 
@@ -130,11 +131,10 @@ public class ARTrackedMultiImageManager : MonoBehaviour
                     PickUpText.text = "PickUp!";
                     if (trackedObject.tag == "item")
                     {
-                        //nextScene.SetActive(true);
-                        itemPkdSnd.Play();
+                        //itemPkdSnd.Play();
                         trackedObject.SetActive(false);
                         hasKey = true;
-                        // 인벤토리에 아이템 넣는 기능 추가
+                        InventoryManager.instance.canUseItem[1] = true;
                     }
                 }
                 else
