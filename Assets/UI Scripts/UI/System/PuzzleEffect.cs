@@ -18,7 +18,7 @@ public class PuzzleEffect : MonoBehaviour
         instance = this;
     }
     // Update is called once per frame
-    public bool puzzleEffect(bool isCleared)
+    public void puzzleEffect(bool isCleared)
     {
         if (isCleared)
         {
@@ -30,7 +30,6 @@ public class PuzzleEffect : MonoBehaviour
             failSnd.Play();
             StartCoroutine("Show");
         }
-        return true;
     }
     IEnumerator Show()
     {
