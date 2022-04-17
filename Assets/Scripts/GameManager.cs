@@ -74,13 +74,13 @@ public class GameManager : MonoBehaviour
             {
                 DialObject.SetActive(true);
                 flag_dial = Dial.instance.DialCheck();
-                flag_dialDelay = true;
+                StartCoroutine(delay(flag_dialDelay));
                 if (flag_dial)
                 {
                     DialObject.SetActive(false);
                 }
             }
-            StartCoroutine(delay(flag_dialDelay));
+            
             //ARNavigator.instance.PositionCheckText.text = ARNavigator.instance.arPlaneManager.currentDetectionMode.ToString() + "," + ARNavigator.instance.text_mesh.text;
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "board")
@@ -171,6 +171,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator delay(bool x)
     {
+        x = true;
         yield return new WaitForSeconds(0.5f);
         x = false;
     }

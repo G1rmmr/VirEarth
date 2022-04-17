@@ -8,6 +8,7 @@ public class Dial : MonoBehaviour
     public static Dial instance; // 인스턴스
 
     [SerializeField] private Image dialimg;
+    [SerializeField] private Image dialimg_back;
     [SerializeField] private Text dialtext;
     [SerializeField] private Text thumbtext;
     private int degree = 0;
@@ -22,6 +23,7 @@ public class Dial : MonoBehaviour
     void Start()
     {
         dialimg.enabled = false;
+        dialimg_back.enabled = false;
     }
 
     // Update is called once per frame
@@ -35,12 +37,14 @@ public class Dial : MonoBehaviour
         if (HandTracking.instance.IsFoldFinger(false, false, true, true, true))
         {
             dialimg.enabled = true;
+            dialimg_back.enabled = true;
             //thumbtext.text = "finger on";
             //return false;
         }
         else
         {
             dialimg.enabled = false;
+            dialimg_back.enabled = false;
             return false;
         }
         
