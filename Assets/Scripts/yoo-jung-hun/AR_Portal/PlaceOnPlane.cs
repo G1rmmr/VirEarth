@@ -17,7 +17,7 @@ public class PlaceOnPlane : MonoBehaviour
     [Tooltip("Instantiates this prefab on a plane at the touch location.")]
     GameObject m_PlacedPrefab;
 
-
+    [SerializeField] AudioSource genSnd;
 
     /// <summary>
     /// The prefab to instantiate on touch.
@@ -72,6 +72,7 @@ public class PlaceOnPlane : MonoBehaviour
 
             if ((spawnedObject == null))
             {
+                genSnd.Play(); //소환 사운드
                 spawnedObject = Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation);
             }
             else
