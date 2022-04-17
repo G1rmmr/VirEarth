@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1223,8 +1223,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 126.36182, y: 30.81781}
-  m_SizeDelta: {x: 412.7237, y: 268.3644}
+  m_AnchoredPosition: {x: -464.8729, y: -652.10895}
+  m_SizeDelta: {x: 120.9778, y: 50.5823}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1111749444
 MonoBehaviour:
@@ -2101,7 +2101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1781020774
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2288,7 +2288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f76b181b27462944a2bed5d0c2a3fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
+  hp: 6000
   maxHp: 100
   damage: 20
   hpBar: {fileID: 780573093}
@@ -3136,6 +3136,11 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2453292514704079248, guid: a7278dcba34d0da45bea1cea347c583d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.9840088
+      objectReference: {fileID: 0}
     - target: {fileID: 5374521117488844480, guid: a7278dcba34d0da45bea1cea347c583d,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -3260,6 +3265,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057672699939189996, guid: a7278dcba34d0da45bea1cea347c583d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -32.357056
+      objectReference: {fileID: 0}
+    - target: {fileID: 6057672699939189996, guid: a7278dcba34d0da45bea1cea347c583d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -34.196045
       objectReference: {fileID: 0}
     - target: {fileID: 6057672699985506182, guid: a7278dcba34d0da45bea1cea347c583d,
         type: 3}
