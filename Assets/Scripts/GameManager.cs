@@ -131,6 +131,7 @@ public class GameManager : MonoBehaviour
                     InventoryManager.instance.inventoryManagement_enable = true;
                     GameStartEffect.instance.gameStartEffect(); // test / 패턴 종류 이펙트로 변경
                     InventoryManager.instance.equip_key = false;
+                    InventoryManager.instance.canUseItem[2] = true;
                     InventoryManager.instance.distroy_key_display();
                     PatternObject.SetActive(false);
 
