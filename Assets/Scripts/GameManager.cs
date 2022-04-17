@@ -69,12 +69,13 @@ public class GameManager : MonoBehaviour
                 flag_startGame = GameStartEffect.instance.gameStartEffect();
                 ARNavigator.instance.ARNavigatorEvent(); 
             }
-            
+
+            StartCoroutine(delay(flag_dialDelay));
             if (flag_startGame && !flag_dial && !flag_dialDelay)
             {
                 DialObject.SetActive(true);
                 flag_dial = Dial.instance.DialCheck();
-                StartCoroutine(delay(flag_dialDelay));
+                
                 if (flag_dial)
                 {
                     DialObject.SetActive(false);

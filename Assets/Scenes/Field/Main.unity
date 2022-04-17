@@ -1483,6 +1483,11 @@ PrefabInstance:
       propertyPath: thumbtext
       value: 
       objectReference: {fileID: 969308512}
+    - target: {fileID: 7255742579007912392, guid: 3781838eb59ca1f4bab5faca8d2eb5c5,
+        type: 3}
+      propertyPath: dialimg_back
+      value: 
+      objectReference: {fileID: 1974262006}
     - target: {fileID: 8482860938252682559, guid: 3781838eb59ca1f4bab5faca8d2eb5c5,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2132,6 +2137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HandImage: {fileID: 1763861081}
+  swipe: 0
 --- !u!1 &1781020773
 GameObject:
   m_ObjectHideFlags: 0
@@ -2468,6 +2474,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1974262006 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5657125064426156524, guid: 3781838eb59ca1f4bab5faca8d2eb5c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1156467072}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2005964941
