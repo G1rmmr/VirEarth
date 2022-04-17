@@ -38,6 +38,18 @@ public class PlaceOnPlaneOnce : MonoBehaviour
         m_RaycastManager = GetComponent<ARRaycastManager>();
     }
 
+    bool TrySwipeAutoPosition(out Vector2 position)
+    {
+        if (ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.mano_gesture_trigger == ManoGestureTrigger.SWIPE_RIGHT)
+        {
+            position = new Vector2(0.5f * Screen.width, 0.7f * Screen.height);
+            return true;
+        }
+        position = default;
+        return false;
+    }
+
+
     bool TryGetTouchPosition(out Vector2 touchPosition)
     {
 #if UNITY_EDITOR
@@ -50,6 +62,7 @@ public class PlaceOnPlaneOnce : MonoBehaviour
 #else
         if (Input.touchCount > 0)
         {
+            touchPosition = new Vector2(0.5f * Screen.width, 0.7f * Screen.height);
             touchPosition = Input.GetTouch(0).position;
             return true;
         }
@@ -61,10 +74,12 @@ public class PlaceOnPlaneOnce : MonoBehaviour
 
     void Update()
     {
-        if (!TryGetTouchPosition(out Vector2 touchPosition))
+        /*if (!TryGetTouchPosition(out Vector2 touchPosition))
+            return;*/
+        if (!TrySwipeAutoPosition(out Vector2 position))
             return;
 
-        if (m_RaycastManager.Raycast(touchPosition, s_Hits, TrackableType.PlaneWithinPolygon))
+        if (m_RaycastManager.Raycast(position, s_Hits, TrackableType.PlaneWithinPolygon))
         {
             // Raycast hits are sorted by distance, so the first one
             // will be the closest hit.
@@ -76,6 +91,18 @@ public class PlaceOnPlaneOnce : MonoBehaviour
             }
 
         }
+        /*if (m_RaycastManager.Raycast(touchPosition, s_Hits, TrackableType.PlaneWithinPolygon))
+        {
+            // Raycast hits are sorted by distance, so the first one
+            // will be the closest hit.
+            var hitPose = s_Hits[0].pose;
+
+            if ((spawnedObject == null))
+            {
+                spawnedObject = Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation);
+            }
+
+        }*/
     }
 
     static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
