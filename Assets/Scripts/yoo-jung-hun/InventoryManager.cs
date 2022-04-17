@@ -21,6 +21,7 @@ public class InventoryManager : MonoBehaviour
     // public 변수
     public bool[] canUseItem = new bool[4];
     public bool equip_key;
+    public bool equip_card;
 
     // FLAG
     private bool flag_inventoryOn;       // 인벤토리 온 오프 flag
@@ -58,6 +59,7 @@ public class InventoryManager : MonoBehaviour
             selectedBoxImage[i].color = tempColor;
         }
         equip_key = false;
+        equip_card = false;
     }
 
 
@@ -95,7 +97,7 @@ public class InventoryManager : MonoBehaviour
                 }
                 else
                 {
-                    tempColor.a = 0.3f;
+                    tempColor.a = 0.2f;
                     panelImage[i].color = tempColor;
                 }
             }
@@ -157,6 +159,15 @@ public class InventoryManager : MonoBehaviour
                     tempColor.a = 1f;
                     selectedBoxImage[1].color = tempColor;
                     equip_key = true;
+                }
+                else if (final_selectItem == 2)
+                {
+                    eqpItmSnd.Play();//일반 아이템 장착 사운드
+
+                    var tempColor = selectedBoxImage[2].color;
+                    tempColor.a = 1f;
+                    selectedBoxImage[2].color = tempColor;
+                    equip_card = true;
                 }
                 canUseItem[final_selectItem] = false;   // 아이템 사용 완료
 

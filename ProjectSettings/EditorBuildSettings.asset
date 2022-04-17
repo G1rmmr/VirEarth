@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Field/Main.unity
     guid: 3bcfc599405c8a343b5ddd600d39dad9
   - enabled: 0
-    path: Assets/Scenes/yoo-jung-hun/onlyManomotion.unity
+    path: Assets/Scenes/yoo-jung-hun/chikenroom.unity
     guid: 436f8303ab112334f81968b2333c8f54
   - enabled: 0
     path: Assets/Scenes/yoo-jung-hun/Pattern_Scene.unity
