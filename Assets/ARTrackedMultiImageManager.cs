@@ -11,6 +11,8 @@ public class ARTrackedMultiImageManager : MonoBehaviour
     [SerializeField]
     private GameObject[] trackedPrefabs; // 이미지를 인식했을 때 출력되는 프리팹 목록
 
+    [SerializeField] AudioSource itemPkdSnd;
+
     [SerializeField]
     //private GameObject nextScene;
 
@@ -32,6 +34,8 @@ public class ARTrackedMultiImageManager : MonoBehaviour
     // 이미지를 인식했을 때 출력되는 오브젝트 목록
     private Dictionary<string, GameObject> spawnedObjects = new Dictionary<string, GameObject>();
     private ARTrackedImageManager trackedImageManager;
+
+    private PuzzleEffect puzzleEffect;
 
     private void Awake()
     {
@@ -96,8 +100,11 @@ public class ARTrackedMultiImageManager : MonoBehaviour
             //trackedObject.transform.rotation = trackedImage.transform.rotation;
 
             if (trackedObject.tag == "item" && !hasKey)
+            {
+                puzzleEffect.puzzleEffect(true);
                 trackedObject.SetActive(true);
-
+            }
+                
             // 엄지와 검지의 위치
             thumbPosition = new Vector3(ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[4].x,
                         ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[4].y,
@@ -124,6 +131,7 @@ public class ARTrackedMultiImageManager : MonoBehaviour
                     if (trackedObject.tag == "item")
                     {
                         //nextScene.SetActive(true);
+                        itemPkdSnd.Play();
                         trackedObject.SetActive(false);
                         hasKey = true;
                         // 인벤토리에 아이템 넣는 기능 추가
