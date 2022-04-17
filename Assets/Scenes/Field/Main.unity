@@ -1187,6 +1187,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &969308513 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2162016383181985895, guid: 9b485197c62f5aa4e93cf8742242adf8,
+    type: 3}
+  m_PrefabInstance: {fileID: 2162016382916419761}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd9cb42de804d74aafdc7a7a2728209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &975845344 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 127080591659705726, guid: 618abfa77a061f64fbaa2f0da758c62d,
@@ -3136,6 +3148,11 @@ PrefabInstance:
       propertyPath: TrackingText
       value: 
       objectReference: {fileID: 1862518991}
+    - target: {fileID: 4383810825290180124, guid: c90ede05386d36f4da24afc318940177,
+        type: 3}
+      propertyPath: puzzleEffect
+      value: 
+      objectReference: {fileID: 969308513}
     - target: {fileID: 4383810825290180124, guid: c90ede05386d36f4da24afc318940177,
         type: 3}
       propertyPath: imageTrackedText
