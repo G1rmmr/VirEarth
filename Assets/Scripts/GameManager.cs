@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject GPSObject;
     [SerializeField] private GameObject DialObject;
     [SerializeField] private GameObject FogEffect;
+    [SerializeField] private GameObject BoardAnimation;
     [SerializeField] public ARPlaneManager arPlaneManager;
 
     // flag
@@ -88,6 +89,10 @@ public class GameManager : MonoBehaviour
         {
             if (!flag_board)
             {
+
+                BoardAnimation.SetActive(true);
+                Destroy(BoardAnimation, 5.0f);
+               
                 ARNavigator.instance.ARNavigatorEvent();
                 flag_board = true;
             }
