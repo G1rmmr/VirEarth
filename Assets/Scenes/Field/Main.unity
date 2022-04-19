@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3266,6 +3266,11 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 812511649908108130, guid: c90ede05386d36f4da24afc318940177,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 4383810825290180113, guid: c90ede05386d36f4da24afc318940177,
         type: 3}
       propertyPath: m_PlanePrefab
@@ -3393,11 +3398,37 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4383810826877850218, guid: c90ede05386d36f4da24afc318940177,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383810826877850218, guid: c90ede05386d36f4da24afc318940177,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383810826877850218, guid: c90ede05386d36f4da24afc318940177,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4383810826877850230, guid: c90ede05386d36f4da24afc318940177,
         type: 3}
       propertyPath: far clip plane
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 4383810826877850230, guid: c90ede05386d36f4da24afc318940177,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682637693958716497, guid: c90ede05386d36f4da24afc318940177,
+        type: 3}
+      propertyPath: m_PlacedPrefab
+      value: 
+      objectReference: {fileID: 56506617344736198, guid: bd5c9a41fb7241e498d4195fd8f1f7d0,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c90ede05386d36f4da24afc318940177, type: 3}
 --- !u!1001 &6057672700023630276

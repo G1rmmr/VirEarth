@@ -166,14 +166,14 @@ public class InventoryManager : MonoBehaviour
                 {
                     var tempColor = selectedBoxImage[2].color;
                     tempColor.a = 1f;
-                    selectedBoxImage[1].color = tempColor;
+                    selectedBoxImage[2].color = tempColor;
                     equip_cardkey = true;
                 }
                 else if (final_selectItem == 3)
                 {
                     var tempColor = selectedBoxImage[3].color;
                     tempColor.a = 1f;
-                    selectedBoxImage[1].color = tempColor;
+                    selectedBoxImage[3].color = tempColor;
                     equip_vaccine = true;
                 }
                 canUseItem[final_selectItem] = false;   // 아이템 사용 완료
