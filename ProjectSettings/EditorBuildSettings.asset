@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Field/Main.unity
     guid: 3bcfc599405c8a343b5ddd600d39dad9
+  - enabled: 1
+    path: Assets/Scenes/Field/Intro.unity
+    guid: 05527fb70fc5cda4bac056491baa0198
   - enabled: 0
     path: Assets/Scenes/yoo-jung-hun/chikenroom.unity
     guid: 436f8303ab112334f81968b2333c8f54

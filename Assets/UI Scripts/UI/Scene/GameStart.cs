@@ -7,8 +7,8 @@ public class GameStart : MonoBehaviour
 {
     public void MainStageOpen()
     {
-        LoadingSceneManager.Instance.LoadScene("Main");
-        //GameOverLoad.Instance.LoadScene("Main");
+        //LoadingSceneManager.Instance.LoadScene("Main");
+        SceneManager.LoadScene("Intro");
     }
     void Start()
     {
