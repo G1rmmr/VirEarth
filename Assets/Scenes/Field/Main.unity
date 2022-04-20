@@ -338,6 +338,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: cloud_PS
       objectReference: {fileID: 0}
+    - target: {fileID: 7572994914043612313, guid: 3b11902c080774c42b05bfd74368ff02,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572994914043612315, guid: 3b11902c080774c42b05bfd74368ff02,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.3529412
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b11902c080774c42b05bfd74368ff02, type: 3}
 --- !u!1001 &413515784
