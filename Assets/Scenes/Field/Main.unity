@@ -338,6 +338,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: cloud_PS
       objectReference: {fileID: 0}
+    - target: {fileID: 7572994914043612313, guid: 3b11902c080774c42b05bfd74368ff02,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572994914043612315, guid: 3b11902c080774c42b05bfd74368ff02,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.3529412
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572994914043612315, guid: 3b11902c080774c42b05bfd74368ff02,
+        type: 3}
+      propertyPath: InitialModule.startColor.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b11902c080774c42b05bfd74368ff02, type: 3}
 --- !u!1001 &413515784
@@ -2575,6 +2590,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 358781593}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1911549972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911549971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb6d908d9241e742ba803d84b35c486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1911549974 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8514674532997853159, guid: 3781838eb59ca1f4bab5faca8d2eb5c5,
