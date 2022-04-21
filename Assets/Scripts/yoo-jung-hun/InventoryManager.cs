@@ -216,10 +216,10 @@ public class InventoryManager : MonoBehaviour
         else if (HandTracking.instance.IsFoldFinger(true, false, false, false, false)) // 3¹ø ÀÎµ¦½º
         {
             debug.text += "item2 Select\n";
-            selectItem = 2; //@@ 3
+            selectItem = 3; //@@ 3
         }
         selectItemList.Add(selectItem);
-        if (selectItemList.Count == 5)
+        if (selectItemList.Count == 11)
             selectItemList.RemoveAt(0);
 
         final_selectItem = check_selectItemList(selectItemList);

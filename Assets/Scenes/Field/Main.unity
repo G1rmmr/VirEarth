@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2468,8 +2468,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f76b181b27462944a2bed5d0c2a3fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
-  maxHp: 100
+  hp: 6000
+  maxHp: 6000
   damage: 20
   hpBar: {fileID: 780573093}
 --- !u!114 &1862518991 stripped

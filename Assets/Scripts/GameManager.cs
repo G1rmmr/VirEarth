@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         PatternObject.SetActive(false);
         //GPSObject.SetActive(false);
         DialObject.SetActive(false);
-        FogEffect.SetActive(false);  //@@ true로 변환
+        FogEffect.SetActive(true);  //@@ true로 변환
         arPlaneManager = GetComponent<ARPlaneManager>();
 
         // flag
