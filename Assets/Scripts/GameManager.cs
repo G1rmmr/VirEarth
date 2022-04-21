@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         PatternObject.SetActive(false);
         //GPSObject.SetActive(false);
         DialObject.SetActive(false);
-        FogEffect.SetActive(true);
+        FogEffect.SetActive(false);  //@@ true·Î º¯È¯
         arPlaneManager = GetComponent<ARPlaneManager>();
 
         // flag
@@ -71,12 +71,12 @@ public class GameManager : MonoBehaviour
                 ARNavigator.instance.ARNavigatorEvent(); 
             }
 
-            StartCoroutine(delay(flag_dialDelay));
-            if (flag_startGame && !flag_dial && !flag_dialDelay)
+            //StartCoroutine(delay(flag_dialDelay));
+            if (!flag_dial && InventoryManager.instance.equip_cardkey)
             {
                 DialObject.SetActive(true);
-                flag_dial = Dial.instance.DialCheck();
-                
+                Dial.instance.DDDial();
+                flag_dial = Dial.instance.clear;
                 if (flag_dial)
                 {
                     DialObject.SetActive(false);

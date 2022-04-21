@@ -7,12 +7,16 @@ public class Dial : MonoBehaviour
 {
     public static Dial instance; // 인스턴스
 
+    public bool enable = true;
+    public bool clear = false;
+
     [SerializeField] private Image dialimg;
     [SerializeField] private Image dialimg_back;
     [SerializeField] private Text dialtext;
     [SerializeField] private Text thumbtext;
     private int degree = 0;
     private int goal;
+    private bool once;
 
     private void Awake()
     {
@@ -24,12 +28,32 @@ public class Dial : MonoBehaviour
     {
         dialimg.enabled = false;
         dialimg_back.enabled = false;
+        once = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         //DialCheck();
+    }
+
+    public void DDDial()
+    {
+        if (once == false)
+            return;
+        StartCoroutine(DDial());
+        once = false;
+    }
+
+    IEnumerator DDial()
+    {
+        while (true)
+        {
+            enable = DialCheck();
+            yield return new WaitForSeconds(0.5f);
+            if (enable == true)
+                break;
+        }
     }
 
     public bool DialCheck()
@@ -39,17 +63,20 @@ public class Dial : MonoBehaviour
             dialimg.enabled = true;
             dialimg_back.enabled = true;
             //thumbtext.text = "finger on";
+            //clear = false;
             //return false;
         }
         else
         {
             dialimg.enabled = false;
             dialimg_back.enabled = false;
+            clear = false;
             return false;
         }
         
         if (((int)ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.mano_class) != 2)
         {
+            clear = false;
             return false;
         }
         
@@ -88,6 +115,7 @@ public class Dial : MonoBehaviour
             }
             
         }
+        clear = false;
         return false; //@@@@@@
     }
 
