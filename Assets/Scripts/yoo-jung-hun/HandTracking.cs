@@ -40,7 +40,8 @@ public class HandTracking : MonoBehaviour
         if (InventoryManager.instance.equip_cardkey)
         {
             if (ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.mano_gesture_trigger == ManoGestureTrigger.SWIPE_RIGHT)
-                StartCoroutine(swiping());
+                if (!swipe)
+                    StartCoroutine(swiping());
         }
     }
     private IEnumerator swiping()
@@ -84,6 +85,29 @@ public class HandTracking : MonoBehaviour
                     return false;
             }
         }
+
+        if ((hand.skeleton.joints[8].y < hand.skeleton.joints[6].y) == (point)) { } // 검지
+        else
+            return false;
+
+        if ((hand.skeleton.joints[12].y < hand.skeleton.joints[10].y) == (big)) { } // 중지
+        else
+            return false;
+
+        if ((hand.skeleton.joints[16].y < hand.skeleton.joints[14].y) == (four)) { } // 약지
+        else
+            return false;
+
+        if ((hand.skeleton.joints[20].y < hand.skeleton.joints[18].y) == (little)) { } // 새끼
+        else
+            return false;
+
+        return true;
+    }
+
+    public bool getFingers(bool point, bool big, bool four, bool little)
+    {
+        TrackingInfo hand = ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info;
 
         if ((hand.skeleton.joints[8].y < hand.skeleton.joints[6].y) == (point)) { } // 검지
         else

@@ -26,91 +26,95 @@ public class gps : MonoBehaviour
 
     IEnumerator Gps_manger()
     {
-        if(!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
+        while (true)
         {
-            Permission.RequestUserPermission(Permission.FineLocation);
-            while(!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
+            if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
             {
-                yield return null;
+                Permission.RequestUserPermission(Permission.FineLocation);
+                while (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
+                {
+                    yield return null;
+                }
             }
-        }
-        if(!Input.location.isEnabledByUser)
-        {
-            data[3].text = "GPS Unable.";
-        }
-        Input.location.Start();
-        while(Input.location.status == LocationServiceStatus.Initializing && delay < maxtime )
-        {
-            yield return new WaitForSeconds(1.0f);
-            delay++;
-        }
-        if(Input.location.status == LocationServiceStatus.Failed || Input.location.status == LocationServiceStatus.Stopped)
-        {
-            data[3].text = "Failed";
-        }
-        if(delay >= maxtime)
-        {
-            data[3].text = "Time Over";
-        }
-        
-        sec++;
-        data[0].text = "Latitude : " + Input.location.lastData.latitude.ToString();
-        data[1].text = "Longitude : " + Input.location.lastData.longitude.ToString();
-        //data[2].text = "Altitude : " + Input.location.lastData.altitude.ToString();
-        data[3].text = "GPS ON.  "+sec + "times renewed";
-
-        //B_A 37.37476, 126.63353
-        //B-B 37.37456, 126.63393
-        //A 37.37463, 126.63307
-        if (IsIN(37.37476, 126.63353)) //B_A 검사
-        {
-            isIn[0].text = "in B_A";
-            rateB++;
-        }
-        else if (IsIN(37.37456, 126.63393)) //B_B 검사
-        {
-            isIn[0].text = "in B_B";
-            rateB++;
-        }
-        else if(IsIN(37.37463, 126.63307)) //A 검사
-        {
-            isIn[0].text = "in A";
-            rateA++;
-        }
-        else
-        {
-            isIn[0].text = "not in";
-        }
-        countRate++;
-
-        //GPS 정확도 검사
-        if(countRate == 30)
-        {
-            if(AccuracyTest(rateB))
+            if (!Input.location.isEnabledByUser)
             {
-                isInA = false;
-                isInB = true;
-                isIn[1].text = "in B now";
+                data[3].text = "GPS Unable.";
             }
-            else if(AccuracyTest(rateA))
+            Input.location.Start();
+            while (Input.location.status == LocationServiceStatus.Initializing && delay < maxtime)
             {
-                isInA = true;
-                isInB = false;
-                isIn[1].text = "in A now";
+                yield return new WaitForSeconds(1.0f);
+                delay++;
+            }
+            if (Input.location.status == LocationServiceStatus.Failed || Input.location.status == LocationServiceStatus.Stopped)
+            {
+                data[3].text = "Failed";
+            }
+            if (delay >= maxtime)
+            {
+                data[3].text = "Time Over";
+            }
+
+            sec++;
+            data[0].text = "Latitude : " + Input.location.lastData.latitude.ToString();
+            data[1].text = "Longitude : " + Input.location.lastData.longitude.ToString();
+            //data[2].text = "Altitude : " + Input.location.lastData.altitude.ToString();
+            data[3].text = "GPS ON.  " + sec + "times renewed";
+
+            //B_A 37.37476, 126.63353
+            //B-B 37.37456, 126.63393
+            //A 37.37463, 126.63307
+            if (IsIN(37.37476, 126.63353)) //B_A 검사
+            {
+                isIn[0].text = "in B_A";
+                rateB++;
+            }
+            else if (IsIN(37.37456, 126.63393)) //B_B 검사
+            {
+                isIn[0].text = "in B_B";
+                rateB++;
+            }
+            else if (IsIN(37.37463, 126.63307)) //A 검사
+            {
+                isIn[0].text = "in A";
+                rateA++;
             }
             else
             {
-                isInA = false;
-                isInB = false;
-                isIn[1].text = "not in now";
+                isIn[0].text = "not in";
             }
-            countRate = 0;
-            rateA = 0;
-            rateB = 0;
-        }
+            countRate++;
 
-        yield return new WaitForSeconds(1.0f);
-        StartCoroutine(Gps_manger());
+            //GPS 정확도 검사
+            if (countRate == 30)
+            {
+                if (AccuracyTest(rateB))
+                {
+                    isInA = false;
+                    isInB = true;
+                    isIn[1].text = "in B now";
+                }
+                else if (AccuracyTest(rateA))
+                {
+                    isInA = true;
+                    isInB = false;
+                    isIn[1].text = "in A now";
+                }
+                else
+                {
+                    isInA = false;
+                    isInB = false;
+                    isIn[1].text = "not in now";
+                }
+                countRate = 0;
+                rateA = 0;
+                rateB = 0;
+            }
+
+            yield return new WaitForSeconds(1.0f);
+        }
+        
+        //StartCoroutine(Gps_manger());
 
     }
        

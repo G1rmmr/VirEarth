@@ -69,8 +69,8 @@ public class InventoryManager : MonoBehaviour
     {
         if (inventoryManagement_enable == false)
             return;
-        if (!HandTracking.isHandOn)
-            return;
+        /*if (!HandTracking.isHandOn)
+            return;*/
         debug.text = "It is Debug Text\n";
         if (flag_inventoryOn)
             debug.text += "flag : True\n";
@@ -192,7 +192,7 @@ public class InventoryManager : MonoBehaviour
             debug.text += "SelectItem() no palm\n";
             return;
         }*/
-
+        // *******************************************************************************************************
         if (HandTracking.instance.IsFoldFinger(false, false, false, false, false)) // 4¹ø ÀÎµ¦½º
         {
             debug.text += "no search item\n";
@@ -216,10 +216,36 @@ public class InventoryManager : MonoBehaviour
         else if (HandTracking.instance.IsFoldFinger(true, false, false, false, false)) // 3¹ø ÀÎµ¦½º
         {
             debug.text += "item2 Select\n";
-            selectItem = 3; //@@ 3
+            selectItem = 3;
         }
+        // *******************************************************************************************************
+
+        /*if (HandTracking.instance.getFingers(false, false, false, false)) // 4¹ø ÀÎµ¦½º
+        {
+            debug.text += "no search item\n";
+            selectItem = 4;
+        }
+        else if (HandTracking.instance.getFingers(false, true, true, true)) // 0¹ø ÀÎµ¦½º
+        {
+            debug.text += "item0 Select\n";
+            selectItem = 0;
+        }
+        else if (HandTracking.instance.getFingers(false, false, true, true)) // 1¹ø ÀÎµ¦½º
+        {
+            debug.text += "item1 Select\n";
+            selectItem = 1;
+        }
+        else if (HandTracking.instance.getFingers(false, false, false, true)) // 2¹ø ÀÎµ¦½º
+        {
+            debug.text += "item2 Select\n";
+            selectItem = 2;
+        }*/
+        // *******************************************************************************************************
+
+
+
         selectItemList.Add(selectItem);
-        if (selectItemList.Count == 11)
+        if (selectItemList.Count == 6)
             selectItemList.RemoveAt(0);
 
         final_selectItem = check_selectItemList(selectItemList);
