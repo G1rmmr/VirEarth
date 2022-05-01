@@ -691,6 +691,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1443397272}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &434043402 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3565206906930884705, guid: f11ab7220e39391408e588017eaf292a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1461379782}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &569331417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1005,7 +1011,6 @@ GameObject:
   m_Component:
   - component: {fileID: 780573092}
   - component: {fileID: 780573093}
-  - component: {fileID: 780573094}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -1085,24 +1090,86 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &780573094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780573091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &780811582 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4692216960338552427, guid: ee577cb4643af874a96a9411b2529aa2,
     type: 3}
   m_PrefabInstance: {fileID: 413515784}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &796825268
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 56506617344736198, guid: c132fd52e2834f74d97e22f968efc71d,
+        type: 3}
+      propertyPath: m_Name
+      value: ARPortal_ChikenRoom test
+      objectReference: {fileID: 0}
+    - target: {fileID: 56506617344736198, guid: c132fd52e2834f74d97e22f968efc71d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 56506617344736225, guid: c132fd52e2834f74d97e22f968efc71d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 56506617344736225, guid: c132fd52e2834f74d97e22f968efc71d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 56506617344736225, guid: c132fd52e2834f74d97e22f968efc71d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 56506617344736225, guid: c132fd52e2834f74d97e22f968efc71d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 56506617344736225, guid: c132fd52e2834f74d97e22f968efc71d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 56506617344736225, guid: c132fd52e2834f74d97e22f968efc71d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 56506617344736225, guid: c132fd52e2834f74d97e22f968efc71d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 56506617344736225, guid: c132fd52e2834f74d97e22f968efc71d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 56506617344736225, guid: c132fd52e2834f74d97e22f968efc71d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 56506617344736225, guid: c132fd52e2834f74d97e22f968efc71d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 56506617344736225, guid: c132fd52e2834f74d97e22f968efc71d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c132fd52e2834f74d97e22f968efc71d, type: 3}
 --- !u!1 &797114522
 GameObject:
   m_ObjectHideFlags: 0
@@ -3891,6 +3958,11 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4682637693958716497, guid: c90ede05386d36f4da24afc318940177,
+        type: 3}
+      propertyPath: Flash_Effect
+      value: 
+      objectReference: {fileID: 434043402}
     - target: {fileID: 4682637693958716497, guid: c90ede05386d36f4da24afc318940177,
         type: 3}
       propertyPath: m_PlacedPrefab

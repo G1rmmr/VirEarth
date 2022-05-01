@@ -139,6 +139,7 @@ public class GameManager : MonoBehaviour
                 if (flag_pattern)
                 {
                     // 키 카드 확보
+                    showText.instance.ShowText("카드키를 획득하였습니다");
                     //InventoryManager.instance.set_inventoryManagement_enable(true);
                     InventoryManager.instance.inventoryManagement_enable = true;
                     //GameStartEffect.instance.gameStartEffect(); // test / 패턴 종류 이펙트로 변경
