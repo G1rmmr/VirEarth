@@ -30,7 +30,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2812628324494974010}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -188,7 +188,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2812628324494974010}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -658,9 +658,9 @@ RectTransform:
   - {fileID: 5055238061578244706}
   - {fileID: 4918067018450318795}
   - {fileID: 7349910484941246718}
-  - {fileID: 3188249757916242557}
-  - {fileID: 4421809189731591430}
   - {fileID: 5796681386850883253}
+  - {fileID: 4421809189731591430}
+  - {fileID: 3188249757916242557}
   - {fileID: 4801896507321570967}
   - {fileID: 5725294138288229427}
   m_Father: {fileID: 1716442790862834883}
@@ -778,15 +778,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enable: 1
   clear: 0
-  dialimg: {fileID: 0}
-  dialimg_back: {fileID: 0}
-  dialtext: {fileID: 0}
-  thumbtext: {fileID: 0}
-  checktext: {fileID: 0}
-  indextext: {fileID: 0}
-  lockerPWtext: {fileID: 0}
-  chargerPWtext: {fileID: 0}
-  inputtext: {fileID: 0}
+  dialimg: {fileID: 5399705356866223187}
+  dialimg_back: {fileID: 5657125064426156524}
+  dialtext: {fileID: 8514674532997853159}
+  thumbtext: {fileID: 1623700575561559907}
+  checktext: {fileID: 3145672874202734978}
+  indextext: {fileID: 3835562901085064730}
+  lockerPWtext: {fileID: 7932239181945451211}
+  chargerPWtext: {fileID: 5468919716156176302}
+  inputtext: {fileID: 2116221913755405314}
 --- !u!1 &8471829133910942151
 GameObject:
   m_ObjectHideFlags: 0
