@@ -16,6 +16,10 @@ public class Dial : MonoBehaviour
     [SerializeField] private Text dialtext;
     [SerializeField] private Text thumbtext;
     [SerializeField] private Text checktext;
+    [SerializeField] private Text indextext;
+    [SerializeField] private Text lockerPWtext;
+    [SerializeField] private Text chargerPWtext;
+    [SerializeField] private Text inputtext;
     private int degree = 0;
     private int goal;
     private int check = 0;
@@ -128,6 +132,10 @@ public class Dial : MonoBehaviour
             {
                 degree = (degree + 360) % 360;
                 dialInput[index] = degree;
+                indextext.text = index.ToString();
+                lockerPWtext.text = lockerPW[index].ToString();
+                chargerPWtext.text = chargerPW[index].ToString();
+                inputtext.text = degree.ToString();
                 if (lockerFlag)
                 {
                     if(index == 4)
