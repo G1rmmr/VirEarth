@@ -26,10 +26,9 @@ public class GameStartEffect : MonoBehaviour
     IEnumerator Show()
     {
         strtTxt.text = "S T A R T";
-
+        strtTxt.fontSize = 30;
         for (int i = 0; i <= 100; i++)
         {
-            strtTxt.fontSize = i;
             strtTxt.color = new Vector4(1, 1, 1, 1 - (0.01f * i));
             yield return new WaitForSeconds(0.02f);
         }

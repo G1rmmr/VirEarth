@@ -79,7 +79,7 @@ public class PlaceOnPlane : MonoBehaviour
             return;*/
         if (!HandTracking.instance.swipe)
             return;
-        Vector2 touchPosition = new Vector2(0.5f * Screen.width, 0.7f * Screen.height);
+        Vector2 touchPosition = new Vector2(0.5f * Screen.width, 0.5f * Screen.height);
         if (m_RaycastManager.Raycast(touchPosition, s_Hits, TrackableType.PlaneWithinPolygon))
         {
             // Raycast hits are sorted by distance, so the first one

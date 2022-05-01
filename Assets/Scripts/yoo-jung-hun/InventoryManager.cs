@@ -245,7 +245,7 @@ public class InventoryManager : MonoBehaviour
 
 
         selectItemList.Add(selectItem);
-        if (selectItemList.Count == 6)
+        if (selectItemList.Count == 8)
             selectItemList.RemoveAt(0);
 
         final_selectItem = check_selectItemList(selectItemList);
