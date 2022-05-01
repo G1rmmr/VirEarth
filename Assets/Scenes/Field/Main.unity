@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -406,7 +406,7 @@ PrefabInstance:
     - target: {fileID: 7572994914043612308, guid: 3b11902c080774c42b05bfd74368ff02,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7572994914043612308, guid: 3b11902c080774c42b05bfd74368ff02,
         type: 3}
@@ -527,7 +527,7 @@ PrefabInstance:
     - target: {fileID: 4692216960338552425, guid: ee577cb4643af874a96a9411b2529aa2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 4692216960338552425, guid: ee577cb4643af874a96a9411b2529aa2,
         type: 3}
@@ -721,7 +721,7 @@ PrefabInstance:
     - target: {fileID: 7267663615374429589, guid: ba3d19f511b586a46a2e060ee0b3ef15,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7267663615374429589, guid: ba3d19f511b586a46a2e060ee0b3ef15,
         type: 3}
@@ -815,12 +815,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba3d19f511b586a46a2e060ee0b3ef15, type: 3}
---- !u!1 &695467992 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4692216960338552427, guid: ee577cb4643af874a96a9411b2529aa2,
-    type: 3}
-  m_PrefabInstance: {fileID: 413515784}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,6 +1097,12 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &780811582 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4692216960338552427, guid: ee577cb4643af874a96a9411b2529aa2,
+    type: 3}
+  m_PrefabInstance: {fileID: 413515784}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &797114522
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,7 +1284,7 @@ MonoBehaviour:
   start: {fileID: 19008346}
   poisoned: {fileID: 1083567213}
   puzzle: {fileID: 1697606247}
-  gps: {fileID: 695467992}
+  gps: {fileID: 780811582}
 --- !u!114 &845410276 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 127080591797583226, guid: 618abfa77a061f64fbaa2f0da758c62d,
@@ -1330,7 +1330,7 @@ PrefabInstance:
     - target: {fileID: 3759536286479051321, guid: 2e89daa59d219b54ab5c70be5af20a1c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3759536286479051321, guid: 2e89daa59d219b54ab5c70be5af20a1c,
         type: 3}
@@ -1527,7 +1527,7 @@ PrefabInstance:
     - target: {fileID: 1716442790862834883, guid: 3781838eb59ca1f4bab5faca8d2eb5c5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1716442790862834883, guid: 3781838eb59ca1f4bab5faca8d2eb5c5,
         type: 3}
@@ -1953,7 +1953,7 @@ PrefabInstance:
     - target: {fileID: 3565206906930884719, guid: f11ab7220e39391408e588017eaf292a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3565206906930884719, guid: f11ab7220e39391408e588017eaf292a,
         type: 3}
@@ -2193,7 +2193,7 @@ PrefabInstance:
     - target: {fileID: 5663042419877653005, guid: 4ffa1bd622839644d9f9f55ad49d70b0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5663042419877653005, guid: 4ffa1bd622839644d9f9f55ad49d70b0,
         type: 3}
@@ -2442,7 +2442,7 @@ MonoBehaviour:
   ARObject: {fileID: 887210787}
   HPObject: {fileID: 1857000554}
   PatternObject: {fileID: 422582347}
-  GPSObject: {fileID: 695467992}
+  GPSObject: {fileID: 780811582}
   DialObject: {fileID: 1515140308}
   FogEffect: {fileID: 1911549971}
   BoardAnimation: {fileID: 1839175158}
@@ -2592,7 +2592,7 @@ PrefabInstance:
     - target: {fileID: 8670877400017490037, guid: 6c000143c3daf4947bdbdf211eba0f59,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 8670877400017490037, guid: 6c000143c3daf4947bdbdf211eba0f59,
         type: 3}
@@ -3385,7 +3385,7 @@ PrefabInstance:
     - target: {fileID: 3908072827555488440, guid: 618abfa77a061f64fbaa2f0da758c62d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3908072827555488440, guid: 618abfa77a061f64fbaa2f0da758c62d,
         type: 3}
@@ -3574,7 +3574,7 @@ PrefabInstance:
     - target: {fileID: 2162016383181985894, guid: 9b485197c62f5aa4e93cf8742242adf8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 2162016383181985894, guid: 9b485197c62f5aa4e93cf8742242adf8,
         type: 3}
@@ -3648,7 +3648,7 @@ PrefabInstance:
     - target: {fileID: 8090736958544729319, guid: e5f2a560b0793314e8e611321a694f0e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8090736958544729319, guid: e5f2a560b0793314e8e611321a694f0e,
         type: 3}
