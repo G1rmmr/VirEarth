@@ -7,8 +7,8 @@ public class Bgm_manager : MonoBehaviour
     [SerializeField] AudioSource start, poisoned, puzzle;
     [SerializeField] GameObject gps;
 
-    public static HPManager instance;
-    private int pFlag = 0, zFlag = 0;
+    //public static HPManager instance;
+    private int pFlag = 0, zFlag = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,12 +17,14 @@ public class Bgm_manager : MonoBehaviour
     }
     IEnumerator eventProcess()
     {
-        while (true){
-            if (instance.hp <= 50 && pFlag == 0)
+        while (true){ 
+            
+            if (HPManager.instance.hp <= 50 && pFlag == 0)
             {
                 start.Pause();
                 poisoned.Play();
                 pFlag = 1;
+                zFlag = 0;
             }
             if (gps.GetComponent<gps>().isInB == false && zFlag == 0)
             {
