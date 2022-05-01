@@ -14,7 +14,7 @@ public class ARTrackedMultiImageManager : MonoBehaviour
     [SerializeField] AudioSource itemPkdSnd;
 
     [SerializeField]
-    //private GameObject nextScene;
+    private GameObject pickupPictogram;
 
     public Text imageTrackedText; // 인식된 물체 표시
     public Text showFingerPosition; // 검지 위치(디버그)
@@ -104,6 +104,7 @@ public class ARTrackedMultiImageManager : MonoBehaviour
             {
                 //puzzleEffect.puzzleEffect(true);
                 trackedObject.SetActive(true);
+                pickupPictogram.SetActive(true);
             }
                 
             // 엄지와 검지의 위치
@@ -133,7 +134,9 @@ public class ARTrackedMultiImageManager : MonoBehaviour
                     {
                         //itemPkdSnd.Play();
                         trackedObject.SetActive(false);
+                        pickupPictogram.SetActive(false);
                         hasKey = true;
+                        showText.instance.ShowText("열쇠를 획득하였습니다");
                         InventoryManager.instance.canUseItem[1] = true;
                     }
                 }
