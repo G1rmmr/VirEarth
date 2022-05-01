@@ -36,6 +36,7 @@ public class InventoryManager : MonoBehaviour
     private int[] selectItemArray = new int[3];
     private int final_selectItem = 4;
     private int now_selectItem = 4;
+    private Vector2[] tipPos = new Vector2[5];
 
     private void Awake()
     {
@@ -53,6 +54,8 @@ public class InventoryManager : MonoBehaviour
             var tempColor = backImage[i].color;
             tempColor.a = 0f;
             backImage[i].color = tempColor;
+            tipPos[i] = tips[i].transform.position;
+            tips[i].enabled = false;
         }
         for (int i = 0; i < 4; i++)
         {
@@ -83,9 +86,11 @@ public class InventoryManager : MonoBehaviour
         if (flag_inventoryOn)
         {
             Color tempColor;
+
             for (int i = 0; i < 5; i++)
             {
                 backImage[i].color = Color.white;
+                tips[i].enabled = false;
             }
 
             for (int i = 0; i < 4; i++)
@@ -111,6 +116,18 @@ public class InventoryManager : MonoBehaviour
             tempColor.a = 1f;
             backImage[final_selectItem].color = tempColor;*/
             backImage[final_selectItem].color = new Color(0.81f, 0.81f, 0.3f, 1f);
+            //tips[final_selectItem].color = new Color(0.9f, 0.9f, 0.9f, 0.78f);
+            tips[final_selectItem].enabled = true;
+            
+
+            if (ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.is_right == 0)
+            {
+                tips[final_selectItem].transform.position = new Vector2(tipPos[final_selectItem].x + 200, tipPos[final_selectItem].y);
+            }
+            else
+            {
+                tips[final_selectItem].transform.position = new Vector2(tipPos[final_selectItem].x - 200, tipPos[final_selectItem].y);
+            }
         }
         return;
     }
