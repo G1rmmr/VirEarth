@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,9 +15,17 @@ public class Dial : MonoBehaviour
     [SerializeField] private Image dialimg_back;
     [SerializeField] private Text dialtext;
     [SerializeField] private Text thumbtext;
+    [SerializeField] private Text checktext;
     private int degree = 0;
     private int goal;
+    private int check = 0;
+    private int index = 0;
     private bool once;
+    private bool lockerFlag = true;
+    private bool chargerFlag = false;
+    private int[] lockerPW = new int[5] { 300, 30, 60, 240, -1 };
+    private int[] chargerPW = new int[5] { 150, 270, 90, 270, 330 };
+    private int[] dialInput = new int[5] { -1, -1, -1, -1, -1 };
 
     private void Awake()
     {
@@ -29,6 +38,7 @@ public class Dial : MonoBehaviour
         dialimg.enabled = false;
         dialimg_back.enabled = false;
         once = true;
+        checktext.text = "NOPE";
     }
 
     // Update is called once per frame
@@ -100,8 +110,8 @@ public class Dial : MonoBehaviour
             }
             else if(DialTurn(x2, y2) == 1) //회전X
             {
-                //dialimg.transform.localEulerAngles = new Vector3(0, 0, 0);
                 dialtext.text = "NONE";
+                check++;
             }
             else if(DialTurn(x2, y2) == 2) //시계 회전
             {
@@ -114,6 +124,35 @@ public class Dial : MonoBehaviour
                 dialtext.text = "EEE";
             }
             
+            if(check == 3)
+            {
+                degree = (degree + 360) % 360;
+                dialInput[index] = degree;
+                if (lockerFlag)
+                {
+                    if(index == 4)
+                    {
+                        if (lockerPW.SequenceEqual(dialInput))
+                        {
+                            lockerFlag = false;
+                            chargerFlag = true;
+                            checktext.text = "LOCKER UNLOCK";
+                        }
+                    }
+                }
+                else if (chargerFlag)
+                {
+                    if (index == 5)
+                    {
+                        if (chargerPW.SequenceEqual(dialInput))
+                        {
+                            chargerFlag = false;
+                            checktext.text = "CHARGER UNLOCK";
+                        }
+                    }
+                }
+                index++;
+            }
         }
         clear = false;
         return false; //@@@@@@
