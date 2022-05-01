@@ -17,6 +17,7 @@ public class PlaceOnPlane : MonoBehaviour
     [Tooltip("Instantiates this prefab on a plane at the touch location.")]
     GameObject m_PlacedPrefab;
 
+    [SerializeField] GameObject Flash_Effect;
     //[SerializeField] AudioSource genSnd;
 
     /// <summary>
@@ -88,6 +89,7 @@ public class PlaceOnPlane : MonoBehaviour
 
             if ((spawnedObject == null))
             {
+                Flash_Effect.SetActive(true);
                 //genSnd.Play(); //소환 사운드
                 spawnedObject = Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation);
                 InventoryManager.instance.equip_cardkey = false;
