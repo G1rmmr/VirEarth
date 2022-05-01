@@ -113,8 +113,12 @@ public class GameManager : MonoBehaviour
 
             //GPSObject.SetActive(true);    // GPS ON!
         }
+<<<<<<< Updated upstream
         
         if (GPSObject.GetComponent<gps>().isInB == true)
+=======
+        if (GPSObject.GetComponent<gps>().inB == true)
+>>>>>>> Stashed changes
         {
             if (!flag_hp)
             {

@@ -13,11 +13,18 @@ public class gps : MonoBehaviour
     public float maxtime = 5.0f;
     public int sec = 0;
     public int countRate = 0;
+<<<<<<< Updated upstream
     public int rateA = 0;
     public int rateB = 0;
     public bool isInB = false;
     public bool isInA = false;
     
+=======
+    public int rate = 0;
+    public bool isInX = false;
+    public bool isInY = false;
+    public bool inB = false;
+>>>>>>> Stashed changes
     // Start is called before the first frame update
     void Start()
     {
@@ -118,6 +125,7 @@ public class gps : MonoBehaviour
 
             yield return new WaitForSeconds(1.0f);
         }
+<<<<<<< Updated upstream
         
         //StartCoroutine(Gps_manger());
 
@@ -129,10 +137,63 @@ public class gps : MonoBehaviour
         if (Math.Abs(Input.location.lastData.latitude - x) < 0.0002 && Math.Abs(Input.location.lastData.longitude - y) < 0.0003)
         {
             return true;
-        }
-        else
+=======
+        if(Input.location.status == LocationServiceStatus.Failed || Input.location.status == LocationServiceStatus.Stopped)
         {
+            data[3].text = "Failed";
+        }
+        if(delay >= maxtime)
+        {
+            data[3].text = "Time Over";
+        }
+        
+        sec++;
+        data[0].text = "Latitude : " + Input.location.lastData.latitude.ToString();
+        data[1].text = "Longitude : " + Input.location.lastData.longitude.ToString();
+        //data[2].text = "Altitude : " + Input.location.lastData.altitude.ToString(); //고도는 현재 사용하지 않음
+        data[3].text = "GPS ON.  "+sec+"times renewed"; //GPS 갱신 확인 용도 (추후 삭제)
+
+        //범위 내부 검사
+        //B동_A 내부
+        if (Math.Abs(Input.location.lastData.latitude - 37.37476 ) < 0.0002 && Math.Abs(Input.location.lastData.longitude - 126.63358) < 0.0003) 
+        {
+            isIn[0].text = "inB_A";
+            countRate++;
+            rate++;
+        }
+        //B동_B 내부
+        else if (Math.Abs(Input.location.lastData.latitude - 37.37456) < 0.0002 && Math.Abs(Input.location.lastData.longitude - 126.63393) < 0.0003) 
+        {
+            isIn[0].text = "inB_B";
+            countRate++;
+            rate++;
+        }
+        else //B동 외부
+        {
+            isIn[0].text = "OUT of B";
+            countRate++;
+>>>>>>> Stashed changes
+        }
+        
+        //범위 내부 비율 검사
+        if(countRate == 40)
+        {
+<<<<<<< Updated upstream
             return false;
+=======
+            if(rate > 26)
+            {
+                inB = true; //최종 B동 내부
+                isIn[1].text = "inB";
+            }
+            else
+            {
+                inB = false; //최종 B동 외부
+                isIn[1].text = "not inB";
+            }
+            countRate = 0;
+            rate = 0;
+>>>>>>> Stashed changes
         }
     }
 
