@@ -90,11 +90,12 @@ public class PlaceOnPlane : MonoBehaviour
             {
                 //genSnd.Play(); //소환 사운드
                 spawnedObject = Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation);
+                InventoryManager.instance.equip_cardkey = false;
             }
-            else
+            /*else
             {
                 spawnedObject.transform.position = hitPose.position;
-            }
+            }*/
         }
     }
 
