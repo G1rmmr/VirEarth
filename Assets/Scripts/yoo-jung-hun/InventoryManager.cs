@@ -14,8 +14,9 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private Image[] backImage = new Image[5];
     [SerializeField] private Image[] panelImage = new Image[5];
     [SerializeField] private Image[] selectedBoxImage = new Image[4];
+    [SerializeField] private Image[] tips = new Image[5];
     [SerializeField] private GameObject HPObject;
-    [SerializeField] private AudioSource openInvenSnd, slcItmSnd, eqpItmSnd;
+    [SerializeField] private AudioSource openInvenSnd, slcItmSnd, eqpItmSnd, antiSnd;
 
 
     // public 변수
@@ -130,7 +131,7 @@ public class InventoryManager : MonoBehaviour
         }
         else if (HandTracking.instance.IsFoldFinger(true, true, true, true, true) && flag_inventoryOn)
         {
-            eqpItmSnd.Play();//인벤토리 오픈 사운드
+            eqpItmSnd.Play();//인벤토리 장착 사운드
 
             debug.text += "Inventory OFF\n";
             flag_inventoryOn = false;
@@ -146,6 +147,7 @@ public class InventoryManager : MonoBehaviour
                 if (final_selectItem == 0)  // 항생제
                 {
                     //꿀꺽 사운드
+                    antiSnd.Play();
 
                     if (HPObject.activeSelf == false)
                         return;
@@ -250,9 +252,17 @@ public class InventoryManager : MonoBehaviour
         final_selectItem = check_selectItemList(selectItemList);
 
         if(now_selectItem != final_selectItem)
+        {
             slcItmSnd.Play();//아이템 선텍 사운드
+            Color temp = tips[now_selectItem].color;
+            temp.a = 0;
+
+        }
 
         now_selectItem = final_selectItem;
+
+        Color tmp = tips[now_selectItem].color;
+        tmp.a = 1;
     }
 
     private int check_selectItemList(List<int> ls)
