@@ -13,18 +13,18 @@ public class gps : MonoBehaviour
     public float maxtime = 5.0f;
     public int sec = 0;
     public int countRate = 0;
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
     public int rateA = 0;
     public int rateB = 0;
     public bool isInB = false;
     public bool isInA = false;
     
-=======
+//=======
     public int rate = 0;
     public bool isInX = false;
     public bool isInY = false;
     public bool inB = false;
->>>>>>> Stashed changes
+//>>>>>>> Stashed changes
     // Start is called before the first frame update
     void Start()
     {
@@ -125,7 +125,7 @@ public class gps : MonoBehaviour
 
             yield return new WaitForSeconds(1.0f);
         }
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
         
         //StartCoroutine(Gps_manger());
 
@@ -137,7 +137,8 @@ public class gps : MonoBehaviour
         if (Math.Abs(Input.location.lastData.latitude - x) < 0.0002 && Math.Abs(Input.location.lastData.longitude - y) < 0.0003)
         {
             return true;
-=======
+        }
+//=======
         if(Input.location.status == LocationServiceStatus.Failed || Input.location.status == LocationServiceStatus.Stopped)
         {
             data[3].text = "Failed";
@@ -172,15 +173,15 @@ public class gps : MonoBehaviour
         {
             isIn[0].text = "OUT of B";
             countRate++;
->>>>>>> Stashed changes
+//>>>>>>> Stashed changes
         }
         
         //범위 내부 비율 검사
         if(countRate == 40)
         {
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
             return false;
-=======
+//=======
             if(rate > 26)
             {
                 inB = true; //최종 B동 내부
@@ -193,8 +194,9 @@ public class gps : MonoBehaviour
             }
             countRate = 0;
             rate = 0;
->>>>>>> Stashed changes
+//>>>>>>> Stashed changes
         }
+        return false;
     }
 
     private bool AccuracyTest(int rate)
