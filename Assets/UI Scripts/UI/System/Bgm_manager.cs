@@ -7,6 +7,13 @@ public class Bgm_manager : MonoBehaviour
     [SerializeField] AudioSource start, poisoned, puzzle;
     [SerializeField] GameObject gps;
 
+    public static Bgm_manager intnstance;
+    private void Awake()
+    {
+        intnstance = this;
+    }
+
+    private int nowBGM = 0;
     //public static HPManager instance;
     private int pFlag = 0, zFlag = 1;
     // Start is called before the first frame update
@@ -14,6 +21,38 @@ public class Bgm_manager : MonoBehaviour
     {
         start.Play();
         StartCoroutine("eventProcess");
+    }
+    public void pasueBGM()
+    {
+        switch (nowBGM)
+        {
+            case 0: 
+                start.Pause();
+                break;
+            case 1:
+                poisoned.Pause();
+                break;
+            case 2:
+                puzzle.Pause();
+                break;
+        }
+    }
+    public void playBGM()
+    {
+        switch (nowBGM)
+        {
+            case 0:
+                start.Play();
+                break;
+
+            case 1:
+                poisoned.Play();
+                break;
+
+            case 2:
+                puzzle.Play();
+                break;
+        }
     }
     IEnumerator eventProcess()
     {
@@ -23,6 +62,8 @@ public class Bgm_manager : MonoBehaviour
             {
                 start.Pause();
                 poisoned.Play();
+
+                nowBGM = 1;
                 pFlag = 1;
                 zFlag = 0;
             }
@@ -30,6 +71,8 @@ public class Bgm_manager : MonoBehaviour
             {
                 poisoned.Pause();
                 puzzle.Play();
+
+                nowBGM = 2;
                 zFlag = 1;
             }
             yield return null;

@@ -8,12 +8,13 @@ public class myPortalManager : MonoBehaviour
     //This materials matter needs to be optimizated!
     public Material[] materials;
     public GameObject[] objects;
+    [SerializeField] AudioSource genSnd;
 
     private Vector3 camPostionInPortalSpace;
+    private int flag = 0;
 
     bool wasInFront;
     bool inOtherWorld;
-
     bool hasCollided;
 
     // Start is called before the first frame update
@@ -31,6 +32,17 @@ public class myPortalManager : MonoBehaviour
             mat.SetInt("_StencilComp", (int)stencilTest);
         }
         objects[0].SetActive(fullRender);
+        if (fullRender && flag == 0)
+        {
+            genSnd.Play();
+            flag = 1;
+        }
+        if (!fullRender && flag == 1)
+        {
+            genSnd.Play();
+            Bgm_manager.intnstance.playBGM();
+            flag = 0;
+        }
     }
 
     //Set bidirectional function
