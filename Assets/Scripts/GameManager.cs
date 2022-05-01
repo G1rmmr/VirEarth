@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         // 오브젝트
         HPObject.SetActive(false);
         PatternObject.SetActive(false);
-        //GPSObject.SetActive(false);
+        GPSObject.SetActive(false);
         DialObject.SetActive(false);
         FogEffect.SetActive(true);  //@@ true로 변환
         arPlaneManager = GetComponent<ARPlaneManager>();
@@ -68,7 +68,9 @@ public class GameManager : MonoBehaviour
             if (!flag_startGame)
             {
                 flag_startGame = GameStartEffect.instance.gameStartEffect();
-                ARNavigator.instance.ARNavigatorEvent(); 
+                ARNavigator.instance.ARNavigatorEvent();
+                //GPSObject.SetActive(true);
+                GPSObject.GetComponent<gps>().startGps();
             }
 
             //StartCoroutine(delay(flag_dialDelay));
@@ -139,7 +141,7 @@ public class GameManager : MonoBehaviour
                     // 키 카드 확보
                     //InventoryManager.instance.set_inventoryManagement_enable(true);
                     InventoryManager.instance.inventoryManagement_enable = true;
-                    GameStartEffect.instance.gameStartEffect(); // test / 패턴 종류 이펙트로 변경
+                    //GameStartEffect.instance.gameStartEffect(); // test / 패턴 종류 이펙트로 변경
                     InventoryManager.instance.equip_key = false;
                     InventoryManager.instance.canUseItem[2] = true;
                     InventoryManager.instance.distroy_key_display();
@@ -177,13 +179,5 @@ public class GameManager : MonoBehaviour
         //InventoryManager.instance.InventoryManagement(); // 인벤토리, inventoryManagement_enable이 false면 작동안함
 
 
-    }
-
-    IEnumerator delay(bool x)
-    {
-        x = true;
-        yield return new WaitForSeconds(0.5f);
-        x = false;
-        yield return new WaitForSeconds(0.5f);
     }
 }

@@ -71,11 +71,11 @@ public class InventoryManager : MonoBehaviour
             return;
         /*if (!HandTracking.isHandOn)
             return;*/
-        debug.text = "It is Debug Text\n";
+        /*debug.text = "It is Debug Text\n";
         if (flag_inventoryOn)
             debug.text += "flag : True\n";
         else
-            debug.text += "flag : False\n";
+            debug.text += "flag : False\n";*/
 
         InventoryOn();  // 손바닥 상태에서 손가락을 전부 피면 온, 주먹을 쥐면 오프
 
@@ -84,9 +84,7 @@ public class InventoryManager : MonoBehaviour
             Color tempColor;
             for (int i = 0; i < 5; i++)
             {
-                tempColor = backImage[i].color;
-                tempColor.a = 0f;
-                backImage[i].color = tempColor;
+                backImage[i].color = Color.white;
             }
 
             for (int i = 0; i < 4; i++)
@@ -104,13 +102,14 @@ public class InventoryManager : MonoBehaviour
                 }
             }
             
-            CoordinateSystem.instance.transCoord(HandTracking.instance.GetX(0), HandTracking.instance.GetY(0)); // display inventory
+            //CoordinateSystem.instance.transCoord(HandTracking.instance.GetX(0), HandTracking.instance.GetY(0)); // display inventory
             SelectItem();
 
-            debug.text = debug.text + "item select : " + final_selectItem.ToString() + "\n";
-            tempColor = backImage[selectItemList[2]].color;
+            //debug.text = debug.text + "item select : " + final_selectItem.ToString() + "\n";
+            /*tempColor = backImage[selectItemList[2]].color;
             tempColor.a = 1f;
-            backImage[final_selectItem].color = tempColor;
+            backImage[final_selectItem].color = tempColor;*/
+            backImage[final_selectItem].color = new Color(0.81f, 0.81f, 0.3f, 1f);
         }
         return;
     }
