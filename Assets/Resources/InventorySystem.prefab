@@ -144,7 +144,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3ffc050f9979dbe43ac40078532264e3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c6d1f9c6cbb848245bd13375c5ff36bd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3ffc050f9979dbe43ac40078532264e3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c6d1f9c6cbb848245bd13375c5ff36bd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -294,7 +294,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3ffc050f9979dbe43ac40078532264e3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c6d1f9c6cbb848245bd13375c5ff36bd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -369,7 +369,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3ffc050f9979dbe43ac40078532264e3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c6d1f9c6cbb848245bd13375c5ff36bd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1394,6 +1394,8 @@ MonoBehaviour:
   eqpItmSnd: {fileID: 3889952473353933098}
   canUseItem: 01010101
   equip_key: 0
+  equip_cardkey: 0
+  equip_vaccine: 0
   inventoryManagement_enable: 0
 --- !u!1 &3908072827912113445
 GameObject:
@@ -1633,14 +1635,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.64375305, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3ffc050f9979dbe43ac40078532264e3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c6d1f9c6cbb848245bd13375c5ff36bd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
