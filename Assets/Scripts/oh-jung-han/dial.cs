@@ -109,6 +109,7 @@ public class Dial : MonoBehaviour
             if(DialTurn(x2, y2) == 0) //반시계 회전
             {
                 degree += 30;
+                check = 0;
                 dialimg.transform.localEulerAngles = new Vector3(0,0,degree);
                 dialtext.text = "CCW";
             }
@@ -120,6 +121,7 @@ public class Dial : MonoBehaviour
             else if(DialTurn(x2, y2) == 2) //시계 회전
             {
                 degree -= 30;
+                check = 0;
                 dialimg.transform.localEulerAngles = new Vector3(0, 0, degree);
                 dialtext.text = "CW";
             }
@@ -128,7 +130,7 @@ public class Dial : MonoBehaviour
                 dialtext.text = "EEE";
             }
             
-            if(check == 3)
+            if(check == 3) //1.5초 동안 안움직이면 문자 선택
             {
                 degree = (degree + 360) % 360;
                 dialInput[index] = degree;
@@ -138,7 +140,7 @@ public class Dial : MonoBehaviour
                 inputtext.text = degree.ToString();
                 if (lockerFlag)
                 {
-                    if(index == 4)
+                    if(index == 3)
                     {
                         if (lockerPW.SequenceEqual(dialInput))
                         {
@@ -146,21 +148,26 @@ public class Dial : MonoBehaviour
                             chargerFlag = true;
                             checktext.text = "LOCKER UNLOCK";
                         }
+                        index = 0;
+                        return false;
                     }
                 }
                 else if (chargerFlag)
                 {
-                    if (index == 5)
+                    if (index == 4)
                     {
                         if (chargerPW.SequenceEqual(dialInput))
                         {
                             chargerFlag = false;
                             checktext.text = "CHARGER UNLOCK";
                         }
+                    index = 0;
+                    return false;
                     }
                 }
                 index++;
             }
+            
         }
         clear = false;
         return false; //@@@@@@
