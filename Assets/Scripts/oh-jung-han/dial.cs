@@ -20,8 +20,12 @@ public class Dial : MonoBehaviour
     [SerializeField] private Text lockerPWtext;
     [SerializeField] private Text chargerPWtext;
     [SerializeField] private Text inputtext;
+    [SerializeField] private Text inputarray1;
+    [SerializeField] private Text inputarray2;
+    [SerializeField] private Text inputarray3;
+    [SerializeField] private Text inputarray4;
+    [SerializeField] private Text inputarray5;
     private int degree = 0;
-    private int goal;
     private int check = 0;
     private int index = 0;
     private bool once;
@@ -72,13 +76,22 @@ public class Dial : MonoBehaviour
 
     public bool DialCheck()
     {
-        if (HandTracking.instance.IsFoldFinger(false, false, true, true, true))
+        if (HandTracking.instance.IsFoldFinger(false, false, true, true, true)) //엄지 검지 펴면 시작
         {
             dialimg.enabled = true;
             dialimg_back.enabled = true;
             //thumbtext.text = "finger on";
             //clear = false;
             //return false;
+        }
+        else if (HandTracking.instance.IsFoldFinger(false, false, false, false, false)) //손가락 전부 펴면 초기화
+        {
+            dialimg.enabled = false;
+            dialimg_back.enabled = false;
+            index = 0;
+            initArray(dialInput);
+            clear = false;
+            return false;
         }
         else
         {
@@ -87,13 +100,13 @@ public class Dial : MonoBehaviour
             clear = false;
             return false;
         }
-        
+
         if (((int)ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.mano_class) != 2)
         {
             clear = false;
             return false;
         }
-        
+
         //엄지
         float x1 = ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[4].x;
         float y1 = ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[4].y;
@@ -101,24 +114,23 @@ public class Dial : MonoBehaviour
         float x2 = ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[8].x;
         float y2 = ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[8].y;
 
-
         // 엄지가 화면 중앙에 위치
-        if (ThumbCenter(x1,y1))
+        if (ThumbCenter(x1, y1))
         {
             //다이얼 진행
-            if(DialTurn(x2, y2) == 0) //반시계 회전
+            if (DialTurn(x2, y2) == 0) //반시계 회전
             {
                 degree += 30;
                 check = 0;
-                dialimg.transform.localEulerAngles = new Vector3(0,0,degree);
+                dialimg.transform.localEulerAngles = new Vector3(0, 0, degree);
                 dialtext.text = "CCW";
             }
-            else if(DialTurn(x2, y2) == 1) //회전X
+            else if (DialTurn(x2, y2) == 1) //회전X
             {
                 dialtext.text = "NONE";
                 check++;
             }
-            else if(DialTurn(x2, y2) == 2) //시계 회전
+            else if (DialTurn(x2, y2) == 2) //시계 회전
             {
                 degree -= 30;
                 check = 0;
@@ -129,8 +141,8 @@ public class Dial : MonoBehaviour
             {
                 dialtext.text = "EEE";
             }
-            
-            if(check == 3) //1.5초 동안 안움직이면 문자 선택
+
+            if (check == 3) //1.5초 동안 안움직이면 문자 선택
             {
                 degree = (degree + 360) % 360;
                 dialInput[index] = degree;
@@ -140,7 +152,15 @@ public class Dial : MonoBehaviour
                 inputtext.text = degree.ToString();
                 if (lockerFlag)
                 {
-                    if(index == 3)
+                    if (dialInput[index] != lockerPW[index])
+                    {
+                        index = 0;
+                        checktext.text = "Wrong PW";
+                        initArray(dialInput);
+                        return false;
+                    }
+
+                    if (index == 3)
                     {
                         if (lockerPW.SequenceEqual(dialInput))
                         {
@@ -151,9 +171,17 @@ public class Dial : MonoBehaviour
                         index = 0;
                         return false;
                     }
+
                 }
                 else if (chargerFlag)
                 {
+                    if (dialInput[index] != chargerPW[index])
+                    {
+                        index = 0;
+                        checktext.text = "Wrong PW";
+                        initArray(dialInput);
+                        return false;
+                    }
                     if (index == 4)
                     {
                         if (chargerPW.SequenceEqual(dialInput))
@@ -161,13 +189,13 @@ public class Dial : MonoBehaviour
                             chargerFlag = false;
                             checktext.text = "CHARGER UNLOCK";
                         }
-                    index = 0;
-                    return false;
+                        index = 0;
+                        return false;
                     }
                 }
                 index++;
             }
-            
+
         }
         clear = false;
         return false; //@@@@@@
@@ -204,8 +232,12 @@ public class Dial : MonoBehaviour
         else return -1;
     }
 
-    IEnumerator delay()
+
+    private void initArray(int[] arr)
     {
-        yield return new WaitForSeconds(1.0f);
+        for (int i = 0; i < 4; i++)
+        {
+            arr[i] = -1;
+        }
     }
 }
