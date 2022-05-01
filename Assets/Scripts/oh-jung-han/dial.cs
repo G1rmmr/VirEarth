@@ -83,26 +83,27 @@ public class Dial : MonoBehaviour
             dialimg_back.enabled = true;
             if (lockerFlag)
             {
-                inputarray[0].transform.position = new Vector2(0.2f * Screen.width, 0.6f * Screen.height);
-                inputarray[1].transform.position = new Vector2(0.4f * Screen.width, 0.6f * Screen.height);
-                inputarray[2].transform.position = new Vector2(0.6f * Screen.width, 0.6f * Screen.height);
-                inputarray[3].transform.position = new Vector2(0.8f * Screen.width, 0.6f * Screen.height);
-                for (int i = 0; i < 4; i++)
-                {
-                    inputarray[i].enabled = true;
-                }
+                inputarray[0].transform.position = new Vector2(0.2f * Screen.width, 0.7f * Screen.height);
+                inputarray[1].transform.position = new Vector2(0.4f * Screen.width, 0.7f * Screen.height);
+                inputarray[2].transform.position = new Vector2(0.6f * Screen.width, 0.7f * Screen.height);
+                inputarray[3].transform.position = new Vector2(0.8f * Screen.width, 0.7f * Screen.height);
+                inputarray[0].text = "1";
+                inputarray[1].text = "7";
+                inputarray[2].text = "4";
+                inputarray[3].text = "5";
             }
             else if (chargerFlag)
             {
-                inputarray[0].transform.position = new Vector2(0.2f * Screen.width, 0.6f * Screen.height);
-                inputarray[1].transform.position = new Vector2(0.35f * Screen.width, 0.6f * Screen.height);
-                inputarray[2].transform.position = new Vector2(0.5f * Screen.width, 0.6f * Screen.height);
-                inputarray[3].transform.position = new Vector2(0.65f * Screen.width, 0.6f * Screen.height);
-                inputarray[4].transform.position = new Vector2(0.8f * Screen.width, 0.6f * Screen.height);
-                for (int i = 0; i < 5; i++)
-                {
-                    inputarray[i].enabled = true;
-                }
+                inputarray[0].transform.position = new Vector2(0.2f * Screen.width, 0.7f * Screen.height);
+                inputarray[1].transform.position = new Vector2(0.35f * Screen.width, 0.7f * Screen.height);
+                inputarray[2].transform.position = new Vector2(0.5f * Screen.width, 0.7f * Screen.height);
+                inputarray[3].transform.position = new Vector2(0.65f * Screen.width, 0.7f * Screen.height);
+                inputarray[4].transform.position = new Vector2(0.8f * Screen.width, 0.7f * Screen.height);
+                inputarray[0].text = "P";
+                inputarray[1].text = "Y";
+                inputarray[2].text = "N";
+                inputarray[3].text = "Y";
+                inputarray[4].text = "O";
             }
             //thumbtext.text = "finger on";
             //clear = false;
@@ -174,7 +175,6 @@ public class Dial : MonoBehaviour
                 lockerPWtext.text = lockerPW[index].ToString();
                 chargerPWtext.text = chargerPW[index].ToString();
                 inputtext.text = degree.ToString();
-                inputarray[index].text = degree.ToString();
                 if (lockerFlag)
                 {
                     if (dialInput[index] != lockerPW[index])
@@ -182,7 +182,15 @@ public class Dial : MonoBehaviour
                         index = 0;
                         checktext.text = "Wrong PW";
                         initArray(dialInput);
+                        for (int i = 0; i < 4; i++)
+                        {
+                            inputarray[i].enabled = false;
+                        }
                         return false;
+                    }
+                    else
+                    {
+                        inputarray[index].enabled = true;
                     }
 
                     if (index == 3)
@@ -192,6 +200,10 @@ public class Dial : MonoBehaviour
                             lockerFlag = false;
                             chargerFlag = true;
                             checktext.text = "LOCKER UNLOCK";
+                            for (int i = 0; i < 4; i++)
+                            {
+                                inputarray[i].enabled = false;
+                            }
                         }
                         index = 0;
                         return false;
@@ -205,8 +217,17 @@ public class Dial : MonoBehaviour
                         index = 0;
                         checktext.text = "Wrong PW";
                         initArray(dialInput);
+                        for (int i = 0; i < 5; i++)
+                        {
+                            inputarray[i].enabled = false;
+                        }
                         return false;
                     }
+                    else
+                    {
+                        inputarray[index].enabled = true;
+                    }
+
                     if (index == 4)
                     {
                         if (chargerPW.SequenceEqual(dialInput))
