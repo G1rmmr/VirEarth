@@ -151,6 +151,7 @@ public class InventoryManager : MonoBehaviour
                         return;
                     StartCoroutine(antibioticDisplay());
                     HPManager.instance.hp = HPManager.instance.maxHp;
+                    showText.instance.ShowText("항생제를 사용하였습니다");
                 }
                 else if (final_selectItem == 1)
                 {
@@ -160,6 +161,7 @@ public class InventoryManager : MonoBehaviour
                     tempColor.a = 1f;
                     selectedBoxImage[1].color = tempColor;
                     equip_key = true;
+                    showText.instance.ShowText("열쇠를 장착하였습니다");
                 }
                 else if (final_selectItem == 2)
                 {
@@ -167,6 +169,7 @@ public class InventoryManager : MonoBehaviour
                     tempColor.a = 1f;
                     selectedBoxImage[2].color = tempColor;
                     equip_cardkey = true;
+                    showText.instance.ShowText("카드키를 장착하였습니다");
                 }
                 else if (final_selectItem == 3)
                 {
@@ -174,6 +177,7 @@ public class InventoryManager : MonoBehaviour
                     tempColor.a = 1f;
                     selectedBoxImage[3].color = tempColor;
                     equip_vaccine = true;
+                    showText.instance.ShowText("백신을 사용하였습니다");
                 }
                 canUseItem[final_selectItem] = false;   // 아이템 사용 완료
 
