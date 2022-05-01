@@ -20,11 +20,8 @@ public class Dial : MonoBehaviour
     [SerializeField] private Text lockerPWtext;
     [SerializeField] private Text chargerPWtext;
     [SerializeField] private Text inputtext;
-    [SerializeField] private Text inputarray1;
-    [SerializeField] private Text inputarray2;
-    [SerializeField] private Text inputarray3;
-    [SerializeField] private Text inputarray4;
-    [SerializeField] private Text inputarray5;
+    [SerializeField] private Text[] inputarray = new Text[5];
+
     private int degree = 0;
     private int check = 0;
     private int index = 0;
@@ -47,6 +44,10 @@ public class Dial : MonoBehaviour
         dialimg_back.enabled = false;
         once = true;
         checktext.text = "NOPE";
+        for (int i = 0; i < 5; i++)
+        {
+            inputarray[i].enabled = false;
+        }
     }
 
     // Update is called once per frame
@@ -80,6 +81,29 @@ public class Dial : MonoBehaviour
         {
             dialimg.enabled = true;
             dialimg_back.enabled = true;
+            if (lockerFlag)
+            {
+                inputarray[0].transform.position = new Vector2(0.2f * Screen.width, 0.6f * Screen.height);
+                inputarray[1].transform.position = new Vector2(0.4f * Screen.width, 0.6f * Screen.height);
+                inputarray[2].transform.position = new Vector2(0.6f * Screen.width, 0.6f * Screen.height);
+                inputarray[3].transform.position = new Vector2(0.8f * Screen.width, 0.6f * Screen.height);
+                for (int i = 0; i < 4; i++)
+                {
+                    inputarray[i].enabled = true;
+                }
+            }
+            else if (chargerFlag)
+            {
+                inputarray[0].transform.position = new Vector2(0.2f * Screen.width, 0.6f * Screen.height);
+                inputarray[1].transform.position = new Vector2(0.35f * Screen.width, 0.6f * Screen.height);
+                inputarray[2].transform.position = new Vector2(0.5f * Screen.width, 0.6f * Screen.height);
+                inputarray[3].transform.position = new Vector2(0.65f * Screen.width, 0.6f * Screen.height);
+                inputarray[4].transform.position = new Vector2(0.8f * Screen.width, 0.6f * Screen.height);
+                for (int i = 0; i < 5; i++)
+                {
+                    inputarray[i].enabled = true;
+                }
+            }
             //thumbtext.text = "finger on";
             //clear = false;
             //return false;
@@ -150,6 +174,7 @@ public class Dial : MonoBehaviour
                 lockerPWtext.text = lockerPW[index].ToString();
                 chargerPWtext.text = chargerPW[index].ToString();
                 inputtext.text = degree.ToString();
+                inputarray[index].text = degree.ToString();
                 if (lockerFlag)
                 {
                     if (dialInput[index] != lockerPW[index])
