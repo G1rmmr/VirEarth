@@ -24,7 +24,8 @@ public class GameManager : MonoBehaviour
     private bool flag_startGame;
     private bool flag_arPortal;
     private bool flag_board;
-    private bool flag_dial;
+    private bool flag_dial1;
+    private bool flag_dial2;
     private bool flag_dialDelay;
 
     //
@@ -49,7 +50,8 @@ public class GameManager : MonoBehaviour
         flag_startGame = false;
         flag_arPortal = false;
         flag_board = false;
-        flag_dial = false;
+        flag_dial1 = false;
+        flag_dial2 = false;
         flag_dialDelay = false;
     }
     // Start is called before the first frame update
@@ -74,12 +76,13 @@ public class GameManager : MonoBehaviour
             }
 
             //StartCoroutine(delay(flag_dialDelay));
-            if (!flag_dial && InventoryManager.instance.equip_cardkey)
+            
+            if (!flag_dial1 && InventoryManager.instance.equip_cardkey)
             {
                 DialObject.SetActive(true);
                 Dial.instance.DDDial();
-                flag_dial = Dial.instance.clear;
-                if (flag_dial)
+                flag_dial1 = Dial.instance.clear;
+                if (flag_dial1)
                 {
                     DialObject.SetActive(false);
                 }
@@ -108,17 +111,27 @@ public class GameManager : MonoBehaviour
                 if (ARNavigator.instance.SpawnLimit != 1)
                     ARNavigator.instance.Limit_init();
             }*/
-                       
+
             //ARNavigator.instance.ARNavigatorEvent();
 
             //GPSObject.SetActive(true);    // GPS ON!
+            
+            /* //@@@@@@@@@@@@ locker 인식시 dial과 key pick up이 동시에 진행됨. 수정 필요
+            DialObject.SetActive(true);
+            Dial.instance.DDDial();
+            flag_dial1 = Dial.instance.clear;
+            if (flag_dial1)
+            {
+                DialObject.SetActive(false);
+            }
+            */
         }
         
         if (GPSObject.GetComponent<gps>().isInB == true)
         {
             if (!flag_hp)
             {
-                HPObject.SetActive(true); //@@@@ true로 수정 필요
+                HPObject.SetActive(true);
             }
         }
         else
@@ -179,6 +192,14 @@ public class GameManager : MonoBehaviour
         }
         //InventoryManager.instance.InventoryManagement(); // 인벤토리, inventoryManagement_enable이 false면 작동안함
 
-
+        if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "charger" && flag_arPortal){
+            DialObject.SetActive(true);
+            Dial.instance.DDDial();
+            flag_dial2 = Dial.instance.clearCharger;
+            if (flag_dial2)
+            {
+                DialObject.SetActive(false);
+            }
+        }
     }
 }

@@ -10,6 +10,7 @@ public class Dial : MonoBehaviour
 
     public bool enable = true;
     public bool clear = false;
+    public bool clearCharger = false;
 
     [SerializeField] private Image dialimg;
     [SerializeField] private Image dialimg_back;
@@ -204,6 +205,7 @@ public class Dial : MonoBehaviour
                             {
                                 inputarray[i].enabled = false;
                             }
+                            clear = true;
                         }
                         index = 0;
                         return false;
@@ -234,6 +236,7 @@ public class Dial : MonoBehaviour
                         {
                             chargerFlag = false;
                             checktext.text = "CHARGER UNLOCK";
+                            clearCharger = true;
                         }
                         index = 0;
                         return false;
