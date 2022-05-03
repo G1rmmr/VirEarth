@@ -100,7 +100,7 @@ public class ARTrackedMultiImageManager : MonoBehaviour
             trackedObject.transform.position = trackedImage.transform.position;
             //trackedObject.transform.rotation = trackedImage.transform.rotation;
 
-            if (trackedObject.tag == "item" && !hasKey)
+            if (trackedObject.tag == "item" && !hasKey && Dial.instance.clear)
             {
                 //puzzleEffect.puzzleEffect(true);
                 trackedObject.SetActive(true);
