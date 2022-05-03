@@ -31,8 +31,8 @@ public class HandTracking : MonoBehaviour
     {
         //HandImage.enabled = false;
         isHandOn = false;
-        //if (ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.is_right == -1) //카메라에 손이 없으면 더이상 진행하지 않음.
-        //    return;
+        if (ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.is_right == -1) //카메라에 손이 없으면 더이상 진행하지 않음.
+            return;
         // -------------------------------------------------------------------------------
         //HandImage.enabled = true;
         isHandOn = true;

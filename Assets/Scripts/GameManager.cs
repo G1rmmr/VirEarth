@@ -115,18 +115,18 @@ public class GameManager : MonoBehaviour
             //ARNavigator.instance.ARNavigatorEvent();
 
             //GPSObject.SetActive(true);    // GPS ON!
-            
-            /* //@@@@@@@@@@@@ locker 인식시 dial과 key pick up이 동시에 진행됨. 수정 필요
+
+            /*//@@@@@@@@@@@@ locker 인식시 dial과 key pick up이 동시에 진행됨. 수정 필요
             DialObject.SetActive(true);
             Dial.instance.DDDial();
             flag_dial1 = Dial.instance.clear;
             if (flag_dial1)
             {
                 DialObject.SetActive(false);
-            }
-            */
+            }*/
+
         }
-        
+
         if (GPSObject.GetComponent<gps>().isInB == true)
         {
             if (!flag_hp)

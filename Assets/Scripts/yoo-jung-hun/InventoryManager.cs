@@ -95,6 +95,10 @@ public class InventoryManager : MonoBehaviour
             debug.text += "flag : False\n";*/
 
         InventoryOn();  // 손바닥 상태에서 손가락을 전부 피면 온, 주먹을 쥐면 오프
+        for (int i = 0; i < 5; i++)
+        {
+            tips[i].enabled = false;
+        }
 
         if (flag_inventoryOn)
         {
@@ -103,7 +107,6 @@ public class InventoryManager : MonoBehaviour
             for (int i = 0; i < 5; i++)
             {
                 backImage[i].color = Color.white;
-                tips[i].enabled = false;
             }
 
             for (int i = 0; i < 4; i++)
@@ -161,8 +164,6 @@ public class InventoryManager : MonoBehaviour
         }
         else if (HandTracking.instance.IsFoldFinger(true, true, true, true, true) && flag_inventoryOn)
         {
-            eqpItmSnd.Play();//인벤토리 장착 사운드
-
             debug.text += "Inventory OFF\n";
             flag_inventoryOn = false;
             CoordinateSystem.instance.hideImg();
@@ -197,6 +198,7 @@ public class InventoryManager : MonoBehaviour
                 }
                 else if (final_selectItem == 2)
                 {
+                    eqpItmSnd.Play();//일반 아이템 장착 사운드
                     var tempColor = selectedBoxImage[2].color;
                     tempColor.a = 1f;
                     selectedBoxImage[2].color = tempColor;
@@ -205,11 +207,16 @@ public class InventoryManager : MonoBehaviour
                 }
                 else if (final_selectItem == 3)
                 {
+                    eqpItmSnd.Play();//일반 아이템 장착 사운드
                     var tempColor = selectedBoxImage[3].color;
                     tempColor.a = 1f;
                     selectedBoxImage[3].color = tempColor;
                     equip_vaccine = true;
                     showText.instance.ShowText("백신을 사용하였습니다");
+                }
+                else if (final_selectItem == 4)
+                {
+                    eqpItmSnd.Play();//일반 아이템 장착 사운드
                 }
                 canUseItem[final_selectItem] = false;   // 아이템 사용 완료
 
