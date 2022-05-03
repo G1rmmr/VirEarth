@@ -66,8 +66,21 @@ public class InventoryManager : MonoBehaviour
         equip_key = false;
         equip_cardkey = false;
         equip_vaccine = false;
+        StartCoroutine(courutine_inventory());
     }
-
+    private IEnumerator courutine_inventory()
+    {
+        while (true)
+        {
+            if (ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.is_right == -1)
+            { //카메라에 손이 없으면 더이상 진행하지 않음.
+                yield return new WaitForSeconds(0.03f);
+                continue;
+            }
+            InventoryManagement();
+            yield return new WaitForSeconds(0.03f);
+        }
+    }
 
     public void InventoryManagement()
     {

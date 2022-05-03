@@ -8,7 +8,7 @@ public class HandTracking : MonoBehaviour
     public static HandTracking instance; // 인스턴스
 
     // 인스펙터
-    [SerializeField] private Image HandImage; // 화면 11시 손 이미지
+    //[SerializeField] private Image HandImage; // 화면 11시 손 이미지
     //[SerializeField] private Text test;
 
     // public 변수
@@ -22,21 +22,21 @@ public class HandTracking : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        HandImage.enabled = false;
+        //HandImage.enabled = false;
         isHandOn = false;
     }
 
 
     private void Update()
     {
-        HandImage.enabled = false;
+        //HandImage.enabled = false;
         isHandOn = false;
-        if (ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.is_right == -1) //카메라에 손이 없으면 더이상 진행하지 않음.
-            return;
+        //if (ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.is_right == -1) //카메라에 손이 없으면 더이상 진행하지 않음.
+        //    return;
         // -------------------------------------------------------------------------------
-        HandImage.enabled = true;
+        //HandImage.enabled = true;
         isHandOn = true;
-        InventoryManager.instance.InventoryManagement(); // 인벤토리, inventoryManagement_enable이 false면 작동안함
+        //InventoryManager.instance.InventoryManagement(); // 인벤토리, inventoryManagement_enable이 false면 작동안함
         if (InventoryManager.instance.equip_cardkey)
         {
             if (ManomotionManager.Instance.Hand_infos[0].hand_info.gesture_info.mano_gesture_trigger == ManoGestureTrigger.SWIPE_RIGHT)
