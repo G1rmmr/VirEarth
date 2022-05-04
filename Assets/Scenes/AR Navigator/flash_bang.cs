@@ -8,6 +8,8 @@ public class flash_bang : MonoBehaviour
     private Image WhiteImage;
     private AudioSource WhiteNoise;
 
+    [SerializeField] Image Effect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,7 @@ public class flash_bang : MonoBehaviour
 
         for(int i = 0; WhiteImage.color.a > 0; i++)
         {
+            //Effect.color = new Vector4(1, 1, 1, FadeSpeed);
             WhiteImage.color = new Vector4(1, 1, 1, FadeSpeed);
             FadeSpeed = FadeSpeed - 0.025f;
             Modifier = Modifier * 1.5f;

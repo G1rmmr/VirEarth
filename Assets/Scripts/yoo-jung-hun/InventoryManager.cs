@@ -260,6 +260,10 @@ public class InventoryManager : MonoBehaviour
             debug.text += "item2 Select\n";
             selectItem = 3;
         }
+        else if (HandTracking.instance.IsFoldFinger(false, false, false, true, true))
+        {
+            selectItem = 2;
+        }
         // *******************************************************************************************************
 
         /*if (HandTracking.instance.getFingers(false, false, false, false)) // 4¹ø ÀÎµ¦½º

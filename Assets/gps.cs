@@ -83,6 +83,12 @@ public class gps : MonoBehaviour
                 isIn[0].text = "in B_B";
                 rateB++;
             }
+            //37.37461  / 126.63319
+            else if (IsIN(37.37461, 126.63319)) //B_C 검사
+            {
+                isIn[0].text = "in B_C";
+                rateB++;
+            }
             else if (IsIN(37.37461, 126.63319)) //A 검사
             {
                 isIn[0].text = "in A";

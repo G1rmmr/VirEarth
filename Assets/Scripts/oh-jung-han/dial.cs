@@ -69,10 +69,10 @@ public class Dial : MonoBehaviour
     {
         while (true)
         {
-            enable = DialCheck();
-            yield return new WaitForSeconds(0.5f);
-            if (enable == true)
-                break;
+            if (!enable)
+                continue;
+            DialCheck();
+            yield return new WaitForSeconds(0.65f);
         }
     }
 
@@ -205,6 +205,7 @@ public class Dial : MonoBehaviour
                             {
                                 inputarray[i].enabled = false;
                             }
+                            //@@@@@@@@@@@@@@@@@@@
                             clear = true;
                         }
                         index = 0;
@@ -236,6 +237,8 @@ public class Dial : MonoBehaviour
                         {
                             chargerFlag = false;
                             checktext.text = "CHARGER UNLOCK";
+
+                            //@@@@@@@@@@@@@@@@@@@@@@@@@@7
                             clearCharger = true;
                         }
                         index = 0;
@@ -266,15 +269,15 @@ public class Dial : MonoBehaviour
 
     private int DialTurn(float x, float y)
     {
-        if (x < 0.45)
+        if (x < 0.40)
         {
             return 0; //반시계 방향 회전
         }
-        else if (x >= 0.45 && x < 0.55)
+        else if (x >= 0.40 && x < 0.60)
         {
             return 1; //정지
         }
-        else if (x >= 0.55)
+        else if (x >= 0.60)
         {
             return 2; //시계 방향 회전
         }

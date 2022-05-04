@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -284,6 +284,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 467910185366214962, guid: 6a3ef56e476dd2a41b54c02f7765b5d8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 980499645635463611, guid: 6a3ef56e476dd2a41b54c02f7765b5d8,
         type: 3}
       propertyPath: m_Pivot.x
@@ -389,10 +394,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 980499645635463613, guid: 6a3ef56e476dd2a41b54c02f7765b5d8,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 980499645635463615, guid: 6a3ef56e476dd2a41b54c02f7765b5d8,
         type: 3}
       propertyPath: m_Name
-      value: Canvas
+      value: Effect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3676042324731440773, guid: 6a3ef56e476dd2a41b54c02f7765b5d8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354809673532374538, guid: 6a3ef56e476dd2a41b54c02f7765b5d8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314775005835788843, guid: 6a3ef56e476dd2a41b54c02f7765b5d8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a3ef56e476dd2a41b54c02f7765b5d8, type: 3}
@@ -647,7 +672,7 @@ PrefabInstance:
     - target: {fileID: 4692216960996763848, guid: ee577cb4643af874a96a9411b2529aa2,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4692216961373967491, guid: ee577cb4643af874a96a9411b2529aa2,
         type: 3}
@@ -3530,8 +3555,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f76b181b27462944a2bed5d0c2a3fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
-  maxHp: 100
+  hp: 1500
+  maxHp: 3000
   damage: 5
   hpBar: {fileID: 780573093}
 --- !u!114 &1862518991 stripped
@@ -3701,7 +3726,7 @@ PrefabInstance:
       objectReference: {fileID: 1436546894}
     - target: {fileID: 609108781, guid: 3b19460acec7fad4baeab3db2a8268e1, type: 3}
       propertyPath: maxCustomResolution
-      value: 300
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 1627255014069736, guid: 3b19460acec7fad4baeab3db2a8268e1, type: 3}
       propertyPath: m_Name
