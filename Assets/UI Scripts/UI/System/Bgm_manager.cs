@@ -58,7 +58,7 @@ public class Bgm_manager : MonoBehaviour
     {
         while (true){ 
             
-            if (HPManager.instance.hp <= 50 && pFlag == 0)
+            if ((HPManager.instance.hp / HPManager.instance.maxHp) * 100 <= 50 && pFlag == 0)
             {
                 start.Pause();
                 poisoned.Play();

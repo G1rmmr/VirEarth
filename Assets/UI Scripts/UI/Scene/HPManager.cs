@@ -43,7 +43,7 @@ public class HPManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hp = maxHp;
+        //hp = maxHp;
         StartCoroutine(HPManagement());
     }
 }
