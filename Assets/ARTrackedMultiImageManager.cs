@@ -29,6 +29,9 @@ public class ARTrackedMultiImageManager : MonoBehaviour
     private Vector3 indexPosition;
     private Vector3 prefabPosition;
 
+    public Vector2 trackedImageSize; // 이미지 사이즈 값 추출
+    public Vector3 trackedImagePosition; //포지션 값 추출
+
     private bool hasKey = false;
 
     // 이미지를 인식했을 때 출력되는 오브젝트 목록
@@ -98,7 +101,12 @@ public class ARTrackedMultiImageManager : MonoBehaviour
 
             TrackingText.text = "Tracking";
             trackedObject.transform.position = trackedImage.transform.position;
-            //trackedObject.transform.rotation = trackedImage.transform.rotation;
+            trackedImagePosition = trackedImage.transform.position; // 포지션 값 추출
+            
+            if (trackedImagePosition.y != 0)
+                trackedImagePosition.y = 0;
+
+            trackedImageSize = trackedImage.size;
 
             if (trackedObject.tag == "item" && !hasKey && Dial.instance.clear)
             {

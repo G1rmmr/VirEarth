@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject PatternObject;
     [SerializeField] private GameObject GPSObject;
     [SerializeField] private GameObject DialObject;
+    [SerializeField] private GameObject LockerObject;
     [SerializeField] private GameObject FogEffect;
     [SerializeField] private GameObject BoardAnimation;
     [SerializeField] public ARPlaneManager arPlaneManager;
@@ -24,13 +25,14 @@ public class GameManager : MonoBehaviour
     private bool flag_startGame;
     private bool flag_arPortal;
     private bool flag_board;
+    private bool flag_spawnLocker;
     private bool flag_dial1;
     private bool flag_dial2;
     private bool flag_dialDelay;
 
     //
     private PlaneDetectionMode mode = (PlaneDetectionMode)1;
-
+    
     // ¿ŒΩ∫∆Â≈Õ
     [SerializeField] private Text debug;
 
@@ -50,6 +52,7 @@ public class GameManager : MonoBehaviour
         flag_startGame = false;
         flag_arPortal = false;
         flag_board = false;
+        flag_spawnLocker = false;
         flag_dial1 = false;
         flag_dial2 = false;
         flag_dialDelay = false;
@@ -118,6 +121,12 @@ public class GameManager : MonoBehaviour
 
            
             DialObject.SetActive(true);
+            if (!flag_spawnLocker)
+            {
+                Instantiate(LockerObject, ARObject.GetComponent<ARTrackedMultiImageManager>().trackedImagePosition, LockerObject.transform.rotation);
+                debug.text = ARObject.GetComponent<ARTrackedMultiImageManager>().trackedImageSize.ToString() +", " + ARObject.GetComponent<ARTrackedMultiImageManager>().trackedImagePosition;
+                flag_spawnLocker = true;
+            }
             Dial.instance.DDDial();
             flag_dial1 = Dial.instance.clear;
             if (flag_dial1)

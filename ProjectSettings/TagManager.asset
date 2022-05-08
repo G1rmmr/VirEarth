@@ -7,6 +7,9 @@ TagManager:
   - baseSDK
   - hint
   - item
+  - WhiteImage
+  - particle
+  - WhiteNoise
   layers:
   - Default
   - TransparentFX
@@ -16,7 +19,7 @@ TagManager:
   - UI
   - mask
   - insideportal
-  - 
+  - placedobject
   - 
   - 
   - 
