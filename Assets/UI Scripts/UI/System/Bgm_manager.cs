@@ -15,7 +15,7 @@ public class Bgm_manager : MonoBehaviour
 
     private int nowBGM = 0;
     //public static HPManager instance;
-    private int pFlag = 0, zFlag = 1;
+    public int pFlag = 0, zFlag = 1;
     // Start is called before the first frame update
     void Start()
     {

@@ -12,6 +12,8 @@ public class HPManager : MonoBehaviour
 
     [SerializeField] public int maxHp, damage;
     [SerializeField] private Slider hpBar;
+    [SerializeField] private Image Poisoned;
+    [SerializeField] private Image Almost_Dead;
 
     private void Awake()
     {
@@ -27,12 +29,51 @@ public class HPManager : MonoBehaviour
 
     private IEnumerator HPManagement()
     {
+        Color tempColor = Color.white;
+        int beat;
         while (true)
         {
             hp -= 1;
             hpBar.value = hp / maxHp;
+
             yield return new WaitForSeconds(0.1f);
-            if (hp <= 0)
+            if (hp >= (float)maxHp * 3.0f / 4.0f) // hp가 3/4이상일 때
+            {
+                tempColor.a = 0f;
+                Poisoned.color = tempColor;
+                Almost_Dead.color = tempColor;
+            }
+            else if (hp > (float)maxHp / 4.0f)      // hp가 3/4 ~ 1/4일 때
+            {
+                tempColor.a = 0f;
+                Almost_Dead.color = tempColor;
+
+                beat = (int)hp % 20;
+                if (beat < 10)
+                {
+                    tempColor.a = 1f - (float)(beat / 10.0f);
+                }
+                else
+                {
+                    tempColor.a = (float)((beat - 10.0f) / 10.0f);
+                }
+                Poisoned.color = tempColor;
+            }
+            else if (hp > 0)                        // hp가 1/4 이하일 때
+            {
+                beat = (int)hp % 10;
+                if (beat < 5)
+                {
+                    tempColor.a = 1f - (float)(beat * 2.0f / 10.0f);
+                }
+                else
+                {
+                    tempColor.a = (float)((beat - 5.0f) * 2.0f / 10.0f);
+                }
+                Poisoned.color = tempColor;
+                Almost_Dead.color = tempColor;
+            }
+            else
             {
                 break;
             }

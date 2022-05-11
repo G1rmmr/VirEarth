@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -296,6 +296,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 837528437586679599, guid: 6a3ef56e476dd2a41b54c02f7765b5d8,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 980499645635463611, guid: 6a3ef56e476dd2a41b54c02f7765b5d8,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1784,6 +1789,8 @@ MonoBehaviour:
   poisoned: {fileID: 1083567213}
   puzzle: {fileID: 1697606247}
   gps: {fileID: 780811582}
+  pFlag: 0
+  zFlag: 1
 --- !u!114 &826110587 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7338012914265343424, guid: 3781838eb59ca1f4bab5faca8d2eb5c5,
@@ -2851,6 +2858,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1404845701 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4010779993259683959, guid: 6a3ef56e476dd2a41b54c02f7765b5d8,
+    type: 3}
+  m_PrefabInstance: {fileID: 242096005}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &1436546893 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 4383810826877850230, guid: c90ede05386d36f4da24afc318940177,
@@ -3017,6 +3036,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f11ab7220e39391408e588017eaf292a, type: 3}
+--- !u!114 &1486340987 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 837528437586679599, guid: 6a3ef56e476dd2a41b54c02f7765b5d8,
+    type: 3}
+  m_PrefabInstance: {fileID: 242096005}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!850595691 &1489853116
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -3829,10 +3860,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f76b181b27462944a2bed5d0c2a3fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 2000
+  hp: 2500
   maxHp: 3000
   damage: 5
   hpBar: {fileID: 780573093}
+  Poisoned: {fileID: 1404845701}
+  Almost_Dead: {fileID: 1486340987}
 --- !u!114 &1862518991 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1590712833467657919, guid: ba3d19f511b586a46a2e060ee0b3ef15,
