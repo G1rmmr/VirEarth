@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
         DialObject.SetActive(false);
         FogEffect.SetActive(true);  //@@ true·Î º¯È¯
         arPlaneManager = GetComponent<ARPlaneManager>();
+        //test
 
         // flag
         flag_pattern = false;
