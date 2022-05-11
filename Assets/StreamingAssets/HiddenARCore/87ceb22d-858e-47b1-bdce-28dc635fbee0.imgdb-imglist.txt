@@ -1,0 +1,7 @@
+f6154412e38f42719f060036527b0543|C:\Users\SH415\Documents\GitHub\VirEarth\Assets\TrackedImage\board.jpg|0.2
+685b65bd034c4442ab9a5862eacf20f4|C:\Users\SH415\Documents\GitHub\VirEarth\Assets\TrackedImage\charger.jpg|0.2
+94baced527f64ac1a3ba3938874e8acd|C:\Users\SH415\Documents\GitHub\VirEarth\Assets\TrackedImage\elevator.jpg|0.2
+d73cc51cb1cb45fd9559d2ad6988d37b|C:\Users\SH415\Documents\GitHub\VirEarth\Assets\TrackedImage\fireplug.jpg|0.2
+dd22c2b6ca694a7fb7b9c82db2846d8d|C:\Users\SH415\Documents\GitHub\VirEarth\Assets\TrackedImage\locker.jpg|0.2
+95c9031984c64b39b9017f0b373fe54e|C:\Users\SH415\Documents\GitHub\VirEarth\Assets\TrackedImage\exitdoor.jpg|0.2
+e76276934ed141249ce926978e0c5d44|C:\Users\SH415\Documents\GitHub\VirEarth\Assets\TrackedImage\INUmark.jpg|0.2

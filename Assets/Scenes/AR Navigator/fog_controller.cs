@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class fog_controller : MonoBehaviour
 {
+    public static fog_controller instance;
+
     ParticleSystem ps;
     ParticleSystem.MainModule psMain;
     ParticleSystem.MinMaxGradient color;
     Color fogColor;
+    Color PoisonFogColor;
 
     void Start()
     {
@@ -16,19 +19,21 @@ public class fog_controller : MonoBehaviour
         color = new ParticleSystem.MinMaxGradient();
         color.mode = ParticleSystemGradientMode.Color;
 
-        //SetValue();
-        color.color = fogColor;
-        //psMain.startColor = color;
+        PoisonFogColor = color.color;
+
+        SetNormalFog();
     }
 
-    void SetValue()
+    public void SetNormalFog()
     {
         fogColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        color.color = fogColor;
+        psMain.startColor = color;
     }
-   
-    // Update is called once per frame
-    void Update()
+
+    public void SetPoisonFog()
     {
-        
+        color.color = PoisonFogColor;
+        psMain.startColor = color;
     }
 }
