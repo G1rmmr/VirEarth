@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Dial : MonoBehaviour
 {
-    public static Dial instance; // ÀÎ½ºÅÏ½º
+    public static Dial instance; // ï¿½Î½ï¿½ï¿½Ï½ï¿½
 
     public bool enable = true;
     public bool clear = false;
@@ -14,6 +14,7 @@ public class Dial : MonoBehaviour
 
     [SerializeField] private Image dialimg;
     [SerializeField] private Image dialimg_back;
+    [SerializeField] private Image[] dialnum = new Image[2];
     [SerializeField] private Text dialtext;
     [SerializeField] private Text thumbtext;
     [SerializeField] private Text checktext;
@@ -43,6 +44,8 @@ public class Dial : MonoBehaviour
     {
         dialimg.enabled = false;
         dialimg_back.enabled = false;
+        dialnum[0].enabled = false;
+        dialnum[1].enabled = false;
         once = true;
         checktext.text = "NOPE";
         for (int i = 0; i < 5; i++)
@@ -78,16 +81,19 @@ public class Dial : MonoBehaviour
 
     public bool DialCheck()
     {
-        if (HandTracking.instance.IsFoldFinger(false, false, true, true, true)) //¾öÁö °ËÁö Æì¸é ½ÃÀÛ
+        if (HandTracking.instance.IsFoldFinger(false, false, true, true, true)) //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
             dialimg.enabled = true;
             dialimg_back.enabled = true;
+            
             if (lockerFlag)
             {
-                inputarray[0].transform.position = new Vector2(0.2f * Screen.width, 0.7f * Screen.height);
-                inputarray[1].transform.position = new Vector2(0.4f * Screen.width, 0.7f * Screen.height);
-                inputarray[2].transform.position = new Vector2(0.6f * Screen.width, 0.7f * Screen.height);
-                inputarray[3].transform.position = new Vector2(0.8f * Screen.width, 0.7f * Screen.height);
+                dialnum[0].enabled = true;
+                dialnum[0].transform.position = new Vector2(0.5f * Screen.width, 0.3f * Screen.height);
+                inputarray[0].transform.position = new Vector2(0.3f * Screen.width, 0.3f * Screen.height);
+                inputarray[1].transform.position = new Vector2(0.43f * Screen.width, 0.3f * Screen.height);
+                inputarray[2].transform.position = new Vector2(0.57f * Screen.width, 0.3f * Screen.height);
+                inputarray[3].transform.position = new Vector2(0.7f * Screen.width, 0.3f * Screen.height);
                 inputarray[0].text = "1";
                 inputarray[1].text = "7";
                 inputarray[2].text = "4";
@@ -95,11 +101,13 @@ public class Dial : MonoBehaviour
             }
             else if (chargerFlag)
             {
-                inputarray[0].transform.position = new Vector2(0.2f * Screen.width, 0.7f * Screen.height);
-                inputarray[1].transform.position = new Vector2(0.35f * Screen.width, 0.7f * Screen.height);
-                inputarray[2].transform.position = new Vector2(0.5f * Screen.width, 0.7f * Screen.height);
-                inputarray[3].transform.position = new Vector2(0.65f * Screen.width, 0.7f * Screen.height);
-                inputarray[4].transform.position = new Vector2(0.8f * Screen.width, 0.7f * Screen.height);
+                dialnum[1].enabled = true;
+                dialnum[1].transform.position = new Vector2(0.5f * Screen.width, 0.3f * Screen.height);
+                inputarray[0].transform.position = new Vector2(0.2f * Screen.width, 0.3f * Screen.height);
+                inputarray[1].transform.position = new Vector2(0.35f * Screen.width, 0.3f * Screen.height);
+                inputarray[2].transform.position = new Vector2(0.5f * Screen.width, 0.3f * Screen.height);
+                inputarray[3].transform.position = new Vector2(0.65f * Screen.width, 0.3f * Screen.height);
+                inputarray[4].transform.position = new Vector2(0.8f * Screen.width, 0.3f * Screen.height);
                 inputarray[0].text = "P";
                 inputarray[1].text = "Y";
                 inputarray[2].text = "N";
@@ -110,7 +118,7 @@ public class Dial : MonoBehaviour
             //clear = false;
             //return false;
         }
-        else if (HandTracking.instance.IsFoldFinger(false, false, false, false, false)) //¼Õ°¡¶ô ÀüºÎ Æì¸é ÃÊ±âÈ­
+        else if (HandTracking.instance.IsFoldFinger(false, false, false, false, false)) //ï¿½Õ°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
         {
             dialimg.enabled = false;
             dialimg_back.enabled = false;
@@ -133,30 +141,30 @@ public class Dial : MonoBehaviour
             return false;
         }
 
-        //¾öÁö
+        //ï¿½ï¿½ï¿½ï¿½
         float x1 = ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[4].x;
         float y1 = ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[4].y;
-        //°ËÁö
+        //ï¿½ï¿½ï¿½ï¿½
         float x2 = ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[8].x;
         float y2 = ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[8].y;
 
-        // ¾öÁö°¡ È­¸é Áß¾Ó¿¡ À§Ä¡
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½ ï¿½ß¾Ó¿ï¿½ ï¿½ï¿½Ä¡
         if (ThumbCenter(x1, y1))
         {
-            //´ÙÀÌ¾ó ÁøÇà
-            if (DialTurn(x2, y2) == 0) //¹Ý½Ã°è È¸Àü
+            //ï¿½ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½
+            if (DialTurn(x2, y2) == 0) //ï¿½Ý½Ã°ï¿½ È¸ï¿½ï¿½
             {
                 degree += 30;
                 check = 0;
                 dialimg.transform.localEulerAngles = new Vector3(0, 0, degree);
                 dialtext.text = "CCW";
             }
-            else if (DialTurn(x2, y2) == 1) //È¸ÀüX
+            else if (DialTurn(x2, y2) == 1) //È¸ï¿½ï¿½X
             {
                 dialtext.text = "NONE";
                 check++;
             }
-            else if (DialTurn(x2, y2) == 2) //½Ã°è È¸Àü
+            else if (DialTurn(x2, y2) == 2) //ï¿½Ã°ï¿½ È¸ï¿½ï¿½
             {
                 degree -= 30;
                 check = 0;
@@ -168,7 +176,7 @@ public class Dial : MonoBehaviour
                 dialtext.text = "EEE";
             }
 
-            if (check == 3) //1.5ÃÊ µ¿¾È ¾È¿òÁ÷ÀÌ¸é ¹®ÀÚ ¼±ÅÃ
+            if (check == 3) //1.5ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½È¿ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             {
                 degree = (degree + 360) % 360;
                 dialInput[index] = degree;
@@ -207,6 +215,7 @@ public class Dial : MonoBehaviour
                             }
                             //@@@@@@@@@@@@@@@@@@@
                             clear = true;
+                            dialnum[0].enabled = false;
                         }
                         index = 0;
                         return false;
@@ -240,6 +249,7 @@ public class Dial : MonoBehaviour
 
                             //@@@@@@@@@@@@@@@@@@@@@@@@@@7
                             clearCharger = true;
+                            dialnum[1].enabled = false;
                         }
                         index = 0;
                         return false;
@@ -271,15 +281,15 @@ public class Dial : MonoBehaviour
     {
         if (x < 0.40)
         {
-            return 0; //¹Ý½Ã°è ¹æÇâ È¸Àü
+            return 0; //ï¿½Ý½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½
         }
         else if (x >= 0.40 && x < 0.60)
         {
-            return 1; //Á¤Áö
+            return 1; //ï¿½ï¿½ï¿½ï¿½
         }
         else if (x >= 0.60)
         {
-            return 2; //½Ã°è ¹æÇâ È¸Àü
+            return 2; //ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½
         }
         else return -1;
     }
