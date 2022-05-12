@@ -14,7 +14,7 @@ public class Dial : MonoBehaviour
 
     [SerializeField] private Image dialimg;
     [SerializeField] private Image dialimg_back;
-    //[SerializeField] private Image[] dialnum = new Image[2];
+    [SerializeField] private Image[] dialnum = new Image[2];
     [SerializeField] private Text dialtext;
     [SerializeField] private Text thumbtext;
     [SerializeField] private Text checktext;
@@ -44,8 +44,8 @@ public class Dial : MonoBehaviour
     {
         dialimg.enabled = false;
         dialimg_back.enabled = false;
-        //dialnum[0].enabled = false;
-        //dialnum[1].enabled = false;
+        dialnum[0].enabled = false;
+        dialnum[1].enabled = false;
         once = true;
         checktext.text = "NOPE";
         for (int i = 0; i < 5; i++)
@@ -88,7 +88,7 @@ public class Dial : MonoBehaviour
 
             if (lockerFlag)
             {
-                //dialnum[0].enabled = true;
+                dialnum[0].enabled = true;
                 //dialnum[0].transform.position = new Vector2(0.5f * Screen.width, 0.3f * Screen.height);
                 inputarray[0].transform.position = new Vector2(0.3f * Screen.width, 0.3f * Screen.height);
                 inputarray[1].transform.position = new Vector2(0.43f * Screen.width, 0.3f * Screen.height);
@@ -101,7 +101,7 @@ public class Dial : MonoBehaviour
             }
             else if (chargerFlag)
             {
-                //dialnum[1].enabled = true;
+                dialnum[1].enabled = true;
                 //dialnum[1].transform.position = new Vector2(0.5f * Screen.width, 0.3f * Screen.height);
                 inputarray[0].transform.position = new Vector2(0.2f * Screen.width, 0.3f * Screen.height);
                 inputarray[1].transform.position = new Vector2(0.35f * Screen.width, 0.3f * Screen.height);
@@ -215,7 +215,7 @@ public class Dial : MonoBehaviour
                             }
                             //@@@@@@@@@@@@@@@@@@@
                             clear = true;
-                            //dialnum[0].enabled = false;
+                            dialnum[0].enabled = false;
                         }
                         index = 0;
                         return false;
@@ -249,7 +249,7 @@ public class Dial : MonoBehaviour
 
                             //@@@@@@@@@@@@@@@@@@@@@@@@@@7
                             clearCharger = true;
-                            //dialnum[1].enabled = false;
+                            dialnum[1].enabled = false;
                         }
                         index = 0;
                         return false;
