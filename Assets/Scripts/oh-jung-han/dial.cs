@@ -95,14 +95,15 @@ public class Dial : MonoBehaviour
                 dialNumFlag = false;
                 if(clear == true && clearCharger == true){
                     clearChargerInst = true;
+                    break;
                 }
                 else if (clear == true){
                     clearInst = true;
+                    break;
                 }
             }
             DialCheck();
             yield return new WaitForSeconds(0.65f);
-                
         }
     }
 
@@ -242,6 +243,7 @@ public class Dial : MonoBehaviour
                             dialNumFlag = true;
                             flagCheck = true;
                             clear = true;
+                            once = true;
                         }
                         index = 0;
                         return false;
