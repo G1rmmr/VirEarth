@@ -24,10 +24,10 @@ public class Dial : MonoBehaviour
     [SerializeField] private Text inputtext;
     [SerializeField] private Text[] inputarray = new Text[5];
 
+    public bool once;
     private int degree = 0;
     private int check = 0;
     private int index = 0;
-    private bool once;
     private bool lockerFlag = true;
     private bool chargerFlag = false;
     private bool dialNumFlag = false;
@@ -77,7 +77,15 @@ public class Dial : MonoBehaviour
             if (!enable)
                 continue;
             if(dialNumFlag){
-                yield return new WaitForSeconds(3.0f);  
+                yield return new WaitForSeconds(3.0f);
+                for (int i = 0; i < 4; i++)
+                {
+                    inputarray[i].enabled = false;
+                }
+                dialnum[0].enabled = false;
+                dialnum[1].enabled = false;
+                dialimg.enabled = false;
+                dialimg_back.enabled = false;
                 dialNumFlag = false;
             }
             DialCheck();
@@ -97,7 +105,7 @@ public class Dial : MonoBehaviour
             {
                 dialnum[0].enabled = true;
                 if(flagCheck){
-                    dialnum[0].transform.position = new Vector2(0.5f * Screen.width, 0.3f * Screen.height);
+                    dialnum[0].transform.position = new Vector2(0.5f * Screen.width, 0.28f * Screen.height);
                     inputarray[0].transform.position = new Vector2(0.3f * Screen.width, 0.3f * Screen.height);
                     inputarray[1].transform.position = new Vector2(0.43f * Screen.width, 0.3f * Screen.height);
                     inputarray[2].transform.position = new Vector2(0.57f * Screen.width, 0.3f * Screen.height);
@@ -114,7 +122,7 @@ public class Dial : MonoBehaviour
             {
                 dialnum[1].enabled = true;
                 if(flagCheck){
-                    dialnum[1].transform.position = new Vector2(0.5f * Screen.width, 0.3f * Screen.height);
+                    dialnum[1].transform.position = new Vector2(0.5f * Screen.width, 0.28f * Screen.height);
                     inputarray[0].transform.position = new Vector2(0.25f * Screen.width, 0.3f * Screen.height);
                     inputarray[1].transform.position = new Vector2(0.375f * Screen.width, 0.3f * Screen.height);
                     inputarray[2].transform.position = new Vector2(0.5f * Screen.width, 0.3f * Screen.height);
@@ -139,6 +147,10 @@ public class Dial : MonoBehaviour
             dialimg_back.enabled = false;
             dialnum[0].enabled = false;
             dialnum[1].enabled = false;
+            for (int i = 0; i < 5; i++)
+                {
+                    inputarray[i].enabled = false;
+                }
             index = 0;
             initArray(dialInput);
             clear = false;
@@ -226,13 +238,13 @@ public class Dial : MonoBehaviour
                         if (lockerPW.SequenceEqual(dialInput))
                         {
                             checktext.text = "LOCKER UNLOCK";
-                            for (int i = 0; i < 4; i++)
-                            {
-                                inputarray[i].enabled = false;
-                            }
-                            dialnum[0].enabled = false;
-                            dialimg.enabled = false;
-                            dialimg_back.enabled = false;
+                            // for (int i = 0; i < 4; i++)
+                            // {
+                            //     inputarray[i].enabled = false;
+                            // }
+                            // dialnum[0].enabled = false;
+                            // dialimg.enabled = false;
+                            // dialimg_back.enabled = false;
                             lockerFlag = false;
                             chargerFlag = true;
                             dialNumFlag = true;
@@ -267,11 +279,11 @@ public class Dial : MonoBehaviour
                         if (chargerPW.SequenceEqual(dialInput))
                         {
                             checktext.text = "CHARGER UNLOCK";
-                            for (int i = 0; i < 5; i++)
-                            {
-                                inputarray[i].enabled = false;
-                            }
-                            dialnum[1].enabled = false;
+                            // for (int i = 0; i < 5; i++)
+                            // {
+                            //     inputarray[i].enabled = false;
+                            // }
+                            // dialnum[1].enabled = false;
                             dialNumFlag = true;
                             chargerFlag = false;
                             clearCharger = true;
