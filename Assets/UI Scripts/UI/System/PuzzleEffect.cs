@@ -22,12 +22,12 @@ public class PuzzleEffect : MonoBehaviour
     {
         if (isCleared)
         {
-            clearSnd.Play();
-            //아이템 팝업.
+            clearSnd.Play();    // 패턴 퍼즐 성공
+            //아이템 팝업.   
         }
         else
         {
-            failSnd.Play();
+            failSnd.Play();     // 패턴 퍼즐 실패
             StartCoroutine("Show");
         }
     }

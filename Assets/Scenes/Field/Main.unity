@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3898,9 +3898,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2500
+  enable: 0
   maxHp: 3000
   damage: 5
   hpBar: {fileID: 780573093}
+  hpBarActive: {fileID: 780573091}
   Poisoned: {fileID: 1404845701}
   Almost_Dead: {fileID: 1486340987}
 --- !u!114 &1862518991 stripped

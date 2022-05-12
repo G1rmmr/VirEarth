@@ -10,8 +10,11 @@ public class HPManager : MonoBehaviour
 
     public float hp;
 
+    public bool enable = false;
+
     [SerializeField] public int maxHp, damage;
     [SerializeField] private Slider hpBar;
+    [SerializeField] private GameObject hpBarActive;
     [SerializeField] private Image Poisoned;
     [SerializeField] private Image Almost_Dead;
 
@@ -33,6 +36,16 @@ public class HPManager : MonoBehaviour
         int beat;
         while (true)
         {
+            if (!enable)
+            {
+                hpBarActive.SetActive(false);
+                tempColor.a = 0f;
+                Poisoned.color = tempColor;
+                Almost_Dead.color = tempColor;
+                yield return new WaitForSeconds(1.0f);
+                continue;
+            }
+            hpBarActive.SetActive(true);
             hp -= 1;
             hpBar.value = hp / maxHp;
             
@@ -82,10 +95,12 @@ public class HPManager : MonoBehaviour
         GameOverLoad.Instance.LoadScene("Start");
         StopCoroutine("HPManagement");
     }
+
     // Start is called before the first frame update
     void Start()
     {
         //hp = maxHp;
+        hpBarActive.SetActive(false);
         StartCoroutine(HPManagement());
     }
 }

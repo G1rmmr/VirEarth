@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         // 오브젝트
-        HPObject.SetActive(false);
+        HPObject.SetActive(true);
         PatternObject.SetActive(false);
         GPSObject.SetActive(false);
         DialObject.SetActive(false);
@@ -87,16 +87,17 @@ public class GameManager : MonoBehaviour
 
             //StartCoroutine(delay(flag_dialDelay));
             
-            if (!flag_dial1 && InventoryManager.instance.equip_cardkey)
+            /*if (!flag_dial1 && InventoryManager.instance.equip_cardkey)
             {
                 DialObject.SetActive(true);
+                Dial.instance.once = true;
                 Dial.instance.DDDial();
-                flag_dial1 = Dial.instance.clear;
+                flag_dial1 = Dial.instance.clearChargerInst;
                 if (flag_dial1)
                 {
                     DialObject.SetActive(false);
                 }
-            }
+            }*/
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "board")
         {
@@ -110,7 +111,7 @@ public class GameManager : MonoBehaviour
                 flag_board = true;
             }
         }
-        if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "locker")
+        if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "locker" && !flag_dial2)
         {
             /*if (!플래그)
             {
@@ -127,7 +128,7 @@ public class GameManager : MonoBehaviour
            
             DialObject.SetActive(true);
             Dial.instance.DDDial();
-            flag_dial1 = Dial.instance.clear;
+            flag_dial1 = Dial.instance.clearInst;
             if (flag_dial1)
             {
                 DialObject.SetActive(false);
@@ -139,14 +140,18 @@ public class GameManager : MonoBehaviour
         {
             if (!flag_hp)
             {
-                HPObject.SetActive(true);
+                HPManager.instance.enable = true;
+                flag_hp = true;
+                //HPObject.SetActive(true);
             }
         }
         else
         {
             if (flag_hp)
             {
-                HPObject.SetActive(false);
+                HPManager.instance.enable = false;
+                flag_hp = false;
+                //HPObject.SetActive(false);
             }
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "fireplug")
@@ -202,8 +207,9 @@ public class GameManager : MonoBehaviour
 
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "charger" && flag_arPortal){
             DialObject.SetActive(true);
+            Dial.instance.once = true;
             Dial.instance.DDDial();
-            flag_dial2 = Dial.instance.clearCharger;
+            flag_dial2 = Dial.instance.clearChargerInst;
             if (flag_dial2)
             {
                 DialObject.SetActive(false);

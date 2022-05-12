@@ -102,7 +102,10 @@ public class Pattern : MonoBehaviour
 
         passedNum = passedLoc.Count - 1;
         if (passedNum == 9)
+        {
+            PuzzleEffect.instance.puzzleEffect(true);
             return true;
+        }
 
         // 정해진 순서와 다르게 움직이면 게임 초기화
         if (passedLoc[passedNum] != correctPattern[passedNum - 1])
@@ -113,6 +116,7 @@ public class Pattern : MonoBehaviour
             }
             passedLoc.Clear();
             passedLoc.Add(0);
+            PuzzleEffect.instance.puzzleEffect(false);
             return false;
         }
 
