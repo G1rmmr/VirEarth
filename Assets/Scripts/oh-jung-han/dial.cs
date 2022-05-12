@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Dial : MonoBehaviour
 {
-    public static Dial instance; // �ν��Ͻ�
+    public static Dial instance; 
 
     public bool enable = true;
     public bool clear = false;
@@ -89,7 +89,7 @@ public class Dial : MonoBehaviour
             if (lockerFlag)
             {
                 dialnum[0].enabled = true;
-                //dialnum[0].transform.position = new Vector2(0.5f * Screen.width, 0.3f * Screen.height);
+                dialnum[0].transform.position = new Vector2(0.5f * Screen.width, 0.3f * Screen.height);
                 inputarray[0].transform.position = new Vector2(0.3f * Screen.width, 0.3f * Screen.height);
                 inputarray[1].transform.position = new Vector2(0.43f * Screen.width, 0.3f * Screen.height);
                 inputarray[2].transform.position = new Vector2(0.57f * Screen.width, 0.3f * Screen.height);
@@ -102,7 +102,7 @@ public class Dial : MonoBehaviour
             else if (chargerFlag)
             {
                 dialnum[1].enabled = true;
-                //dialnum[1].transform.position = new Vector2(0.5f * Screen.width, 0.3f * Screen.height);
+                dialnum[1].transform.position = new Vector2(0.5f * Screen.width, 0.3f * Screen.height);
                 inputarray[0].transform.position = new Vector2(0.2f * Screen.width, 0.3f * Screen.height);
                 inputarray[1].transform.position = new Vector2(0.35f * Screen.width, 0.3f * Screen.height);
                 inputarray[2].transform.position = new Vector2(0.5f * Screen.width, 0.3f * Screen.height);
