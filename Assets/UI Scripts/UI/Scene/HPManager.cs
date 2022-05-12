@@ -35,6 +35,7 @@ public class HPManager : MonoBehaviour
         {
             hp -= 1;
             hpBar.value = hp / maxHp;
+            
 
             yield return new WaitForSeconds(0.1f);
             if (hp >= (float)maxHp * 3.0f / 4.0f) // hp가 3/4이상일 때
