@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         // 오브젝트
-        HPObject.SetActive(false);
+        HPObject.SetActive(true);
         PatternObject.SetActive(false);
         GPSObject.SetActive(false);
         DialObject.SetActive(false);
@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
             if (!flag_dial1 && InventoryManager.instance.equip_cardkey)
             {
                 DialObject.SetActive(true);
+                Dial.instance.once = true;
                 Dial.instance.DDDial();
                 flag_dial1 = Dial.instance.clear;
                 if (flag_dial1)
@@ -139,6 +140,7 @@ public class GameManager : MonoBehaviour
         {
             if (!flag_hp)
             {
+                //HPObject.GetComponent<HPManager>.enable = true;
                 HPObject.SetActive(true);
             }
         }
