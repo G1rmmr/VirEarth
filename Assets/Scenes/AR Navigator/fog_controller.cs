@@ -19,14 +19,13 @@ public class fog_controller : MonoBehaviour
         color = new ParticleSystem.MinMaxGradient();
         color.mode = ParticleSystemGradientMode.Color;
 
+        color = psMain.startColor;
         PoisonFogColor = color.color;
-
-        SetNormalFog();
     }
 
     public void SetNormalFog()
     {
-        fogColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        fogColor = new Color(1.0f, 1.0f, 1.0f, 0.5f);
         color.color = fogColor;
         psMain.startColor = color;
     }

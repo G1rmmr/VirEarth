@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject PatternObject;
     [SerializeField] private GameObject GPSObject;
     [SerializeField] private GameObject DialObject;
-    //[SerializeField] private GameObject LockerObject;
     [SerializeField] private GameObject FogEffect;
     [SerializeField] private GameObject BoardAnimation;
     [SerializeField] public ARPlaneManager arPlaneManager;
@@ -25,7 +24,6 @@ public class GameManager : MonoBehaviour
     private bool flag_startGame;
     private bool flag_arPortal;
     private bool flag_board;
-    //private bool flag_spawnLocker;
     private bool flag_dial1;
     private bool flag_dial2;
     private bool flag_dialDelay;
@@ -52,7 +50,6 @@ public class GameManager : MonoBehaviour
         flag_startGame = false;
         flag_arPortal = false;
         flag_board = false;
-        //flag_spawnLocker = false;
         flag_dial1 = false;
         flag_dial2 = false;
         flag_dialDelay = false;
@@ -67,6 +64,16 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        debug.text = GPSObject.GetComponent<gps>().isInB.ToString();
+
+        if (GPSObject.GetComponent<gps>().isInB)
+        {
+            FogEffect.GetComponent<fog_controller>().SetPoisonFog();
+        }
+        else
+        {
+            FogEffect.GetComponent<fog_controller>().SetNormalFog();
+        }
 
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "charger")
         {
@@ -90,8 +97,6 @@ public class GameManager : MonoBehaviour
                     DialObject.SetActive(false);
                 }
             }
-            
-            //ARNavigator.instance.PositionCheckText.text = ARNavigator.instance.arPlaneManager.currentDetectionMode.ToString() + "," + ARNavigator.instance.text_mesh.text;
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "board")
         {
@@ -121,12 +126,6 @@ public class GameManager : MonoBehaviour
 
            
             DialObject.SetActive(true);
-            /*if (!flag_spawnLocker)
-            {
-                Instantiate(LockerObject, ARObject.GetComponent<ARTrackedMultiImageManager>().trackedImagePosition, LockerObject.transform.rotation);
-                debug.text = ARObject.GetComponent<ARTrackedMultiImageManager>().trackedImageSize.ToString() +", " + ARObject.GetComponent<ARTrackedMultiImageManager>().trackedImagePosition;
-                flag_spawnLocker = true;
-            }*/
             Dial.instance.DDDial();
             flag_dial1 = Dial.instance.clear;
             if (flag_dial1)
