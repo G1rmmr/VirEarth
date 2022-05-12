@@ -8,9 +8,12 @@ public class Dial : MonoBehaviour
 {
     public static Dial instance; 
 
+    public bool once;
     public bool enable = true;
     public bool clear = false;
     public bool clearCharger = false;
+    public bool clearInst = false;
+    public bool clearChargerInst = false;
 
     [SerializeField] private Image dialimg;
     [SerializeField] private Image dialimg_back;
@@ -24,7 +27,6 @@ public class Dial : MonoBehaviour
     [SerializeField] private Text inputtext;
     [SerializeField] private Text[] inputarray = new Text[5];
 
-    public bool once;
     private int degree = 0;
     private int check = 0;
     private int index = 0;
@@ -87,6 +89,12 @@ public class Dial : MonoBehaviour
                 dialimg.enabled = false;
                 dialimg_back.enabled = false;
                 dialNumFlag = false;
+                if(clear == true && clearCharger == true){
+                    clearChargerInst = true;
+                }
+                else if (clear == true){
+                    clearInst = true;
+                }
             }
             DialCheck();
             yield return new WaitForSeconds(0.65f);
