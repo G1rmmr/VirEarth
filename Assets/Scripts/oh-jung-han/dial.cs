@@ -17,7 +17,8 @@ public class Dial : MonoBehaviour
 
     [SerializeField] private Image dialimg;
     [SerializeField] private Image dialimg_back;
-    [SerializeField] private Image[] dialnum = new Image[2];
+    [SerializeField] private Image[] dialnum1 = new Image[4];
+    [SerializeField] private Image[] dialnum2 = new Image[5];
     [SerializeField] private Text dialtext;
     [SerializeField] private Text thumbtext;
     [SerializeField] private Text checktext;
@@ -48,8 +49,6 @@ public class Dial : MonoBehaviour
     {
         dialimg.enabled = false;
         dialimg_back.enabled = false;
-        dialnum[0].enabled = false;
-        dialnum[1].enabled = false;
         once = true;
         checktext.text = "NOPE";
         for (int i = 0; i < 5; i++)
@@ -84,8 +83,6 @@ public class Dial : MonoBehaviour
                 {
                     inputarray[i].enabled = false;
                 }
-                dialnum[0].enabled = false;
-                dialnum[1].enabled = false;
                 dialimg.enabled = false;
                 dialimg_back.enabled = false;
                 dialNumFlag = false;
@@ -111,9 +108,8 @@ public class Dial : MonoBehaviour
 
             if (lockerFlag)
             {
-                dialnum[0].enabled = true;
                 if(flagCheck){
-                    dialnum[0].transform.position = new Vector2(0.5f * Screen.width, 0.28f * Screen.height);
+                    
                     inputarray[0].transform.position = new Vector2(0.3f * Screen.width, 0.3f * Screen.height);
                     inputarray[1].transform.position = new Vector2(0.43f * Screen.width, 0.3f * Screen.height);
                     inputarray[2].transform.position = new Vector2(0.57f * Screen.width, 0.3f * Screen.height);
@@ -128,9 +124,8 @@ public class Dial : MonoBehaviour
             }
             else if (chargerFlag)
             {
-                dialnum[1].enabled = true;
                 if(flagCheck){
-                    dialnum[1].transform.position = new Vector2(0.5f * Screen.width, 0.28f * Screen.height);
+                    
                     inputarray[0].transform.position = new Vector2(0.25f * Screen.width, 0.3f * Screen.height);
                     inputarray[1].transform.position = new Vector2(0.375f * Screen.width, 0.3f * Screen.height);
                     inputarray[2].transform.position = new Vector2(0.5f * Screen.width, 0.3f * Screen.height);
@@ -153,8 +148,7 @@ public class Dial : MonoBehaviour
         {
             dialimg.enabled = false;
             dialimg_back.enabled = false;
-            dialnum[0].enabled = false;
-            dialnum[1].enabled = false;
+            
             for (int i = 0; i < 5; i++)
                 {
                     inputarray[i].enabled = false;
@@ -168,8 +162,7 @@ public class Dial : MonoBehaviour
         {
             dialimg.enabled = false;
             dialimg_back.enabled = false;
-            dialnum[0].enabled = false;
-            dialnum[1].enabled = false;
+            
             clear = false;
             return false;
         }
