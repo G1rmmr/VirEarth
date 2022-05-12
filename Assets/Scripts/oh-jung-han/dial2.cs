@@ -1,10 +1,10 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Dial : MonoBehaviour
+public class dial2 : MonoBehaviour
 {
     public static Dial instance; // �ν��Ͻ�
 
@@ -14,7 +14,7 @@ public class Dial : MonoBehaviour
 
     [SerializeField] private Image dialimg;
     [SerializeField] private Image dialimg_back;
-    //[SerializeField] private Image[] dialnum = new Image[2];
+    [SerializeField] private Image[] dialnum = new Image[2];
     [SerializeField] private Text dialtext;
     [SerializeField] private Text thumbtext;
     [SerializeField] private Text checktext;
@@ -36,7 +36,7 @@ public class Dial : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+     //   instance = this; @@@@@@@@임시 주석 처리
     }
 
     // Start is called before the first frame update
@@ -44,8 +44,8 @@ public class Dial : MonoBehaviour
     {
         dialimg.enabled = false;
         dialimg_back.enabled = false;
-        //dialnum[0].enabled = false;
-        //dialnum[1].enabled = false;
+        dialnum[0].enabled = false;
+        dialnum[1].enabled = false;
         once = true;
         checktext.text = "NOPE";
         for (int i = 0; i < 5; i++)
@@ -81,15 +81,15 @@ public class Dial : MonoBehaviour
 
     public bool DialCheck()
     {
-        if (HandTracking.instance.IsFoldFinger(false, false, true, true, true)) //start with thumb, index finger
+        if (HandTracking.instance.IsFoldFinger(false, false, true, true, true)) //���� ���� ��� ����
         {
             dialimg.enabled = true;
             dialimg_back.enabled = true;
-
+            
             if (lockerFlag)
             {
-                //dialnum[0].enabled = true;
-                //dialnum[0].transform.position = new Vector2(0.5f * Screen.width, 0.3f * Screen.height);
+                dialnum[0].enabled = true;
+                dialnum[0].transform.position = new Vector2(0.5f * Screen.width, 0.3f * Screen.height);
                 inputarray[0].transform.position = new Vector2(0.3f * Screen.width, 0.3f * Screen.height);
                 inputarray[1].transform.position = new Vector2(0.43f * Screen.width, 0.3f * Screen.height);
                 inputarray[2].transform.position = new Vector2(0.57f * Screen.width, 0.3f * Screen.height);
@@ -101,8 +101,8 @@ public class Dial : MonoBehaviour
             }
             else if (chargerFlag)
             {
-                //dialnum[1].enabled = true;
-                //dialnum[1].transform.position = new Vector2(0.5f * Screen.width, 0.3f * Screen.height);
+                dialnum[1].enabled = true;
+                dialnum[1].transform.position = new Vector2(0.5f * Screen.width, 0.3f * Screen.height);
                 inputarray[0].transform.position = new Vector2(0.2f * Screen.width, 0.3f * Screen.height);
                 inputarray[1].transform.position = new Vector2(0.35f * Screen.width, 0.3f * Screen.height);
                 inputarray[2].transform.position = new Vector2(0.5f * Screen.width, 0.3f * Screen.height);
@@ -118,7 +118,7 @@ public class Dial : MonoBehaviour
             //clear = false;
             //return false;
         }
-        else if (HandTracking.instance.IsFoldFinger(false, false, false, false, false)) //spread all fingers
+        else if (HandTracking.instance.IsFoldFinger(false, false, false, false, false)) //�հ��� ���� ��� �ʱ�ȭ
         {
             dialimg.enabled = false;
             dialimg_back.enabled = false;
@@ -141,30 +141,30 @@ public class Dial : MonoBehaviour
             return false;
         }
 
-        //track thumb
+        //����
         float x1 = ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[4].x;
         float y1 = ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[4].y;
-        //track index finger
+        //����
         float x2 = ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[8].x;
         float y2 = ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[8].y;
 
-        // thumb in area
+        // ������ ȭ�� �߾ӿ� ��ġ
         if (ThumbCenter(x1, y1))
         {
-            //turning with index figer
-            if (DialTurn(x2, y2) == 0) //turn CCW
+            //���̾� ����
+            if (DialTurn(x2, y2) == 0) //�ݽð� ȸ��
             {
                 degree += 30;
                 check = 0;
                 dialimg.transform.localEulerAngles = new Vector3(0, 0, degree);
                 dialtext.text = "CCW";
             }
-            else if (DialTurn(x2, y2) == 1) //no turn
+            else if (DialTurn(x2, y2) == 1) //ȸ��X
             {
                 dialtext.text = "NONE";
                 check++;
             }
-            else if (DialTurn(x2, y2) == 2) //turn CW
+            else if (DialTurn(x2, y2) == 2) //�ð� ȸ��
             {
                 degree -= 30;
                 check = 0;
@@ -176,7 +176,7 @@ public class Dial : MonoBehaviour
                 dialtext.text = "EEE";
             }
 
-            if (check == 3) //if don't move for 1.5 seconds, letter selected
+            if (check == 3) //1.5�� ���� �ȿ����̸� ���� ����
             {
                 degree = (degree + 360) % 360;
                 dialInput[index] = degree;
@@ -215,7 +215,7 @@ public class Dial : MonoBehaviour
                             }
                             //@@@@@@@@@@@@@@@@@@@
                             clear = true;
-                            //dialnum[0].enabled = false;
+                            dialnum[0].enabled = false;
                         }
                         index = 0;
                         return false;
@@ -249,7 +249,7 @@ public class Dial : MonoBehaviour
 
                             //@@@@@@@@@@@@@@@@@@@@@@@@@@7
                             clearCharger = true;
-                            //dialnum[1].enabled = false;
+                            dialnum[1].enabled = false;
                         }
                         index = 0;
                         return false;
@@ -281,15 +281,15 @@ public class Dial : MonoBehaviour
     {
         if (x < 0.40)
         {
-            return 0; //CCW
+            return 0; //�ݽð� ���� ȸ��
         }
         else if (x >= 0.40 && x < 0.60)
         {
-            return 1; //nothing
+            return 1; //����
         }
         else if (x >= 0.60)
         {
-            return 2; //CW
+            return 2; //�ð� ���� ȸ��
         }
         else return -1;
     }
