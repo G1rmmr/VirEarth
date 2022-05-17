@@ -9,7 +9,6 @@ public class Dial : MonoBehaviour
     public static Dial instance; 
 
     public bool once;
-    public bool enable = true;
     public bool clear = false;
     public bool clearCharger = false;
     public bool clearInst = false;
@@ -78,8 +77,6 @@ public class Dial : MonoBehaviour
     {
         while (true)
         {
-            if (!enable)
-                continue;
             if(dialNumFlag){
                 yield return new WaitForSeconds(3.0f);
                 for (int i = 0; i < 4; i++)
@@ -94,16 +91,24 @@ public class Dial : MonoBehaviour
                 dialimg_back.enabled = false;
                 dialNumFlag = false;
                 if(clear == true && clearCharger == true){
-                    clearChargerInst = true;
+                    //clearChargerInst = true;
                     break;
                 }
                 else if (clear == true){
-                    clearInst = true;
+                    //clearInst = true;
                     break;
                 }
             }
             DialCheck();
             yield return new WaitForSeconds(0.65f);
+        }
+        if (clear == true && clearCharger == true)
+        {
+            clearChargerInst = true;
+        }
+        else if (clear == true)
+        {
+            clearInst = true;
         }
     }
 

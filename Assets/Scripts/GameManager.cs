@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     private bool flag_dial1;
     private bool flag_dial2;
     private bool flag_dialDelay;
+    private bool flag_dial_once;
 
     //
     private PlaneDetectionMode mode = (PlaneDetectionMode)1;
@@ -53,13 +54,13 @@ public class GameManager : MonoBehaviour
         flag_dial1 = false;
         flag_dial2 = false;
         flag_dialDelay = false;
+        flag_dial_once = false;
     }
     // Start is called before the first frame update
     void Start()
     {
        
     }
-
 
     // Update is called once per frame
     private void Update()
@@ -129,10 +130,10 @@ public class GameManager : MonoBehaviour
             DialObject.SetActive(true);
             Dial.instance.DDDial();
             flag_dial1 = Dial.instance.clearInst;
-            if (flag_dial1)
+            /*if (flag_dial1)
             {
                 DialObject.SetActive(false);
-            }
+            }*/
 
         }
 
@@ -206,9 +207,13 @@ public class GameManager : MonoBehaviour
         //InventoryManager.instance.InventoryManagement(); // 인벤토리, inventoryManagement_enable이 false면 작동안함
 
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "charger" && flag_arPortal){
-            DialObject.SetActive(true);
-            Dial.instance.once = true;
-            Dial.instance.DDDial();
+            //DialObject.SetActive(true);
+            if (!flag_dial_once)
+            {
+                Dial.instance.once = true;
+                Dial.instance.DDDial();
+                flag_dial_once = true;
+            }
             flag_dial2 = Dial.instance.clearChargerInst;
             if (flag_dial2)
             {
