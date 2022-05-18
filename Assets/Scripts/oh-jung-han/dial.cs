@@ -29,10 +29,10 @@ public class Dial : MonoBehaviour
     private int degree = 0;
     private int check = 0;
     private int index = 0;
-    private bool lockerFlag = true;
+    private bool lockerFlag = false;
     private bool chargerFlag = false;
     private bool dialNumFlag = false;
-    private bool flagCheck = true;
+    private bool flagCheck = false;
     private int[] lockerPW = new int[5] { 300, 30, 60, 240, -1 };
     private int[] chargerPW = new int[5] { 150, 270, 90, 270, 330 };
     private int[] dialInput = new int[5] { -1, -1, -1, -1, -1 };
@@ -246,13 +246,14 @@ public class Dial : MonoBehaviour
                         if (lockerPW.SequenceEqual(dialInput))
                         {
                             checktext.text = "LOCKER UNLOCK";
+                            index = 0;
+                            degree = 0;
                             lockerFlag = false;
                             chargerFlag = true;
                             dialNumFlag = true;
                             flagCheck = true;
-                            clear = true;
                             initArray(dialInput);
-                            index = 0;
+                            clear = true;
                             //once = true;
                         }
                         index = 0;
