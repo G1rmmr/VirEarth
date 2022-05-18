@@ -249,6 +249,8 @@ public class Dial : MonoBehaviour
                             dialNumFlag = true;
                             flagCheck = true;
                             clear = true;
+                            initArray(dialInput);
+                            index = 0;
                             //once = true;
                         }
                         index = 0;
