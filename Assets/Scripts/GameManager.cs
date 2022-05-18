@@ -190,7 +190,6 @@ public class GameManager : MonoBehaviour
             }
         }
         //InventoryManager.instance.InventoryManagement(); // 인벤토리, inventoryManagement_enable이 false면 작동안함
-
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "charger" && flag_arPortal){
             //DialObject.SetActive(true);
             if (!flag_dial_once)

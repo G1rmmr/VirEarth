@@ -90,7 +90,8 @@ public class Dial : MonoBehaviour
                 dialimg.enabled = false;
                 dialimg_back.enabled = false;
                 dialNumFlag = false;
-                if(clear == true && clearCharger == true){
+                if(clearCharger) {
+                //if(clear == true && clearCharger == true){
                     //clearChargerInst = true;
                     break;
                 }
@@ -102,7 +103,8 @@ public class Dial : MonoBehaviour
             DialCheck();
             yield return new WaitForSeconds(0.65f);
         }
-        if (clear == true && clearCharger == true)
+        //if (clear == true && clearCharger == true)
+        if (clearCharger == true)
         {
             clearChargerInst = true;
         }
