@@ -108,7 +108,7 @@ public class ARTrackedMultiImageManager : MonoBehaviour
 
             trackedImageSize = trackedImage.size;*/
 
-            if (trackedObject.tag == "item" && !hasKey && Dial.instance.clear)
+            if (trackedObject.tag == "item" && !hasKey && Dial.instance.clearInst)
             {
                 //puzzleEffect.puzzleEffect(true);
                 trackedObject.SetActive(true);

@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
             if (!flag_startGame)
             {
                 flag_startGame = GameStartEffect.instance.gameStartEffect();
-                ARNavigator.instance.ARNavigatorEvent();
+                //ARNavigator.instance.ARNavigatorEvent();
                 GPSObject.SetActive(true);
                 GPSObject.GetComponent<gps>().startGps();
             }
