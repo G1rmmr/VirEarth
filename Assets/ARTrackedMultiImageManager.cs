@@ -11,26 +11,19 @@ public class ARTrackedMultiImageManager : MonoBehaviour
     [SerializeField]
     private GameObject[] trackedPrefabs; // 이미지를 인식했을 때 출력되는 프리팹 목록
 
-    [SerializeField] AudioSource itemPkdSnd;
+    [SerializeField] AudioSource itemPkdSnd; // 픽업 사운드
 
     [SerializeField]
-    private GameObject pickupPictogram;
+    private GameObject pickupPictogram;  // 픽업 픽토그램
 
     public Text imageTrackedText; // 인식된 물체 표시
-    public Text showFingerPosition; // 검지 위치(디버그)
-    public Text showThumbPosition; // 엄지 위치(디버그)
-    public Text showPrefabPosition; // 물체 위지(디버그)
-    public Text touchText; // 터치 여부(디버그)
-    public Text PickUpText; // 픽업 여부(디버그)
-    //public Text distDebug; // 거리 계산(디버그)
-    public Text TrackingText; // 트래킹 상태(디버그)
 
     private bool hasKey = false;
     private bool hasVaccine = false;
 
-    private Vector3 thumbPosition;
-    private Vector3 indexPosition;
-    private Vector3 prefabPosition;
+    private Vector3 thumbPosition;  // 엄지 위치
+    private Vector3 indexPosition;  // 검지 위치
+    private Vector3 prefabPosition; // 물체 위치
 
     // 이미지를 인식했을 때 출력되는 오브젝트 목록
     private Dictionary<string, GameObject> spawnedObjects = new Dictionary<string, GameObject>();
@@ -96,16 +89,16 @@ public class ARTrackedMultiImageManager : MonoBehaviour
         if (trackedImage.trackingState == TrackingState.Tracking)
         {
             imageTrackedText.text = name;
-
-            TrackingText.text = "Tracking";
             trackedObject.transform.position = trackedImage.transform.position;
             
+            // locker - key와 pictogram
             if (trackedObject.tag == "key" && !hasKey && Dial.instance.clearInst)
             {
                 trackedObject.SetActive(true);
                 pickupPictogram.SetActive(true);
             }
 
+            // charger - vaccine만
             if (trackedObject.tag == "vaccine" && !hasVaccine && Dial.instance.clearChargerInst)
             {
                 trackedObject.SetActive(true);
@@ -122,59 +115,38 @@ public class ARTrackedMultiImageManager : MonoBehaviour
             // spawn된 prefab 위치 : World → Viewport
             prefabPosition = Camera.main.WorldToViewportPoint(trackedObject.transform.position);
 
-            // 디버그용
-            showPrefabPosition.text = "( " + prefabPosition.x.ToString("N2") + ", " + prefabPosition.y.ToString("N2") + " )";
-            showFingerPosition.text = "( " + indexPosition.x.ToString("N2") + ", " + indexPosition.y.ToString("N2") + " )";
-            showThumbPosition.text = "( " + thumbPosition.x.ToString("N2") + ", " + thumbPosition.y.ToString("N2") + " )";
-
-            if (HandTracking.isHandOn && IsTouch())
+            // key, vaccine 획득 시 이벤트 처리
+            if (HandTracking.isHandOn && IsTouch() && IsPickUp())
             {
-                touchText.text = "Touch!";
+                itemPkdSnd.Play();
+                trackedObject.SetActive(false);
 
-                if (IsPickUp() == true)
+                switch (trackedObject.tag)
                 {
-                    PickUpText.text = "PickUp!";
-                    if (trackedObject.tag == "key")
-                    {
-                        //itemPkdSnd.Play();
-                        trackedObject.SetActive(false);
+                    case "key":
                         pickupPictogram.SetActive(false);
                         hasKey = true;
                         showText.instance.ShowText("열쇠를 획득하였습니다");
                         InventoryManager.instance.canUseItem[1] = true;
-                    }
-                    else if (trackedObject.tag == "vaccine")
-                    {
-                        //itemPkdSnd.Play();
-                        trackedObject.SetActive(false);
+                        break;
+                    case "vaccine":
                         hasVaccine = true;
                         showText.instance.ShowText("백신을 획득하였습니다");
                         InventoryManager.instance.canUseItem[3] = true;
-                    }
+                        break;
                 }
-                else
-                    PickUpText.text = "Non-Pickup";
-            }
-            else
-            {
-                touchText.text = "Untouch";
-                PickUpText.text = "X";
-            }           
+            }       
         }
 
         else if (trackedImage.trackingState == TrackingState.Limited)
         {
-            TrackingText.text = "Limited";
             trackedObject.SetActive(false);
             thumbPosition = new Vector3(0,0,0);
             indexPosition = new Vector3(1,1,0);
         }
-
-        else
-            TrackingText.text = "None";
     }
 
-    private bool IsTouch()
+    private bool IsTouch() // 검지가 물체에 가까이 있으면 Touch
     {
         float indexx = indexPosition.x;
         float indexy = indexPosition.y;
@@ -183,11 +155,13 @@ public class ARTrackedMultiImageManager : MonoBehaviour
 
         double dist = Math.Sqrt(Math.Pow(indexx - prefabx, 2) + Math.Pow(indexy - prefaby, 2));
 
-        if (dist < 0.15) return true;
-        else return false;
+        if (dist < 0.15) 
+            return true;
+        else 
+            return false;
     }
 
-    private bool IsPickUp()
+    private bool IsPickUp() // 검지와 엄지의 위치가 가까우면 PickUp
     {
         float thumbx = thumbPosition.x;
         float thumby = thumbPosition.y;
