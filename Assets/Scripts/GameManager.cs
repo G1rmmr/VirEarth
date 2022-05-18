@@ -82,23 +82,9 @@ public class GameManager : MonoBehaviour
             {
                 flag_startGame = GameStartEffect.instance.gameStartEffect();
                 //ARNavigator.instance.ARNavigatorEvent();
-                GPSObject.SetActive(true);
-                GPSObject.GetComponent<gps>().startGps();
+                //GPSObject.SetActive(true);
+                //GPSObject.GetComponent<gps>().startGps();
             }
-
-            //StartCoroutine(delay(flag_dialDelay));
-            
-            /*if (!flag_dial1 && InventoryManager.instance.equip_cardkey)
-            {
-                DialObject.SetActive(true);
-                Dial.instance.once = true;
-                Dial.instance.DDDial();
-                flag_dial1 = Dial.instance.clearChargerInst;
-                if (flag_dial1)
-                {
-                    DialObject.SetActive(false);
-                }
-            }*/
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "board")
         {
@@ -126,7 +112,6 @@ public class GameManager : MonoBehaviour
 
             //GPSObject.SetActive(true);    // GPS ON!
 
-           
             DialObject.SetActive(true);
             Dial.instance.DDDial();
             flag_dial1 = Dial.instance.clearInst;
@@ -214,10 +199,13 @@ public class GameManager : MonoBehaviour
                 Dial.instance.DDDial();
                 flag_dial_once = true;
             }
-            flag_dial2 = Dial.instance.clearChargerInst;
-            if (flag_dial2)
+            if (!flag_dial2)
             {
-                DialObject.SetActive(false);
+                flag_dial2 = Dial.instance.clearChargerInst;
+                if (flag_dial2)
+                {
+                    DialObject.SetActive(false);
+                }
             }
         }
     }
