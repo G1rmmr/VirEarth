@@ -29,10 +29,10 @@ public class Dial : MonoBehaviour
     private int degree = 0;
     private int check = 0;
     private int index = 0;
-    private bool lockerFlag = false;
+    private bool lockerFlag = true;
     private bool chargerFlag = false;
     private bool dialNumFlag = false;
-    private bool flagCheck = false;
+    private bool flagCheck = true;
     private int[] lockerPW = new int[5] { 300, 30, 60, 240, -1 };
     private int[] chargerPW = new int[5] { 150, 270, 90, 270, 330 };
     private int[] dialInput = new int[5] { -1, -1, -1, -1, -1 };
@@ -136,7 +136,7 @@ public class Dial : MonoBehaviour
             else if (chargerFlag)
             {
                 if(flagCheck){
-                    for(int i = 0; 5 < 4; i++)
+                    for(int i = 0; i < 5; i++)
                     {
                         dialnum2[i].transform.position = new Vector2(0.5f * Screen.width, 0.3f * Screen.height);
                     }
