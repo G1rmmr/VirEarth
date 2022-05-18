@@ -4817,7 +4817,7 @@ GameObject:
   - component: {fileID: 3844290033871476667}
   m_Layer: 0
   m_Name: locker
-  m_TagString: item
+  m_TagString: key
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4877,12 +4877,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3f9631b1f463ad7468551f7174d7ff98, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9f20d330aa7d11e499eff0fabdb8797d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.3, y: 4.32}
+  m_Size: {x: 5, y: 4.99}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

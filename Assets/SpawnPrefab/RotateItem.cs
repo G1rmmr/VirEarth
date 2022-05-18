@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyRotate : MonoBehaviour
+public class RotateItem: MonoBehaviour
 {
 
     // Update is called once per frame

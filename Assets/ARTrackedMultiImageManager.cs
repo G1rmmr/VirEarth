@@ -25,14 +25,12 @@ public class ARTrackedMultiImageManager : MonoBehaviour
     //public Text distDebug; // 거리 계산(디버그)
     public Text TrackingText; // 트래킹 상태(디버그)
 
+    private bool hasKey = false;
+    private bool hasVaccine = false;
+
     private Vector3 thumbPosition;
     private Vector3 indexPosition;
     private Vector3 prefabPosition;
-
-    //public Vector2 trackedImageSize; // 이미지 사이즈 값 추출
-    //public Vector3 trackedImagePosition; //포지션 값 추출
-
-    private bool hasKey = false;
 
     // 이미지를 인식했을 때 출력되는 오브젝트 목록
     private Dictionary<string, GameObject> spawnedObjects = new Dictionary<string, GameObject>();
@@ -101,20 +99,18 @@ public class ARTrackedMultiImageManager : MonoBehaviour
 
             TrackingText.text = "Tracking";
             trackedObject.transform.position = trackedImage.transform.position;
-            //trackedImagePosition = trackedImage.transform.position; // 포지션 값 추출
             
-            /*if (trackedImagePosition.y != 0)
-                trackedImagePosition.y = 0;
-
-            trackedImageSize = trackedImage.size;*/
-
-            if (trackedObject.tag == "item" && !hasKey && Dial.instance.clearInst)
+            if (trackedObject.tag == "key" && !hasKey && Dial.instance.clearInst)
             {
-                //puzzleEffect.puzzleEffect(true);
                 trackedObject.SetActive(true);
                 pickupPictogram.SetActive(true);
             }
-                
+
+            if (trackedObject.tag == "vaccine" && !hasVaccine && Dial.instance.clearChargerInst)
+            {
+                trackedObject.SetActive(true);
+            }
+
             // 엄지와 검지의 위치
             thumbPosition = new Vector3(ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[4].x,
                         ManomotionManager.Instance.Hand_infos[0].hand_info.tracking_info.skeleton.joints[4].y,
@@ -138,7 +134,7 @@ public class ARTrackedMultiImageManager : MonoBehaviour
                 if (IsPickUp() == true)
                 {
                     PickUpText.text = "PickUp!";
-                    if (trackedObject.tag == "item")
+                    if (trackedObject.tag == "key")
                     {
                         //itemPkdSnd.Play();
                         trackedObject.SetActive(false);
@@ -146,6 +142,14 @@ public class ARTrackedMultiImageManager : MonoBehaviour
                         hasKey = true;
                         showText.instance.ShowText("열쇠를 획득하였습니다");
                         InventoryManager.instance.canUseItem[1] = true;
+                    }
+                    else if (trackedObject.tag == "vaccine")
+                    {
+                        //itemPkdSnd.Play();
+                        trackedObject.SetActive(false);
+                        hasVaccine = true;
+                        showText.instance.ShowText("백신을 획득하였습니다");
+                        InventoryManager.instance.canUseItem[3] = true;
                     }
                 }
                 else
