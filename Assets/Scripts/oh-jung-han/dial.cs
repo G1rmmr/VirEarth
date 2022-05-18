@@ -136,7 +136,7 @@ public class Dial : MonoBehaviour
             else if (chargerFlag)
             {
                 if(flagCheck){
-                    for(int i = 0; 5 < 4; i++)
+                    for(int i = 0; i < 5; i++)
                     {
                         dialnum2[i].transform.position = new Vector2(0.5f * Screen.width, 0.3f * Screen.height);
                     }
