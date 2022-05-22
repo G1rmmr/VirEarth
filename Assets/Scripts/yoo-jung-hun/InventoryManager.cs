@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class InventoryManager : MonoBehaviour
@@ -208,11 +209,15 @@ public class InventoryManager : MonoBehaviour
                 else if (final_selectItem == 3)
                 {
                     eqpItmSnd.Play();//일반 아이템 장착 사운드
+                    /*
                     var tempColor = selectedBoxImage[3].color;
                     tempColor.a = 1f;
                     selectedBoxImage[3].color = tempColor;
                     equip_vaccine = true;
                     showText.instance.ShowText("백신을 사용하였습니다");
+                    */
+                    canUseItem[final_selectItem] = false;
+                    SceneManager.LoadScene("Ending");
                 }
                 else if (final_selectItem == 4)
                 {
