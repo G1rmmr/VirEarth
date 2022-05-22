@@ -111,7 +111,7 @@ public class Dial : MonoBehaviour
         else if (clear == true)
         {
             clearInst = true;
-            //degree = 0;
+            degree = 0;
             initArray(dialInput);
         }
     }
@@ -248,7 +248,7 @@ public class Dial : MonoBehaviour
                         {
                             checktext.text = "LOCKER UNLOCK";
                             index = 0;
-                            degree = 0;
+                            //degree = 0;
                             lockerFlag = false;
                             chargerFlag = true;
                             dialNumFlag = true;
