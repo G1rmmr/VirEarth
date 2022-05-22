@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         // 오브젝트
         HPObject.SetActive(true);
         PatternObject.SetActive(false);
-        GPSObject.SetActive(false);
+        GPSObject.SetActive(true);
         DialObject.SetActive(false);
         FogEffect.SetActive(true);  //@@ true로 변환
         arPlaneManager = GetComponent<ARPlaneManager>();
@@ -81,9 +81,8 @@ public class GameManager : MonoBehaviour
             if (!flag_startGame)
             {
                 flag_startGame = GameStartEffect.instance.gameStartEffect();
-                ARNavigator.instance.ARNavigatorEvent();
-                GPSObject.SetActive(true);
                 GPSObject.GetComponent<gps>().startGps();
+                //ARNavigator.instance.ARNavigatorEvent();
             }
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "board")

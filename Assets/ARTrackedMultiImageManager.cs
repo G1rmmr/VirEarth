@@ -97,9 +97,14 @@ public class ARTrackedMultiImageManager : MonoBehaviour
                 trackedObject.SetActive(true);
                 pickupPictogram.SetActive(true);
             }
+            else if (trackedObject.tag == "key" && !hasKey)
+            {
+                trackedObject.SetActive(true);
+            }
 
             // charger - vaccine∏∏
-            if (trackedObject.tag == "vaccine" && !hasVaccine && Dial.instance.clearChargerInst)
+            //if (trackedObject.tag == "vaccine" && !hasVaccine && Dial.instance.clearChargerInst)
+            if (trackedObject.tag == "vaccine" && !hasVaccine)
             {
                 trackedObject.SetActive(true);
             }
@@ -124,15 +129,21 @@ public class ARTrackedMultiImageManager : MonoBehaviour
                 switch (trackedObject.tag)
                 {
                     case "key":
-                        pickupPictogram.SetActive(false);
-                        hasKey = true;
-                        showText.instance.ShowText("ø≠ºË∏¶ »πµÊ«œø¥Ω¿¥œ¥Ÿ");
-                        InventoryManager.instance.canUseItem[1] = true;
+                        if (Dial.instance.clearInst)
+                        {
+                            pickupPictogram.SetActive(false);
+                            hasKey = true;
+                            showText.instance.ShowText("ø≠ºË∏¶ »πµÊ«œø¥Ω¿¥œ¥Ÿ");
+                            InventoryManager.instance.canUseItem[1] = true;
+                        }
                         break;
                     case "vaccine":
-                        hasVaccine = true;
-                        showText.instance.ShowText("πÈΩ≈¿ª »πµÊ«œø¥Ω¿¥œ¥Ÿ");
-                        InventoryManager.instance.canUseItem[3] = true;
+                        if (Dial.instance.clearChargerInst)
+                        {
+                            hasVaccine = true;
+                            showText.instance.ShowText("πÈΩ≈¿ª »πµÊ«œø¥Ω¿¥œ¥Ÿ");
+                            InventoryManager.instance.canUseItem[3] = true;
+                        }
                         break;
                 }
             }       

@@ -26,7 +26,7 @@ public class Dial : MonoBehaviour
     [SerializeField] private Text chargerPWtext;
     [SerializeField] private Text inputtext;
 
-    private int degree = 0;
+    public int degree = 0;
     private int check = 0;
     private int index = 0;
     private bool lockerFlag = true;
@@ -111,6 +111,7 @@ public class Dial : MonoBehaviour
         else if (clear == true)
         {
             clearInst = true;
+            //degree = 0;
             initArray(dialInput);
         }
     }
