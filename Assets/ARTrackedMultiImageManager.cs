@@ -104,7 +104,7 @@ public class ARTrackedMultiImageManager : MonoBehaviour
 
             // charger - vaccine¸¸
             //if (trackedObject.tag == "vaccine" && !hasVaccine && Dial.instance.clearChargerInst)
-            if (trackedObject.tag == "vaccine" && !hasVaccine)
+            if (trackedObject.tag == "vaccine" && !hasVaccine && InventoryManager.instance.equip_cardkey)
             {
                 trackedObject.SetActive(true);
             }

@@ -69,20 +69,22 @@ public class GameManager : MonoBehaviour
 
         if (GPSObject.GetComponent<gps>().isInB)
         {
-            FogEffect.GetComponent<fog_controller>().SetPoisonFog();
+            if (FogEffect.activeSelf)
+                FogEffect.GetComponent<fog_controller>().SetPoisonFog();
         }
         else
         {
-            FogEffect.GetComponent<fog_controller>().SetNormalFog();
+            if (FogEffect.activeSelf)
+                FogEffect.GetComponent<fog_controller>().SetNormalFog();
         }
 
-        if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "charger")
+        if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "charger" && !flag_arPortal)
         {
             if (!flag_startGame)
             {
                 flag_startGame = GameStartEffect.instance.gameStartEffect();
                 GPSObject.GetComponent<gps>().startGps();
-                //ARNavigator.instance.ARNavigatorEvent();
+                ARNavigator.instance.ARNavigatorEvent();
             }
         }
         if (ARObject.GetComponent<ARTrackedMultiImageManager>().imageTrackedText.text == "board")

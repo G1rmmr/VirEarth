@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class gps : MonoBehaviour
 {
+    public static gps instance; // 인스턴스
+
     public Text[] data = new Text[4];
     public Text[] isIn = new Text[2];
     public float delay;
@@ -22,6 +24,12 @@ public class gps : MonoBehaviour
     public bool isInX = false;
     public bool isInY = false;
     public bool inB = false;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
