@@ -15,6 +15,8 @@ public class HandTracking : MonoBehaviour
     public static bool isHandOn = false;
     public bool swipe;
 
+    public bool chargerDial = false;
+
     private void Awake()
     {
         instance = this;

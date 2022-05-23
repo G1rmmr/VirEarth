@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         HPObject.SetActive(true);
         PatternObject.SetActive(false);
         GPSObject.SetActive(true);
-        DialObject.SetActive(false);
+        DialObject.SetActive(true); //@@ true로 변환
         FogEffect.SetActive(true);  //@@ true로 변환
         arPlaneManager = GetComponent<ARPlaneManager>();
 
@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
             if (!flag_startGame)
             {
                 flag_startGame = GameStartEffect.instance.gameStartEffect();
-                GPSObject.GetComponent<gps>().startGps();
+                //GPSObject.GetComponent<gps>().startGps();
                 ARNavigator.instance.ARNavigatorEvent();
             }
         }
@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
 
             //GPSObject.SetActive(true);    // GPS ON!
 
-            DialObject.SetActive(true);
+            //DialObject.SetActive(true);
             Dial.instance.DDDial();
             flag_dial1 = Dial.instance.clearInst;
             /*if (flag_dial1)
@@ -197,6 +197,7 @@ public class GameManager : MonoBehaviour
             {
                 Dial.instance.once = true;
                 Dial.instance.DDDial();
+                HandTracking.instance.chargerDial = true;
                 flag_dial_once = true;
             }
             if (!flag_dial2)

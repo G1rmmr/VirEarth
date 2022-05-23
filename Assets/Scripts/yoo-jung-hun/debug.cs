@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class debug : MonoBehaviour
 {
     public GameObject menu;
     [SerializeField] private GameObject FogEffect;
     [SerializeField] private GameObject imgText;
+    [SerializeField] private Image dial_back;
+    [SerializeField] private Image dial_front;
 
     bool control = false;
+    bool dial_control = false;
     public void onoff()
     {
         if (control) 
@@ -113,6 +117,25 @@ public class debug : MonoBehaviour
         else
         {
             InventoryManager.instance.canUseItem[0] = true;
+        }
+    }
+    public void dialAlpha()
+    {
+        if (dial_control)
+        {
+            var tempColor = dial_back.color;
+            tempColor.a = 0.0f;
+            dial_back.color = tempColor;
+            dial_front.color = tempColor;
+            dial_control = false;
+        }
+        else
+        {
+            var tempColor = dial_back.color;
+            tempColor.a = 0.4f;
+            dial_back.color = tempColor;
+            dial_front.color = tempColor;
+            dial_control = true;
         }
     }
 }
