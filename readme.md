@@ -78,5 +78,5 @@
 <p>Collaboration Manager : 프로젝트 협업 관리, 통합 에러 발생 시 복원 작업 수행.
   
 <h2>참고 자료</h2>
-<h3><a ref = "https://absorbing-diver-983.notion.site/Capstone-Design-Project-VirEarth-6bb5a120ad0e4121830bbe2646714624">
+<h3><a href = "https://absorbing-diver-983.notion.site/Capstone-Design-Project-VirEarth-6bb5a120ad0e4121830bbe2646714624">
   Notion Link</a></h3>
