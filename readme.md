@@ -1,7 +1,7 @@
 <h1>"VIREARTH"(Team_3)</h1>
 
 <h2>개요</h2>
-![Main Image](./Main-Image.PNG)
+![Main Image](https://user-images.githubusercontent.com/52289794/220220450-7d09c5c9-89ff-48df-b816-53cb20f49060.png)
 <p><i>: 2022 Capstone Design Project - Unity Engine을 사용한 LBS 기반 모바일 탈출 스릴러 MR게임</i>
 
 <h2>대표 기능 설명</h2>
